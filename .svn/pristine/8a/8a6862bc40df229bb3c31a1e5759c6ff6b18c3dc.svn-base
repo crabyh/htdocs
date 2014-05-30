@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php session_start();?>
 <html lang="en">
 
@@ -176,6 +177,13 @@ $(document).ready(function(){
           </div>
         </div>
       </form>
+
+      <!-- <div class="form-group">
+          <label class="col-sm-2 control-label"> </label>
+          <div class="col-sm-4">
+            <p class="form-control-static"><a href="change_user_info.php">change user info</a></p>
+          </div>
+      </div> -->
 
       </div>
     </div>
