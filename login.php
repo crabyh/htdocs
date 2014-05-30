@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 session_start();
 if(isset($_SESSION["user_id"]))
@@ -51,7 +50,6 @@ if(!isset($_SESSION['user_id'])){
   <!-- Custom styles for this template -->
   <link href="css/signin.css" rel="stylesheet">
 </head>
-
 
 <body>
 
