@@ -23,48 +23,7 @@ if(mysqli_num_rows($data)==1){
   $_SESSION['email'] = $row['email'];
   }
 ?>
-<!--
-<script type="text/javascript">
-function createXmlHttp() {  
-    var xmlHttp = null;  
-    try {  
-        //Firefox, Opera 8.0+, Safari  
-        xmlHttp = new XMLHttpRequest();  
-    } catch (e) {  
-        //IE  
-        try {  
-            xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");  
-        } catch (e) {  
-            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");  
-        }  
-    }  
-    return xmlHttp;  
-}
 
-function submitForm() {  
-    var xmlHttp = createXmlHttp();  
-    if(!xmlHttp) {  
-        alert("您的浏览器不支持AJAX！");  
-        return 0;  
-    }  
-    var url = 'user_info.php';  
-    var postData = "";  
-    postData = "phone=" + document.getElementById('phonenum').value + "email=" + document.getElementById('emailaddr').value;  
-    postData += "t=" + Math.random();  
-      
-    xmlHttp.open("POST", url, true);  
-    xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");  
-    xmlHttp.onreadystatechange = function() {  
-        if(xmlHttp.readyState == 4 && xmlHttp.status == 200) {  
-            if(xmlHttp.responseText == '1') {  
-                alert('post successed');  
-            }  
-        }  
-    }  
-    xmlHttp.send(postData);  
-}  
-</script>
--->
 <!-- include head file-->
 <head>
 <?php include 'header.php'; ?>
@@ -72,10 +31,9 @@ function submitForm() {
 <script type="text/javascript">
 $(document).ready(function(){
   $("button").click(function(){
-    $("form#9").replaceWith("<form role='form' action='user_info.php' method='post' class='form-horizontal'><div class='form-group' ><label class='col-sm-2 control-label'>User ID</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['user_id'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>User Name</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['username'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Enroll Time</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['department'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Department</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['gender'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Gender</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['birthyear'].'-'.$_SESSION['birthmonth'].'-'.$_SESSION['birthday'];?>'disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Birth Day</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['enroll_time'];?>' disabled></div></div><div class='form-group'><label class='col-sm-2 control-label'>Phone</label><div class='col-sm-4'><input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $_SESSION['phone']?>' required></div></div><div class='form-group'><label class='col-sm-2 control-label'>Email</label><div class='col-sm-4'><input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $_SESSION['email']?>' required></div></div><div class='form-group'><label class='col-sm-5 control-label'></label><input class='btn btn-primary' name='submit' type='submit' value='Done'></div></form>")
+    $("form#9").replaceWith("<form role='form' action='user_info.php' method='post' class='form-horizontal'><div class='form-group' ><label class='col-sm-2 control-label'>User ID</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['user_id'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>User Name</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['username'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Enroll Time</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['department'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Department</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['gender'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Gender</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['birthyear'].'-'.$_SESSION['birthmonth'].'-'.$_SESSION['birthday'];?>'disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Birth Day</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['enroll_time'];?>' disabled></div></div><div class='form-group'><label class='col-sm-2 control-label'>Phone</label><div class='col-sm-4'><input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $_SESSION['phone']?>' required></div></div><div class='form-group'><label class='col-sm-2 control-label'>Email</label><div class='col-sm-4'><input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $_SESSION['email']?>' required></div></div><div class='form-group'><label class='col-sm-5 control-label'></label><input class='btn btn-primary' name='submit' type='submit' value='Done' id='refresh'></div></form>")
     $("button#1").replaceWith("")
   });
-  // $(".alert").alert('close');
   $(".alert").click(function(){
     window.location.reload();
   });
