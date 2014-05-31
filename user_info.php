@@ -75,7 +75,14 @@ $(document).ready(function(){
     $("form#9").replaceWith("<form role='form' action='user_info.php' method='post' class='form-horizontal'><div class='form-group' ><label class='col-sm-2 control-label'>User ID</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['user_id'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>User Name</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['username'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Enroll Time</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['department'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Department</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['gender'];?>' disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Gender</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['birthyear'].'-'.$_SESSION['birthmonth'].'-'.$_SESSION['birthday'];?>'disabled></div></div><div class='form-group' ><label class='col-sm-2 control-label'>Birth Day</label><div class='col-sm-4'><input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['enroll_time'];?>' disabled></div></div><div class='form-group'><label class='col-sm-2 control-label'>Phone</label><div class='col-sm-4'><input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $_SESSION['phone']?>' required></div></div><div class='form-group'><label class='col-sm-2 control-label'>Email</label><div class='col-sm-4'><input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $_SESSION['email']?>' required></div></div><div class='form-group'><label class='col-sm-5 control-label'></label><input class='btn btn-primary' name='submit' type='submit' value='Done'></div></form>")
     $("button#1").replaceWith("")
   });
+  // $(".alert").alert('close');
+  $(".alert").click(function(){
+    window.location.reload();
+  });
 });
+// function refresh(){
+//   window.location.reload();
+// }
 </script>
 </head>
 
@@ -109,10 +116,10 @@ $(document).ready(function(){
             }
             if ($data == TRUE) {
               $data = mysqli_query($dbc, $query);
-              echo "<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true' action='user_info.php'>×</button><h4>Success</h4><strong>Your profile have been updated!</strong></a></div>";
+              echo "<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><h4>Success</h4><strong>Your profile have been updated!</strong></a></div>";
             }
             else{
-              echo "<div class='alert alert-warning alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true' action='user_info.php'>×</button><h4>Failed!</h4> <strong>Try again!</strong></a></div>";            // die ("Failed!");
+              echo "<div class='alert alert-warning alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><h4>Failed!</h4> <strong>Try again!</strong></a></div>";       
             }
           }
 
