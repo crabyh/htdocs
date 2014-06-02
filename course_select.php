@@ -42,7 +42,7 @@ $data = mysqli_query($dbc,$query);
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h3> Course Information <small><button class="btn btn-btn-primary">Edit</button></small></h3>
+          <h3> Course Information <small></small></h3>
          
         </div>
 
