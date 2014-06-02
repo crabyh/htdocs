@@ -64,10 +64,15 @@
           <form role="form" action="change_password.php" method="POST">
 
             <div class="form-group">
-              <label for="OldPassword">Old password</label>
+              <label for="OldPassword">User ID</label>
               <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="Password">
             </div>
-
+            
+            <div class="input-group">
+               <span class="input-group-addon">书号：</span>
+               <input type="text" class="form-control" name="bno" id="bno"></div>
+            <br/>
+            
             <div class="form-group">
               <label for="NewPassword">New password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password">
