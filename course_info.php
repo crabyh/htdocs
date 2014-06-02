@@ -7,6 +7,8 @@
 <!-- accessing database -->
 <?php 
 require_once 'connectvars.php'; 
+$course_id=$_POST['more'];
+echo $course_id;
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
 $query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
@@ -35,7 +37,7 @@ if(mysqli_num_rows($data)==1){
     <div id="wrap">
 
       <!-- Fixed navbar -->
-      <?php include 'navigation.php'; ?>
+      <?php //include 'navigation.php'; ?>
 
       <!-- Begin page content -->
       <div class="container">
