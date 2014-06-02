@@ -8,7 +8,6 @@
 <?php 
 require_once 'connectvars.php'; 
 $course_id=$_GET['course_id'];
-echo $course_id;
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
 $query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
@@ -37,72 +36,67 @@ if(mysqli_num_rows($data)==1){
     <div id="wrap">
 
       <!-- Fixed navbar -->
-      <?php //include 'navigation.php'; ?>
+      <?php include 'navigation.php'; ?>
 
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h1>User Infomation <small><button class="btn btn-default" id='1'>Edit</button></small></h1>
+          <h1>Course Infomation <small>
+            <button class="btn btn-default" id="1">Edit</button></small>
+          </h1>
         </div>
-
+        
+        <?php
+           $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+           $query2="SELECT * FROM course_info WHERE cid='$course_id'";
+           $data2=mysqli_query($dbc,$query2);
+           if(mysqli_num_rows($data2))
+           {
+              $row2 = mysqli_fetch_array($data2);
+              $_SESSION['cname'] = $row2['cname'];
+              $_SESSION['cdepartment'] = $row2['cdeparment'];
+              $_SESSION['credit'] = $row2['credit'];
+              $_SESSION['course_intro'] = $row2['course_intro'];   
+           }
+        ?>
         <!-- page body -->
-        <form class="form-horizontal">
+           <form class="form-horizontal">
 
-        <div class="form-group" >
-          <label class="col-sm-2 control-label">User ID</label>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Course ID</label>
           <div class="col-sm-4">
-            <p class="form-control-static" id='0'><?php echo $_SESSION['user_id'];?></p>
+            <p class="form-control-static" id='0'><?php echo $course_id ?></p>
           </div>
         </div>
         
         <div class="form-group">
-          <label class="col-sm-2 control-label">User Name</label>
+          <label class="col-sm-2 control-label">Course Name</label>
           <div class="col-sm-4">
-            <p class="form-control-static" id="2"><?php echo $_SESSION['username'];?></p>
+            <p class="form-control-static" id="2"><?php echo $_SESSION['cname'];?></p>
           </div>
         </div>
          
         <div class="form-group" >
           <label class="col-sm-2 control-label">Department</label>
           <div class="col-sm-4">
-            <p class="form-control-static" id="3"><?php echo $_SESSION['department'];?></p>
+            <p class="form-control-static" id="3"><?php echo $_SESSION['cdepartment'];?></p>
           </div>
         </div>
          
         <div class="form-group">
-          <label class="col-sm-2 control-label">Gender</label>
+          <label class="col-sm-2 control-label">Credit</label>
           <div class="col-sm-4">
-            <p class="form-control-static" id="4"><?php echo $_SESSION['gender'];?></p>
+            <p class="form-control-static" id="4"><?php echo $_SESSION['credit'];?></p>
           </div>
         </div>
-         
+        
         <div class="form-group">
-          <label class="col-sm-2 control-label">Birth Day</label>
+          <label class="col-sm-2 control-label">Description</label>
           <div class="col-sm-4">
-            <p class="form-control-static" id="5"><?php echo $_SESSION['birthyear']."-".$_SESSION['birthmonth']."-".$_SESSION['birthday'];?></p>
+            <p class="form-control-static" id="4"><?php echo $_SESSION['course_intro'];?></p>
           </div>
-        </div>
-         
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Enroll time</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="6"><?php echo $_SESSION['enroll_time'];?></p>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Phone</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="7"><?php echo $_SESSION['phone'];?></p>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Email</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="8"><?php echo $_SESSION['email'];?></p>
-          </div>
-        </div>
+        </div>   
+        <!-- <img src="..." alt="..." class="img-rounded">  -->
       </form>
 
       <!-- <div class="form-group">
