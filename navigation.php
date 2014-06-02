@@ -18,12 +18,16 @@
           <ul class="dropdown-menu">
             <li><a href="user_info.php">User Info</a></li>
             <li><a href="password_change.php">Change Password</a></li>
+            <li><a href="user_add.php">Add User</a></li>
+            <li><a href="user_select.php">User Select</a></li>
+
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="course_select.php">Course Info</a></li>
+            <li><a href="course_add.php">Add Course</a></li>
           </ul>
         </li>
         <li><a href="#about">About</a></li>
