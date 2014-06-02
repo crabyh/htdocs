@@ -118,8 +118,8 @@ $data = mysqli_query($dbc,$query);
                 for($i=0;$i<count($val);$i++){
                         echo "<td align='center'><small>".$val[$i]."</small></td>";
                    }
-                   echo "<td align='right'><button class='btn btn-sm btn-default' href='course_info.php' name='more' value=\'".$val[0]."\''>More</button></td>";
-                   echo "<td align='left'><button class='btn btn-sm btn-default' href=''>Delete</button></td>";
+                   echo "<td align='right'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=".$val[0]."'>More</a></td>";
+                   echo "<td align='left'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>";
 
                  
                 echo "</tr>";

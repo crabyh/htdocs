@@ -7,7 +7,7 @@
 <!-- accessing database -->
 <?php 
 require_once 'connectvars.php'; 
-$course_id=$_POST['more'];
+$course_id=$_GET['course_id'];
 echo $course_id;
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
