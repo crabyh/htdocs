@@ -84,7 +84,7 @@ $data = mysqli_query($dbc,$query);
               error_reporting(0);
               if(isset($_GET['submit']))
               {
-                $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+                $con=mysqli_connect("127.0.0.1","root","1324","seproject");
                 $seltype=$_GET["seltype"];
                 $keyword=$_GET["keyword"];
                 $up=$_GET["lower_bound"];
@@ -101,7 +101,7 @@ $data = mysqli_query($dbc,$query);
                   }
                 } //筛选排序功能有问题的！from QX
                 
-                $arr=mysqli_query($dbc,$sql);
+                $arr=mysqli_query($con,$sql);
                 if($arr){
                   echo '<table class="table table-striped">';
                   echo '<tr>';
