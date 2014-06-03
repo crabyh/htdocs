@@ -62,7 +62,6 @@ require_once 'connectvars.php';
   <?php include 'header.php'; ?>
   <!-- Custom styles for this template -->
   <link href="css/signin.css" rel="stylesheet">
-  <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript">
   // 清除原来的数据
   function clearX(){
@@ -74,32 +73,6 @@ require_once 'connectvars.php';
     var vcode=document.getElementById('vcode'); 
     vcode.src ='yz.php?nocache='+new Date().getTime(); 
   }
-
-  function done(){
-    alert("");
-  }
-
-  // $("button#lBTN").click(function(event){
-  //   event.preventDefault()
-  //   var user_id = $("#user_id").val()
-  //   var password = $("#password").val()
-  //   var authCode = $("#authCode").val()
-  //   // var rand = Math.random()
-  //   alert("send")
-  //   $.ajax({
-  //     type: 'POST',
-  //     url: "login.php",
-  //     data: "user_id=" + user_id + "&password=" + password + "&authCode=" + authCode, //+ "&authCode=" + rand,
-  //     success: function(){
-  //       alert("haha")
-  //       window.location.href = "login.php"
-  //     },
-  //     error: function(){
-  //       alert("wuwu")
-  //       $("#codefail").show()
-  //     }
-  //   })
-  // })
 
   //定义XMLHttpRequest对象
   var xmlHttp;         
@@ -126,7 +99,6 @@ require_once 'connectvars.php';
     var username=document.getElementById('user_id').value;
     var password=document.getElementById('password').value;
     if(username=="" || password=="" || authCode==""){
-      alert("1");
       document.getElementById('codefail').style.display="block";
       // return false;
     }else{
@@ -138,7 +110,6 @@ require_once 'connectvars.php';
       xmlHttp.onreadystatechange=function(){
         if(xmlHttp.readyState == 4 || xmlHttp.readyState == "complete"){
           var answer=xmlHttp.responseText;
-          alert(answer)
           document.getElementById('codefail').style.display="block"
           // if(answer=="ok"){
           //   alert("ok")
