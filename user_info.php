@@ -154,7 +154,6 @@ $(document).ready(function(){
             </div>
           </div>
 
-<<<<<<< HEAD
           <div class="form-group">
             <label class="col-sm-2 control-label">Phone</label>
             <div class="col-sm-4">
@@ -199,30 +198,23 @@ $(document).ready(function(){
             <div class='col-sm-4'>
               <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['gender'];?>' disabled>
             </div>
-=======
-        
->>>>>>> FETCH_HEAD
+
           </div>
 
-<<<<<<< HEAD
           <div class='form-group' >
             <label class='col-sm-2 control-label'>Gender</label>
             <div class='col-sm-4'>
               <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['birthyear'].'-'.$_SESSION['birthmonth'].'-'.$_SESSION['birthday'];?>'disabled>
             </div>
-=======
->>>>>>> FETCH_HEAD
+
           </div>
 
-<<<<<<< HEAD
           <div class='form-group' >
             <label class='col-sm-2 control-label'>Birth Day</label>
             <div class='col-sm-4'>
               <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['enroll_time'];?>' disabled>
             </div>
-=======
-        
->>>>>>> FETCH_HEAD
+
           </div>
 
           <div class='form-group'>

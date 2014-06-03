@@ -201,8 +201,8 @@ require_once 'connectvars.php';
       <a href="#" onclick="getVCode()">Another One</a>
       <label class="checkbox">
         <input type="checkbox" value="remember-me">Remember me</label>
-      <button class="btn btn-primary" id="lBTN" name='submit' onclick="login()">Sign In</button>
-      <!-- <button type="button" class="btn btn-lg btn-deflaut btn-block" href="#">Find password</button> -->
+      <button class="btn btn-lg btn-primary btn-block" id="lBTN" name='submit' onclick="login()">Sign In</button>
+      <button type="button" class="btn btn-lg btn-deflaut btn-block" href="#">Find password</button>
     </form>
   </div>
   <!-- /container -->
