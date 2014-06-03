@@ -42,7 +42,7 @@ $(document).ready(function(){
     var newphone = $("input#phonenum").val();
     var newemail = $("input#emailaddr").val();
     $.ajax({
-      type: "POST"
+      type: "POST",
       url:"user_info.php",
       data: "phone=" + newphone + "&email=" + newemail,
       success: function(){
@@ -57,7 +57,7 @@ $(document).ready(function(){
         // msgdiv.insertBefore($('#former'));
       },
       error: function(){
-        $("#faile").show()
+        $("#fail").show()
       }
     });
   });
