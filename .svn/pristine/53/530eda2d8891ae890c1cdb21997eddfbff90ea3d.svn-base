@@ -137,6 +137,18 @@ $(document).ready(function(){
       </div>
     </div>
 
+    <!-- clear user_info Session -->
+    <?php
+      unset($_SESSION['department']);
+      unset($_SESSION['gender']);
+      unset($_SESSION['birthyear']);
+      unset($_SESSION['birthmonth']);
+      unset($_SESSION['birthday']);
+      unset($_SESSION['enroll_time']);
+      unset($_SESSION['phone']);
+      unset($_SESSION['email']);
+    ?>
+
     <!-- page footer -->
     <?php include"footer.php"; ?>
 
