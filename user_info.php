@@ -200,45 +200,7 @@ $(document).ready(function(){
               <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['gender'];?>' disabled>
             </div>
 =======
-        <div class="form-group" >
-          <label class="col-sm-2 control-label">User ID</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id='0'><?php echo $row['user_id'];?></p>
-          </div>
-        </div>
         
-        <div class="form-group">
-          <label class="col-sm-2 control-label">User Name</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="2"><?php echo $row['username'];?></p>
-          </div>
-        </div>
-         
-        <div class="form-group" >
-          <label class="col-sm-2 control-label">Department</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="3"><?php echo $row['department'];?></p>
-          </div>
-        </div>
-         
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Gender</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="4"><?php echo $row['gender'];?></p>
-          </div>
-        </div>
-         
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Birth Day</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="5"><?php echo $row['birthyear']."-".$row['birthmonth']."-".$row['birthday'];?></p>
-          </div>
-        </div>
-         
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Enroll time</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="6"><?php echo $row['enroll_time'];?></p>
 >>>>>>> FETCH_HEAD
           </div>
 
@@ -249,10 +211,6 @@ $(document).ready(function(){
               <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['birthyear'].'-'.$_SESSION['birthmonth'].'-'.$_SESSION['birthday'];?>'disabled>
             </div>
 =======
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Phone</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="7"><?php echo $row['phone'];?></p>
 >>>>>>> FETCH_HEAD
           </div>
 
@@ -263,10 +221,7 @@ $(document).ready(function(){
               <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['enroll_time'];?>' disabled>
             </div>
 =======
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Email</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="8"><?php echo $row['email'];?></p>
+        
 >>>>>>> FETCH_HEAD
           </div>
 
