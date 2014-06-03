@@ -20,6 +20,10 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
+          <h1>Add Course
+          </h1>
+        </div>
+      </div>
 
         <!-- accessing database -->
         <?php
@@ -54,39 +58,61 @@
         }
         ?>
 
-          <h1>Add User</h1>
-        </div>
-
         <!-- page body -->
-        <div class="row clearfix">
+        <!-- <div class="row clearfix"> -->
 
-          <div class="col-md-4 column">
-          <form role="form" action="change_password.php" method="POST">
-
-            <div class="form-group">
-              <label for="OldPassword">User ID</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="Password">
-            </div>
-            
-            <div class="input-group">
-               <span class="input-group-addon">书号：</span>
-               <input type="text" class="form-control" name="bno" id="bno"></div>
-            <br/>
+          <!-- <div class="col-md-4 column"> -->
+          <!-- <form role="form" action="change_password.php" method="POST"> -->
+          <!-- 这部分的只实现了前端yet -->
+          <form class="form-horizontal" id='9'>
             
             <div class="form-group">
-              <label for="NewPassword">New password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password">
+              <!-- <label for="OldPassword">Old password</label> -->
+              <label class="col-sm-2 control-label" align='left'>Course ID</label>
+              <div class="col-sm-4">
+                 <input type="text" class="form-control" id="exampleInputPassword1" name="user_id" placeholder="">
+              </div>  
+            </div>
+            
+            <div class="form-group">
+              <!-- <label for="OldPassword">Old password</label> -->
+              <label class="col-sm-2 control-label" align='left'>Course Name</label>
+              <div class="col-sm-4">
+                 <input type="text" class="form-control" id="exampleInputPassword1" name="username" placeholder="">
+              </div>  
             </div>
 
             <div class="form-group">
-              <label for="NewPassword">Input new password again</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password">
+              <!-- <label for="OldPassword">Old password</label> -->
+              <label class="col-sm-2 control-label" align='left'>Department</label>
+              <div class="col-sm-4">
+                 <input type="text" class="form-control" id="exampleInputPassword1" name="department" placeholder="">
+              </div>  
             </div>
-            </br>
-            <button type="submit" class="btn btn-primary" name="submit" value="submit">Add</button>
-            <button type="submit" class="btn btn-primary" name="reset" value="reset">Reset</button>
+
+            <div class="form-group">
+              <!-- <label for="OldPassword">Old password</label> -->
+              <label class="col-sm-2 control-label" align='left'>Credit</label>
+              <div class="col-sm-4">
+                 <input type="text" class="form-control" id="exampleInputPassword1" name="gender" placeholder="">
+              </div>  
+            </div>
+
+            <div class="form-group">
+             <label class="col-sm-2 control-label" align='left'>Description</label>
+             <div class="col-sm-4">
+              <div class="textarea">
+                  <textarea type="text" class="form-control" name="description"> </textarea>
+              </div>
+             </div>
+            </div>
+
+            <div class="col-sm-5" align='right'><button type="submit" class="btn btn-primary" name="reset" value="submit">Submit</button></div>
+            <div class="col-sm-1" align='left'><button type="submit" class="btn btn-primary" name="reset" value="reset">Reset</button></div>
 
           </form>
+          <form class="form-horizontal" id='9'>
+
           </div>
         </div>
       </div>
