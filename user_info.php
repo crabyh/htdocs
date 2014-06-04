@@ -115,56 +115,56 @@ $(document).ready(function(){
           <div class="form-group" >
             <label class="col-sm-2 control-label">User ID</label>
             <div class="col-sm-4">
-              <p class="form-control-static"><?php echo $_SESSION['user_id'];?></p>
+              <p class="form-control-static"><?php echo $row['user_id'];?></p>
             </div>
           </div>
           
           <div class="form-group">
             <label class="col-sm-2 control-label">User Name</label>
             <div class="col-sm-4">
-              <p class="form-control-static"><?php echo $_SESSION['username'];?></p>
+              <p class="form-control-static"><?php echo $row['username'];?></p>
             </div>
           </div>
            
           <div class="form-group" >
             <label class="col-sm-2 control-label">Department</label>
             <div class="col-sm-4">
-              <p class="form-control-static"><?php echo $_SESSION['department'];?></p>
+              <p class="form-control-static"><?php echo $row['department'];?></p>
             </div>
           </div>
            
           <div class="form-group">
             <label class="col-sm-2 control-label">Gender</label>
             <div class="col-sm-4">
-              <p class="form-control-static"><?php echo $_SESSION['gender'];?></p>
+              <p class="form-control-static"><?php echo $row['gender'];?></p>
             </div>
           </div>
            
           <div class="form-group">
             <label class="col-sm-2 control-label">Birth Day</label>
             <div class="col-sm-4">
-              <p class="form-control-static"><?php echo $_SESSION['birthyear']."-".$_SESSION['birthmonth']."-".$_SESSION['birthday'];?></p>
+              <p class="form-control-static"><?php echo $row['birthyear']."-".$row['birthmonth']."-".$row['birthday'];?></p>
             </div>
           </div>
            
           <div class="form-group">
             <label class="col-sm-2 control-label">Enroll time</label>
             <div class="col-sm-4">
-              <p class="form-control-static"><?php echo $_SESSION['enroll_time'];?></p>
+              <p class="form-control-static"><?php echo $row['enroll_time'];?></p>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">Phone</label>
             <div class="col-sm-4">
-              <p class="form-control-static" id="phone_label"><?php echo $_SESSION['phone'];?></p>
+              <p class="form-control-static" id="phone_label"><?php echo $row['phone'];?></p>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">Email</label>
             <div class="col-sm-4">
-              <p class="form-control-static" id="email_label"><?php echo $_SESSION['email'];?></p>
+              <p class="form-control-static" id="email_label"><?php echo $row['email'];?></p>
             </div>
           </div>
         </form>
@@ -175,28 +175,28 @@ $(document).ready(function(){
           <div class='form-group' >
             <label class='col-sm-2 control-label'>User ID</label>
             <div class='col-sm-4'>
-              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['user_id'];?>' disabled>
+              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $row['user_id'];?>' disabled>
             </div>
           </div>
 
           <div class='form-group' >
             <label class='col-sm-2 control-label'>User Name</label>
             <div class='col-sm-4'>
-              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['username'];?>' disabled>
+              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $row['username'];?>' disabled>
             </div>
           </div>
 
           <div class='form-group' >
             <label class='col-sm-2 control-label'>Enroll Time</label>
             <div class='col-sm-4'>
-              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['department'];?>' disabled>
+              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $row['department'];?>' disabled>
             </div>
           </div>
 
           <div class='form-group' >
             <label class='col-sm-2 control-label'>Department</label>
             <div class='col-sm-4'>
-              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['gender'];?>' disabled>
+              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $row['gender'];?>' disabled>
             </div>
 
           </div>
@@ -204,7 +204,7 @@ $(document).ready(function(){
           <div class='form-group' >
             <label class='col-sm-2 control-label'>Gender</label>
             <div class='col-sm-4'>
-              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['birthyear'].'-'.$_SESSION['birthmonth'].'-'.$_SESSION['birthday'];?>'disabled>
+              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $row['birthyear'].'-'.$row['birthmonth'].'-'.$row['birthday'];?>'disabled>
             </div>
 
           </div>
@@ -212,7 +212,7 @@ $(document).ready(function(){
           <div class='form-group' >
             <label class='col-sm-2 control-label'>Birth Day</label>
             <div class='col-sm-4'>
-              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $_SESSION['enroll_time'];?>' disabled>
+              <input class='form-control' id='disabledInput' type='text' placeholder='<?php echo $row['enroll_time'];?>' disabled>
             </div>
 
           </div>
@@ -220,14 +220,14 @@ $(document).ready(function(){
           <div class='form-group'>
             <label class='col-sm-2 control-label'>Phone</label>
             <div class='col-sm-4'>
-              <input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $_SESSION['phone']?>' required>
+              <input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $row['phone']?>' required>
             </div>
           </div>
 
           <div class='form-group'>
             <label class='col-sm-2 control-label'>Email</label>
             <div class='col-sm-4'>
-              <input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $_SESSION['email']?>' required>
+              <input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $row['email']?>' required>
             </div>
           </div>
 
