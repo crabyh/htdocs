@@ -82,14 +82,14 @@ if(mysqli_num_rows($data)==1)
         <div class="form-group">
           <label class="col-sm-2 control-label">Phone</label>
           <div class="col-sm-4">
-            <input type="tel" class="form-control" id="inputPassword" placeholder="<?php echo $row["phone"]?>">
+            <input type="tel" class="form-control" id="inputPassword" value="<?php echo $row["phone"]?>">
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-sm-2 control-label">Email</label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="inputPassword" placeholder="<?php echo $row["email"]?>">
+            <input type="email" class="form-control" id="inputPassword" value="<?php echo $row["email"]?>">
           </div>
         </div>
 

@@ -7,7 +7,7 @@
 <!-- accessing database -->
 <?php 
 require_once 'connectvars.php'; 
-$course_id="00001";         //$_GET['course_id'];
+$course_id=$_GET['course_id'];
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
 $query = "SELECT * FROM course_info WHERE cid='$course_id'";
@@ -32,8 +32,8 @@ if(mysqli_num_rows($data)==1)
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h1>Course Infomation 
-            <!--button class="btn btn-default" id="1">Edit</button-->
+          <h1>Course Infomation <small>
+            <button class="btn btn-default" id="1">Edit</button></small>
           </h1>
         </div>
 
@@ -68,49 +68,46 @@ if(mysqli_num_rows($data)==1)
         <div class="form-group">
           <label class="col-sm-2 control-label">Course ID</label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="inputPassword" value="<?php echo $course_id ?>">
+            <p class="form-control-static" id='0'><?php echo $course_id ?></p>
           </div>
         </div>
         
         <div class="form-group">
           <label class="col-sm-2 control-label">Course Name</label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="inputPassword" value="<?php echo $row['cname'];?>">
+            <p class="form-control-static" id="2"><?php echo $row['cname'];?></p>
           </div>
         </div>
          
         <div class="form-group" >
           <label class="col-sm-2 control-label">Department</label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="inputPassword" value="<?php echo $row['cdepartment'];?>">
+            <p class="form-control-static" id="3"><?php echo $row['cdepartment'];?></p>
           </div>
         </div>
          
         <div class="form-group">
           <label class="col-sm-2 control-label">Credit</label>
           <div class="col-sm-4">
-            <input type="email" class="form-control" id="inputPassword" value="<?php echo $row['credit'];?>">
+            <p class="form-control-static" id="4"><?php echo $row['credit'];?></p>
           </div>
         </div>
         
         <div class="form-group">
           <label class="col-sm-2 control-label">Description</label>
           <div class="col-sm-4">
-            <textarea  type="email" class="form-control" rows="4" id="inputPassword"><?php echo $row['course_intro'];?></textarea>
+            <p class="form-control-static" id="4"><?php echo $row['course_intro'];?></p>
           </div>
         </div>   
         <!-- <img src="..." alt="..." class="img-rounded">  -->
-
-        <div class="form-group">
-          <div class="col-sm-2">
-          </div>
-          <div class="col-sm-6">
-            <button class="btn btn-primary" type="submit" name="submit" value="submit">Submit</button>
-            <input class="btn btn-default" type="button" name="reset" value="reset">
-          </div>
-        </div>
-
       </form>
+
+      <!-- <div class="form-group">
+          <label class="col-sm-2 control-label"> </label>
+          <div class="col-sm-4">
+            <p class="form-control-static"><a href="change_user_info.php">change user info</a></p>
+          </div>
+      </div> -->
 
       </div>
     </div>

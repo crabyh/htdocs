@@ -1,3 +1,5 @@
+<!-- 空输入没有报错 -->
+
 <?php session_start();?>
 <html lang="en">
 
