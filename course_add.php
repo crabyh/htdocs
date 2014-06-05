@@ -23,7 +23,6 @@
           <h1>Add Course
           </h1>
         </div>
-      </div>
 
         <!-- accessing database -->
         <?php
@@ -107,13 +106,20 @@
              </div>
             </div>
 
-            <div class="col-sm-5" align='right'><button type="submit" class="btn btn-primary" name="reset" value="submit">Submit</button></div>
-            <div class="col-sm-1" align='left'><button type="submit" class="btn btn-primary" name="reset" value="reset">Reset</button></div>
+            <div class="form-group">
+            </div>
 
+            <div class="form-group">
+              <div class="col-sm-2" align='center'>
+              </div>
+              <div class="col-sm-4" align='left'>
+                <button type="submit" class="btn btn-primary" name="reset" value="submit">Submit</button>
+                <button type="submit" class="btn btn-default" name="reset" value="reset">Reset</button>
+                </div>
+              </div>
           </form>
-          <form class="form-horizontal" id='9'>
 
-          </div>
+          </div><!-- container -->
         </div>
       </div>
     </div>

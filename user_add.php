@@ -23,7 +23,6 @@
           <h1>Add User
           </h1>
         </div>
-      </div>
 
         <!-- accessing database -->
         <?php
@@ -68,7 +67,7 @@
             
             <div class="form-group">
               <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label" align='left'>User ID</label>
+              <label class="col-sm-2 control-label">User ID</label>
               <div class="col-sm-4">
                  <input type="text" class="form-control" id="exampleInputPassword1" name="user_id" placeholder="">
               </div>  
@@ -76,7 +75,7 @@
             
             <div class="form-group">
               <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label" align='left'>User Name</label>
+              <label class="col-sm-2 control-label">User Name</label>
               <div class="col-sm-4">
                  <input type="text" class="form-control" id="exampleInputPassword1" name="username" placeholder="">
               </div>  
@@ -84,7 +83,7 @@
 
             <div class="form-group">
               <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label" align='left'>Department</label>
+              <label class="col-sm-2 control-label">Department</label>
               <div class="col-sm-4">
                  <input type="text" class="form-control" id="exampleInputPassword1" name="department" placeholder="">
               </div>  
@@ -92,7 +91,7 @@
 
             <div class="form-group">
               <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label" align='left'>Gender</label>
+              <label class="col-sm-2 control-label">Gender</label>
               <div class="col-sm-4">
                  <input type="text" class="form-control" id="exampleInputPassword1" name="gender" placeholder="">
               </div>  
@@ -100,7 +99,7 @@
 
             <div class="form-group">
               <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label" align='left'>Birth Year</label>
+              <label class="col-sm-2 control-label">Birth Year</label>
               <div class="col-sm-4">
                  <input type="text" class="form-control" id="exampleInputPassword1" name="birthyear" placeholder="">
               </div>  
@@ -108,7 +107,7 @@
 
             <div class="form-group">
               <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label" align='left'>Birth Month</label>
+              <label class="col-sm-2 control-label">Birth Month</label>
               <div class="col-sm-4">
                  <input type="text" class="form-control" id="exampleInputPassword1" name="birthmonth" placeholder="">
               </div>  
@@ -116,18 +115,26 @@
 
             <div class="form-group">
               <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label" align='left'>Birth Day</label>
+              <label class="col-sm-2 control-label">Birth Day</label>
               <div class="col-sm-4">
                  <input type="text" class="form-control" id="exampleInputPassword1" name="birthday" placeholder="">
               </div>  
             </div>
-            <div class="col-sm-5" align='right'><button type="submit" class="btn btn-primary" name="reset" value="submit">Submit</button></div>
-            <div class="col-sm-1" align='left'><button type="submit" class="btn btn-primary" name="reset" value="reset">Reset</button></div>
+
+            <div class="form-group">
+            </div>
+
+            <div class="form-group">
+           	  <div class="col-sm-2" align='center'>
+           	  </div>
+              <div class="col-sm-4" align='left'>
+                <button type="submit" class="btn btn-primary" name="reset" value="submit">Submit</button>
+			   	      <button type="submit" class="btn btn-default" name="reset" value="reset">Reset</button>
+			         	</div>
+	         		</div>
 
           </form>
-          <form class="form-horizontal" id='9'>
-
-          </div>
+          </div> <!--container-->
         </div>
       </div>
     </div>
