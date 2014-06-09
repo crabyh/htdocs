@@ -30,11 +30,12 @@ require_once 'connectvars.php';
     <?php 
       if(!isset($_SESSION['user_id'])){ //如果登录没有登录，执行以下代码
         if (isset($_REQUEST['Submit'])){ //如果有submit提交
-          if(empty($_SESSION['6_letters_code']) || strcasecmp($_SESSION['6_letters_code'], $_POST['6_letters_code']) != 0)
-            { 
-              $msg="Verification code is wrong!";
-            }
-          else{ //验证码通过验证
+          // if(empty($_SESSION['6_letters_code']) || strcasecmp($_SESSION['6_letters_code'], $_POST['6_letters_code']) != 0)
+          //   { 
+          //     $msg="Verification code is wrong!";
+          //   }
+          //else
+            { //验证码通过验证
             $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
             $user_id = mysqli_real_escape_string($dbc,trim($_POST['user_id']));
             $user_password = mysqli_real_escape_string($dbc,trim($_POST['password']));
@@ -50,9 +51,6 @@ require_once 'connectvars.php';
               $data = mysqli_query($dbc,$query);
               $row = mysqli_fetch_array($data);
               $_SESSION['username']=$row['username'];
-              setcookie('user_id',$row['user_id'],time()+(60*60*24*30));
-              setcookie('username',$row['username'],time()+(60*60*24*30));
-              setcookie('usertype',$row['usertype'],time()+(60*60*24*30));
               $home_url = 'loged.php';
               header('Location: '.$home_url);
               $response = "ok";
@@ -82,12 +80,13 @@ require_once 'connectvars.php';
       <h2 class="form-signin-heading">Please Sign In</h2>
       <input type="text" class="form-control" placeholder="User ID" name="user_id" id="user_id" required autofocus value="<?php if(!empty($user_id)) echo $user_id; ?>">
       <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
+      <input type="text" class="form-control" id="6_letters_code" placeholder="verification code" name="6_letters_code" required>
+      <p></p>
       <img id='captchaimg' src="captcha_code_file.php?rand=<?php echo rand();?>"/> 
-      <label for='message'>Please input verification code :</label>
-      <input id="6_letters_code" name="6_letters_code" type="text" class="form-control" required>
       <a href='javascript: refreshCaptcha();'>Can't see?</a>
-      <label class="checkbox">
-        <input type="checkbox" value="remember-me">Remember me</label>
+      <p></p>
+      <!-- <label class="checkbox">
+        <input type="checkbox" value="remember-me">Remember me</label> -->
       <input class="btn btn-lg btn-primary btn-block" name="Submit" type="submit" onclick="return validate();" value="Submit">
       <button type="button" class="btn btn-lg btn-default btn-block" href="#">Find password</button>
     </form>
