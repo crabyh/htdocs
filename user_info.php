@@ -13,7 +13,7 @@ $query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
 $data = mysqli_query($dbc,$query);
 if(mysqli_num_rows($data)==1){
   $row = mysqli_fetch_array($data);
-  }
+}
 ?>
 
 <!-- include head file-->
@@ -241,6 +241,6 @@ $(document).ready(function(){
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
   </body>
 </html>
