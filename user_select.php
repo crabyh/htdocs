@@ -79,59 +79,59 @@ $data = mysqli_query($dbc,$query);
                   </span>
             </form>
           </div>   
-          </div>      
-            <?php
-              error_reporting(0);
-              if(isset($_GET['submit']))
-              {
-                $con=mysqli_connect("127.0.0.1","root","1324","seproject");
-                $seltype=$_GET["seltype"];
-                $keyword=$_GET["keyword"];
-                $up=$_GET["lower_bound"];
-                $down=$_GET["upper_bound"];
-                $order=$_GET["order"];
-                if($seltype=="all")
-                  $sql="SELECT * FROM course_info;";
-                
-                else{
-                  if($up)
-                     $sql = "SELECT * FROM course_info WHERE $seltype>=$lower_bound AND $seltype <= $upper_bound ORDER BY $order;";
-                  else {
-                     $sql = "SELECT * FROM courst_info WHERE $seltype LIKE '%$keyword%' ORDER BY $order;";
-                  }
-                } //筛选排序功能有问题的！from QX
-                
-                $arr=mysqli_query($con,$sql);
-                if($arr){
-                  echo '<table class="table table-striped">';
-                  echo '<tr>';
-                  echo  "<td align='center'><small> Course ID </small></td>";
-                  echo  "<td align='center'><small> Course Name </small></td>";
-                  echo  "<td align='center'><small> Department </small></td>";
-                  echo  "<td align='center'><small> Credit </small></td>";
-                  echo  "<td align='center'><small> Description </small></td>";
-                  echo  "<td align='center'colspan='3'><small> Action </small></td>";
-                  echo '</tr>';
-                }
-                while($val=mysqli_fetch_row($arr)){
-                   echo "<tr>";
-                for($i=0;$i<count($val);$i++){
-                        echo "<td align='center'><small>".$val[$i]."</small></td>";
-                   }
-                   echo "<td align='right'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=".$val[0]."'>More</a></td>";
-                   echo "<td align='left'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>";
-
-                 
-                echo "</tr>";
-                
+        </div>      
+        <?php
+          error_reporting(0);
+          if(isset($_GET['submit']))
+          {
+            $con=mysqli_connect("127.0.0.1","root","1324","seproject");
+            $seltype=$_GET["seltype"];
+            $keyword=$_GET["keyword"];
+            $up=$_GET["lower_bound"];
+            $down=$_GET["upper_bound"];
+            $order=$_GET["order"];
+            if($seltype=="all")
+              $sql="SELECT * FROM course_info;";
+            
+            else{
+              if($up)
+                 $sql = "SELECT * FROM course_info WHERE $seltype>=$lower_bound AND $seltype <= $upper_bound ORDER BY $order;";
+              else {
+                 $sql = "SELECT * FROM courst_info WHERE $seltype LIKE '%$keyword%' ORDER BY $order;";
               }
-              echo "</table>";
+            } //筛选排序功能有问题的！from QX
+            
+            $arr=mysqli_query($con,$sql);
+            if($arr){
+              echo '<table class="table table-striped">';
+              echo '<tr>';
+              echo  "<td align='center'><small> Course ID </small></td>";
+              echo  "<td align='center'><small> Course Name </small></td>";
+              echo  "<td align='center'><small> Department </small></td>";
+              echo  "<td align='center'><small> Credit </small></td>";
+              echo  "<td align='center'><small> Description </small></td>";
+              echo  "<td align='center'colspan='3'><small> Action </small></td>";
+              echo '</tr>';
             }
-            ?>
+            while($val=mysqli_fetch_row($arr)){
+               echo "<tr>";
+            for($i=0;$i<count($val);$i++){
+                    echo "<td align='center'><small>".$val[$i]."</small></td>";
+               }
+               echo "<td align='right'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=".$val[0]."'>More</a></td>";
+               echo "<td align='left'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>";
+
+             
+            echo "</tr>";
+            
+          }
+          echo "</table>";
+        }
+        ?>
           <!-- </div> -->
-        </div>
+        <!-- </div> -->
       </div>
-    </div> 
+     </div> 
 
     <!-- clear user_info Session -->
 

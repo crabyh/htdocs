@@ -63,51 +63,44 @@ if(mysqli_num_rows($data)==1)
 
 
         <!-- page body -->
-           <form class="form-horizontal">
+      <form class="form-horizontal">
 
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Course ID</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id='0'><?php echo $course_id ?></p>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Course ID</label>
+            <div class="col-sm-4">
+              <p class="form-control-static" id='0'><?php echo $course_id ?></p>
+            </div>
           </div>
-        </div>
-        
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Course Name</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="2"><?php echo $row['cname'];?></p>
+          
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Course Name</label>
+            <div class="col-sm-4">
+              <p class="form-control-static" id="2"><?php echo $row['cname'];?></p>
+            </div>
           </div>
-        </div>
-         
-        <div class="form-group" >
-          <label class="col-sm-2 control-label">Department</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="3"><?php echo $row['cdepartment'];?></p>
+           
+          <div class="form-group" >
+            <label class="col-sm-2 control-label">Department</label>
+            <div class="col-sm-4">
+              <p class="form-control-static" id="3"><?php echo $row['cdepartment'];?></p>
+            </div>
           </div>
-        </div>
-         
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Credit</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="4"><?php echo $row['credit'];?></p>
+           
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Credit</label>
+            <div class="col-sm-4">
+              <p class="form-control-static" id="4"><?php echo $row['credit'];?></p>
+            </div>
           </div>
-        </div>
-        
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Description</label>
-          <div class="col-sm-4">
-            <p class="form-control-static" id="4"><?php echo $row['course_intro'];?></p>
-          </div>
-        </div>   
+          
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-4">
+              <p class="form-control-static" id="4"><?php echo $row['course_intro'];?></p>
+            </div>
+          </div>   
         <!-- <img src="..." alt="..." class="img-rounded">  -->
       </form>
-
-      <!-- <div class="form-group">
-          <label class="col-sm-2 control-label"> </label>
-          <div class="col-sm-4">
-            <p class="form-control-static"><a href="change_user_info.php">change user info</a></p>
-          </div>
-      </div> -->
 
       </div>
     </div>
