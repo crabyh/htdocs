@@ -2,7 +2,13 @@
 <html lang="en">
 
 <!-- checking illegal access -->
-<?php //include 'check_access.php'; ?>
+<?php include 'check_access.php'; ?>
+
+<!--CheckUserType-->
+<?php 
+include 'check_user_type.php';
+CheckUserType('admin');
+?> 
 
 <!-- accessing database -->
 <?php 

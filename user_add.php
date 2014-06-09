@@ -17,6 +17,12 @@
       <!-- Fixed navbar -->
       <?php include 'navigation.php'; ?>
 
+      <!--CheckUserType-->
+      <?php 
+      include 'check_user_type.php';
+      CheckUserType('manager');
+      ?> 
+
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
