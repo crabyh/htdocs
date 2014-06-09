@@ -22,6 +22,7 @@
             <li><a href="password_change.php">Change Password</a></li>
             <li><a href="user_add.php">Add User</a></li>
             <li><a href="user_select.php">User Select</a></li>
+            <li><a href="system_log_check.php">Check SystemLog</a></li>
 
           </ul>
         </li>
