@@ -80,7 +80,8 @@ require_once 'connectvars.php';
       <h2 class="form-signin-heading">Please Sign In</h2>
       <input type="text" class="form-control" placeholder="User ID" name="user_id" id="user_id" required autofocus value="<?php if(!empty($user_id)) echo $user_id; ?>">
       <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
-      <input type="text" class="form-control" id="6_letters_code" placeholder="verification code" name="6_letters_code" required>
+      <!-- required here -->
+      <input type="text" class="form-control" id="6_letters_code" placeholder="verification code" name="6_letters_code">
       <p></p>
       <img id='captchaimg' src="captcha_code_file.php?rand=<?php echo rand();?>"/> 
       <a href='javascript: refreshCaptcha();'>Can't see?</a>
