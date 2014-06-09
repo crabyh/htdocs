@@ -8,8 +8,8 @@ if(isset($_SESSION["user_id"]))
 
 //插入连接数据库的相关信息
 require_once 'connectvars.php';
-
 ?>
+
 <html lang="zh-cn">
 <head>
   <?php include 'header.php'; ?>
@@ -60,7 +60,7 @@ require_once 'connectvars.php';
           }  
         } 
       } 
-?>
+    ?>
     <?php if(isset($msg)){ ?>
       <div class="alert alert-danger" id="codefail">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -91,9 +91,6 @@ require_once 'connectvars.php';
       <input class="btn btn-lg btn-primary btn-block" name="Submit" type="submit" onclick="return validate();" value="Submit">
       <button type="button" class="btn btn-lg btn-default btn-block" href="#">Find password</button>
     </form>
-
-
-
 
   </div>
   <!-- /container -->

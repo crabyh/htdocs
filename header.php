@@ -1,4 +1,4 @@
-<head>
+<!-- <head> -->
   <meta charset="utf-8">
   <title>Education Sever System</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +18,8 @@
     <script src="js/html5shiv.js"></script>
   <![endif]-->
 
-    <!-- Custom styles for this template -->
-    <link href="css/sticky-footer-navbar.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/sticky-footer-navbar.css" rel="stylesheet">
 
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
@@ -31,4 +31,18 @@
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
-</head>
+  <script type="text/javascript">
+  function act_home(){
+    var user = document.getElementById("home")
+    user.className = "active"
+  }
+  function act_user(){
+    var user = document.getElementById("user")
+    user.className = "active"
+  }
+  function act_course(){
+    var user = document.getElementById("course")
+    user.className = "active"
+  }
+  </script>
+<!-- </head> -->

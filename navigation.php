@@ -1,4 +1,3 @@
-
 <!-- Fixed navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -13,21 +12,21 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active" id="home"><a href="index.php">Home</a></li>
-        <li class="dropdown">
+        <li id="home"><a href="index.php">Home</a></li> <!-- class="active" --> 
+        <li class="dropdown" id="user">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">User <b class="caret"></b></a>
           <ul class="dropdown-menu">
 
-            <li><a href="user_info.php">User Info</a></li>
-            <li><a href="password_change.php">Change Password</a></li>
-            <li><a href="user_add.php">Add User</a></li>
-            <li><a href="user_select.php">User Select</a></li>
-            <li><a href="system_log_check.php">Check SystemLog</a></li>
+            <li><a href="user_info.php" id="1">User Info</a></li>
+            <li><a href="password_change.php" id="2">Change Password</a></li>
+            <li><a href="user_add.php" id="1">Add User</a></li>
+            <li><a href="user_select.php" id="1">User Select</a></li>
+            <li><a href="system_log_check.php" id="1">Check SystemLog</a></li>
 
           </ul>
         </li>
         <li class="dropdown" id="course">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="course">Course <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="course_select.php">Course Info</a></li>
             <li><a href="course_add.php">Add Course</a></li>

@@ -16,7 +16,7 @@ if(isset($_SESSION["user_id"]))
 <?php include 'header.php'; ?>
 </head>
 
-<body>
+<body onload="act_home()">
 
     <!-- Wrap all page content here -->
     <div id="wrap">

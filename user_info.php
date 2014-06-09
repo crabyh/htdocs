@@ -45,13 +45,13 @@ $(document).ready(function(){
       error: function(){
         $("#fail").show()
       }
-    });
-  });
-});
+    }); // end ajax
+  }); //end click
+}); //end ready function
 </script>
 </head>
 
-<body>
+<body onload="act_user()">
 
     <!-- Wrap all page content here -->
     <div id="wrap">
