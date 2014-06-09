@@ -61,26 +61,25 @@
         <div class="row clearfix">
 
           <div class="col-md-4 column">
-          <form role="form" action="change_password.php" method="POST">
+            <form role="form" action="change_password.php" method="POST">
 
-            <div class="form-group">
-              <label for="OldPassword">Old password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="Password">
-            </div>
+              <div class="form-group">
+                <label for="OldPassword">Old password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="Password">
+              </div>
 
-            <div class="form-group">
-              <label for="NewPassword">New password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password">
-            </div>
+              <div class="form-group">
+                <label for="NewPassword">New password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password">
+              </div>
 
-            <div class="form-group">
-              <label for="NewPassword">Input new password again</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password">
-            </div>
-            </br>
-            <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
-
-          </form>
+              <div class="form-group">
+                <label for="NewPassword">Input new password again</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password">
+              </div>
+              </br>
+              <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+            </form>
           </div>
         </div>
       </div>

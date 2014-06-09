@@ -140,12 +140,8 @@
 	         		</div>
 
           </form>
-          </div> <!--container-->
-        </div>
-      </div>
+      </div> <!--container-->
     </div>
-
-
     <!-- page footer -->
     <?php include"footer.php"; ?>
 

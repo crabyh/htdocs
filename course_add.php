@@ -26,10 +26,13 @@ CheckUserType('manager');
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h1>Add Course
-          </h1>
+          <h2 >Add Course</h2>
         </div>
-
+   <!--  <div class="col-sm-3 page-header" align="right">
+          <h2 class="demo-headline" >
+            Add</h2>
+        </div>
+ -->
         <!-- accessing database -->
         <?php
         if(isset($_POST['submit'])){
@@ -125,11 +128,11 @@ CheckUserType('manager');
               </div>
           </form>
 
-          </div><!-- container -->
-        </div>
-      </div>
+      </div><!-- container -->
     </div>
-
+      <!-- </div>
+    </div>
+ -->
 
     <!-- page footer -->
     <?php include"footer.php"; ?>
