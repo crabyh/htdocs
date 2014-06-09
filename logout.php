@@ -9,22 +9,15 @@ if(isset($_SESSION['user_id'])){
     session_destroy();
 }
 //同时将各个cookie的到期时间设为过去的某个时间，使它们由系统删除，时间以秒为单位
-setcookie('user_id','',time()-3600);
-setcookie('username','',time()-3600);
-//
+// setcookie('user_id','',time()-3600);
+// setcookie('username','',time()-3600);
 ?>
-<?php
-session_start();
-$_SESSION['login']='login';
-//location首部使浏览器重定向到另一个页面
-//$home_url = 'index.php';
-//header('Location:'.$home_url);
-?>
+
 <html>
 <head>
 <script type="text/javascript"> 
 //3秒钟之后跳转到指定的页面 
-setTimeout(window.location.href='index.php',3); 
+setTimeout(window.location.href="index.php?logout=success",3); 
 </script> 
 </head>
 </html>

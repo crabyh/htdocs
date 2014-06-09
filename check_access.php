@@ -1,7 +1,5 @@
-<?php
-if(!isset($_SESSION['user_id']))
-	echo'
+<?php if(!isset($_SESSION['user_id'])):?>
 	<script type="text/javascript"> 
-	setTimeout(window.location.href="illegal_access.php",3); 
-	</script>';
-?>
+	setTimeout(window.location.href="index.php?access=illegal",3); 
+	</script>
+<?php endif; ?>

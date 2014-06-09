@@ -27,24 +27,22 @@ if(isset($_SESSION["user_id"]))
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-        <?php
-        if(isset($_SESSION['login'])) 
-          echo'<div class="alert alert-success alert-dismissable">
+
+        <?php if(isset($_GET['logout'])):?>
+          <div class="alert alert-success alert-dismissable">
            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
           <h4>
             Sign Out
           </h4> <strong>You have been signed out successfully.</strong></a>
-        </div>';
-        else if(isset($_SESSION['illegal']))
-          echo'<div class="alert alert-danger fade in"">
+        </div>
+        <?php elseif(isset($_GET['access'])):?>
+          <div class="alert alert-danger fade in">
            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
           <h4>
             Illegal Access
-          </h4> <strong>xxxxxxx.</strong></a>
-        </div>';
-        unset($_SESSION['login']);
-        unset($_SESSION['illegal']);
-        ?>
+          </h4> <strong>Please sign in first!</strong></a>
+        </div>
+      <?php endif;?>
       		<h1>Welcome to Education Service System</h1>
         </div>
 

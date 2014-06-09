@@ -2,7 +2,7 @@
 <html lang="en">
 
 <!-- checking illegal access -->
-<?php //include 'check_access.php'; ?>
+<?php include 'check_access.php'; ?>
 
 <!-- accessing database -->
 <?php 
