@@ -41,10 +41,6 @@ $(document).ready(function(){
         $("form#former").show();
         $("form#latter").hide();
         $("#success").show();
-        // var msgdiv = $("<div></div>");
-        // msgdiv.addClass("alert alert-success alert-dismissable");
-        // msgdiv.text("Your profile have been updated!");
-        // msgdiv.insertBefore($('#former'));
       },
       error: function(){
         $("#fail").show()
