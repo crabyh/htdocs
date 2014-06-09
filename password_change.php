@@ -7,9 +7,15 @@
 <!-- include head file-->
 <head>
 <?php include 'header.php'; ?>
+<script type="text/javascript">
+function act(){
+  var user = document.getElementById("home")
+  user.className = "active"
+}
+</script>
 </head>
 
-<body>
+<body onload="act_user()">
 
     <!-- Wrap all page content here -->
     <div id="wrap">
