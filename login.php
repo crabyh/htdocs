@@ -34,7 +34,7 @@ require_once 'connectvars.php';
           //   { 
           //     $msg="Verification code is wrong!";
           //   }
-          //else
+          // else
             { //验证码通过验证
             $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
             $user_id = mysqli_real_escape_string($dbc,trim($_POST['user_id']));
@@ -83,7 +83,7 @@ require_once 'connectvars.php';
       <!-- required here -->
       <div class="row">
         <div class="col-xs-7">
-          <input type="tel" class="form-control" id="6_letters_code" placeholder="verification code" name="4_letters_code">
+          <input type="tel" class="form-control" id="6_letters_code" placeholder="verification code" name="6_letters_code">
           </div>
         <div class="col-xs-5" align="rignt">
           <a href='javascript: refreshCaptcha();'><img id='captchaimg' src="captcha_code_file.php?rand=<?php echo rand();?>"/> </a>
