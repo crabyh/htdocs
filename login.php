@@ -70,8 +70,8 @@ require_once 'connectvars.php';
     <?php if(isset($error)){ ?>
       <div class="alert alert-danger" id="codefail">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4
-                  Your code is wrong!
+        <h4>
+          Your code is wrong!
         </h4> <strong>please check, then try again.</strong></a>
       </div>
     <?php } ?>

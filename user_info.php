@@ -22,31 +22,32 @@ if(mysqli_num_rows($data)==1){
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-  $("button#editBTN").click(function(){
-    $("form#former").hide();
-    $("form#latter").show();
-    $("button#editBTN").hide();
-  });
-  $("button#doneBTN").click(function(event){
-    event.preventDefault();
-    var newphone = $("input#phonenum").val();
-    var newemail = $("input#emailaddr").val();
-    $.ajax({
-      type: "POST",
-      url:"user_info.php",
-      data: "phone=" + newphone + "&email=" + newemail,
-      success: function(){
-        $('#phone_label').text(newphone);
-        $('#email_label').text(newemail);
-        $("form#former").show();
-        $("form#latter").hide();
-        $("#success").show();
-      },
-      error: function(){
-        $("#fail").show()
-      }
-    }); // end ajax
-  }); //end click
+    $("button#editBTN").click(function(){
+      $("form#former").hide();
+      $("form#latter").show();
+      $("button#editBTN").hide();
+    });
+    $("button#doneBTN").click(function(event){
+      event.preventDefault();
+      var newphone = $("input#phonenum").val();
+      var newemail = $("input#emailaddr").val(); 
+      $.ajax({
+        type: "POST",
+        url:"user_info.php",
+        data: "phone=" + newphone + "&email=" + newemail,  
+        success: function(){
+          $('#phone_label').text(newphone);
+          $('#email_label').text(newemail);
+          $("form#former").show();
+          $("form#latter").hide();
+          $("#success").show();
+          $("#editBTN").show();
+        },
+        error: function(){
+          $("#fail").show()
+        }
+      }); // end ajax
+    }); //end click
 }); //end ready function
 </script>
 </head>
@@ -81,7 +82,7 @@ $(document).ready(function(){
 
         <!-- 用来与数据库交互 -->
         <?php
-          if($_SERVER['REQUEST_METHOD']=="POST"){
+          if($_SERVER['REQUEST_METHOD']=="POST"){ 
             $data = FALSE;
             if($_POST['phone']!=''){
               $phone=$_POST['phone'];
