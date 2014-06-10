@@ -1,3 +1,18 @@
+<?php $nav = array(
+  'loged' => 'home',
+  'index' => 'home',
+  'user_info' => 'user',
+  'password_change' => 'user',
+  'course_select' => "course",
+   );
+  $current_page = pathinfo($_SERVER['SCRIPT_FILENAME'], PATHINFO_FILENAME);
+  foreach ($nav as $page => $navbar) {
+    if ($page == $current_page) {
+      echo '<script type="text/javascript"> $(document).ready(function(){$("#'.$navbar.'").addClass("active")}) </script>';
+    }
+  }
+?>
+
 <!-- Fixed navbar -->
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">

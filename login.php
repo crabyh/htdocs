@@ -54,10 +54,10 @@ require_once 'connectvars.php';
               $home_url = 'loged.php';
               header('Location: '.$home_url);
               $response = "ok";
-            }
-          }  
-        } 
-      } 
+            } //end IF mysqli_num_rows
+          } // end ELSE  
+        } // end IF submit
+      } // end IF session userid 
     ?>
     <?php if(isset($msg)){ ?>
       <div class="alert alert-danger" id="codefail">

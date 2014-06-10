@@ -15,7 +15,7 @@ function act(){
 </script>
 </head>
 
-<body onload="act_user()">
+<body>
 
     <!-- Wrap all page content here -->
     <div id="wrap">

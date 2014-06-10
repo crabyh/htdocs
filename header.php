@@ -31,18 +31,4 @@
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
-  <script type="text/javascript">
-  function act_home(){
-    var user = document.getElementById("home")
-    user.className = "active"
-  }
-  function act_user(){
-    var user = document.getElementById("user")
-    user.className = "active"
-  }
-  function act_course(){
-    var user = document.getElementById("course")
-    user.className = "active"
-  }
-  </script>
 <!-- </head> -->
