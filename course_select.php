@@ -12,17 +12,6 @@ $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
 $query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
 $data = mysqli_query($dbc,$query);
-// if(mysqli_num_rows($data)==1){
-  // $row = mysqli_fetch_array($data);
-  // $_SESSION['department'] = $row['department'];
-  // $_SESSION['gender'] = $row['gender'];
-  // $_SESSION['birthyear'] = $row['birthyear'];
-  // $_SESSION['birthmonth'] = $row['birthmonth'];
-  // $_SESSION['birthday'] = $row['birthday'];
-  // $_SESSION['enroll_time'] = $row['enroll_time'];
-  // $_SESSION['phone'] = $row['phone'];
-  // $_SESSION['email'] = $row['email'];
-  // }
 ?>
 
 <!-- include head file-->
@@ -41,6 +30,7 @@ $data = mysqli_query($dbc,$query);
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">
+          <p></p>
             <form method="get" action="course_select.php">
                   <div class="input-group">
                     <span class="input-group-addon">
@@ -52,7 +42,9 @@ $data = mysqli_query($dbc,$query);
                         <option value="dept">Department</option>
                         <option value="credit">Credit</option>
                       </select>
-                      <select name="order" class="slelect select-default">
+                      </span>
+                      <span class="input-group-addon">
+                      <select name="order">
                         <option value="">Order By</option>
                         <option value="all">All</option>
                         <option value="cid">Course ID</option>
@@ -61,7 +53,11 @@ $data = mysqli_query($dbc,$query);
                         <option value="credit">Credit</option>
                       </select>
                     </span>
-                  <div class="input-group-inline" id="input_2">
+                    <span>
+                    <input type="text" id="input_1" placeholder="Keyword" class="form-control" name="keyword">
+                    </span>
+
+                  <!-- <div class="input-group-inline" id="input_2">
                     <div class="row clearfix">
                       <div class="col-md-4 column">
                         <input id="limit_down" type="text" placeholder="Lower Bound" class="form-control" name ="lower_bound">
@@ -73,17 +69,17 @@ $data = mysqli_query($dbc,$query);
                        <input type="text" id="input_1" placeholder="Keyword" class="form-control" name="keyword">
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <span class="input-group-btn">
                     <button type="submit" class="btn btn-primary" type="button" name="submit">Search</button>
                   </span>
             </form>
-          </div>   
-          </div>      
+          </div> 
+          </div>        
             <?php
-              error_reporting(0);
               if(isset($_GET['submit']))
               {
+                echo'<h4 align="center">Search Resault</h4>';
                 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
                 $seltype=$_GET["seltype"];
                 $keyword=$_GET["keyword"];

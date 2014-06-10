@@ -1,7 +1,7 @@
 <?php 
 session_start();
 //设置: 你可以在这里修改验证码图片的参数
-$image_width = 200;
+$image_width = 105;
 $image_height = 40;
 $characters_on_image = 4;
 $font = './monofont.ttf'; 
@@ -9,8 +9,8 @@ $font = './monofont.ttf';
 //以下字符将用于验证码中的字符 
 //为了避免混淆去掉了数字1和字母i
 $possible_letters = '23456789bcdfghjkmnpqrstvwxyz';
-$random_dots = 10;
-$random_lines = 30;
+$random_dots = 20;
+$random_lines = 3;
 $captcha_text_color="0x142864";
 $captcha_noice_color = "0x142864"; 
  
@@ -22,7 +22,7 @@ while ($i < $characters_on_image) {
     $i++;
 }
  
-$font_size = $image_height * 0.75; 
+$font_size = $image_height * 0.5; 
 $image = @imagecreate($image_width, $image_height);
  
 /* 设置背景、文本和干扰的噪点 */

@@ -70,8 +70,8 @@ require_once 'connectvars.php';
     <?php if(isset($error)){ ?>
       <div class="alert alert-danger" id="codefail">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h4>
-          Your code is wrong!
+        <h4
+                  Your code is wrong!
         </h4> <strong>please check, then try again.</strong></a>
       </div>
     <?php } ?>
@@ -81,15 +81,20 @@ require_once 'connectvars.php';
       <input type="text" class="form-control" placeholder="User ID" name="user_id" id="user_id" required autofocus value="<?php if(!empty($user_id)) echo $user_id; ?>">
       <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
       <!-- required here -->
-      <input type="text" class="form-control" id="6_letters_code" placeholder="verification code" name="6_letters_code">
-      <p></p>
-      <img id='captchaimg' src="captcha_code_file.php?rand=<?php echo rand();?>"/> 
-      <a href='javascript: refreshCaptcha();'>Can't see?</a>
+      <div class="row">
+        <div class="col-xs-7">
+          <input type="tel" class="form-control" id="6_letters_code" placeholder="verification code" name="4_letters_code">
+          </div>
+        <div class="col-xs-5" align="rignt">
+          <a href='javascript: refreshCaptcha();'><img id='captchaimg' src="captcha_code_file.php?rand=<?php echo rand();?>"/> </a>
+
+          </div>
+        </div>
       <p></p>
       <!-- <label class="checkbox">
         <input type="checkbox" value="remember-me">Remember me</label> -->
       <input class="btn btn-lg btn-primary btn-block" name="Submit" type="submit" onclick="return validate();" value="Submit">
-      <button type="button" class="btn btn-lg btn-default btn-block" href="#">Find password</button>
+      <a href='#'>Forget password?</a>
     </form>
 
   </div>
