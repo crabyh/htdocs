@@ -26,10 +26,13 @@ $data = mysqli_query($dbc,$query);
 
     <!-- Begin page content -->
     <div class="container">
-      <div class="page-header">
-        <h1> Course Information <small></small></h1>      
+      <div class="page-header">  
+        <h1> 
+          Course Information 
+        </h1>      
       </div>
-      <div class="panel panel-default">
+
+      <div class="panel panel-default" id="queryForm"> <!-- 查询框 -->
         <div class="panel-heading">
         <p></p>
           <form>
@@ -80,9 +83,9 @@ $data = mysqli_query($dbc,$query);
             }
             else { // 根据seltype来筛选，需要keyword
               if ($order) 
-                $sql = 'SELECT * FROM course_info WHERE '.$seltype.' = "'.$keyword.'" ORDER BY '.$order.';';
+                $sql = 'SELECT * FROM course_info WHERE '.$seltype.' LIKE "%'.$keyword.'%" ORDER BY '.$order.';';
               else 
-                $sql = 'SELECT * FROM course_info WHERE '.$seltype.' = "'.$keyword.'";';
+                $sql = 'SELECT * FROM course_info WHERE '.$seltype.' LIKE "%'.$keyword.'%";';
             }
             
             $arr=mysqli_query($dbc, $sql); 
@@ -109,8 +112,9 @@ $data = mysqli_query($dbc,$query);
             } // end IF 取数据
             else echo '<h5 align="center">There is no records!</h5>';
           } 
-        ?>
-      </div>    
+        ?> 
+      </div> 
+
     </div>
   </div>
 

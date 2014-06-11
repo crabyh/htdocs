@@ -19,6 +19,45 @@ if(mysqli_num_rows($data)==1)
 <!-- include head file-->
 <head>
 <?php include 'header.php'; ?>
+<script type="text/javascript">
+$(document).ready(function(){
+  $("#editBTN").click(function(){
+    $("#former").hide();
+    $("#latter").show();
+    $(this).hide();
+  });
+
+  $("#submitBTN").click(function(event){
+    event.preventDefault();
+    var cid = $("#cid").val();
+    var cname = $("#cname").val();
+    var cdept = $("#cdept").val();
+    var credit = $("#credit").val();
+    var cintro = $("#cintro").val();
+    $.ajax({
+      type: "POST",
+      url: "course.php",
+      data: "cid="+ cid + "&cname=" + cname + "&cdept=" + cdept + "&credit=" + credit + "&cintro=" + cintro,
+      success: function(){
+        $("#p_cid").text(cid);
+        $("#p_cname").text(cname);
+        $("#p_cdept").text(cdept);
+        $("#p_credit").text(credit);
+        $("#p_cintro").text(cintro);
+        $("#latter").hide();
+        $("#former").show();
+        $("#editBTN").show();
+        $("#success").show();
+      },
+      error: function(){
+        $("#fail").show();
+      }
+    });
+  });
+
+});
+
+</script>
 </head>
 
 <body>
@@ -31,76 +70,114 @@ if(mysqli_num_rows($data)==1)
 
       <!-- Begin page content -->
       <div class="container">
+
         <div class="page-header">
           <h1>Course Infomation <small>
-            <button class="btn btn-default" id="1">Edit</button></small>
+            <button class="btn btn-default" id="editBTN">Edit</button></small>
           </h1>
         </div>
 
-        <?php
-          if(isset($_POST['submit'])){
-            $data = FALSE;
-            if($_POST['cname']!=''){
-              $phone=$_POST['phone'];
-              $query = "UPDATE user_info SET phone = '$phone' WHERE user_id = '$user_id'";
-              $data = mysqli_query($dbc,$query) or die ("update user_info error!");
-            }
-            if($_POST['email']!=''){
-              $email=$_POST['email'];
-              $query = "UPDATE user_info SET email = '$email' WHERE user_id = '$user_id'";
-              $data = mysqli_query($dbc,$query) or die ("update user_info error!");
-            }
-            if ($data == TRUE) {
-              $data = mysqli_query($dbc, $query);
-              echo "<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><h4>Success</h4><strong>Your profile have been updated!</strong></a></div>";
-            }
-            else{
-              echo "<div class='alert alert-warning alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><h4>Failed!</h4> <strong>Try again!</strong></a></div>";       
-            }
-          }
+        <!-- 成功提示 -->
+        <div class='alert alert-success alert-dismissable' style="display: none" id="success">
+          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+          <h4>Success</h4>
+          <strong>Course information have been updated!</strong></a>
+        </div>
 
-        ?>
-
-
+        <!-- 失败提示 -->
+        <div class='alert alert-warning alert-dismissable' style="display: none" id="fail">
+          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+          <h4>Fail!</h4>
+          <strong>Please try again!</strong></a>
+        </div>
+        
         <!-- page body -->
-      <form class="form-horizontal">
+        <form class="form-horizontal" id="former">
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Course ID</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_cid"><?php echo $course_id ?></p>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Course Name</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_cname"><?php echo $row['cname'];?></p>
+              </div>
+            </div>
+             
+            <div class="form-group" >
+              <label class="col-sm-2 control-label">Department</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_cdept"><?php echo $row['cdepartment'];?></p>
+              </div>
+            </div>
+             
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Credit</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_credit"><?php echo $row['credit'];?></p>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Description</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_cintro"><?php echo $row['course_intro'];?></p>
+              </div>
+            </div>   
+          <!-- <img src="..." alt="..." class="img-rounded">  -->
+        </form>
+
+        <form class="form-horizontal" id="latter" style="display: none">
 
           <div class="form-group">
             <label class="col-sm-2 control-label">Course ID</label>
             <div class="col-sm-4">
-              <p class="form-control-static" id='0'><?php echo $course_id ?></p>
+              <input class="form-control" value="<?php echo $course_id ?>" disabled>
             </div>
           </div>
           
           <div class="form-group">
             <label class="col-sm-2 control-label">Course Name</label>
             <div class="col-sm-4">
-              <p class="form-control-static" id="2"><?php echo $row['cname'];?></p>
+              <input class="form-control" id="cname" value="<?php echo $row['cname'];?>">
             </div>
           </div>
            
           <div class="form-group" >
             <label class="col-sm-2 control-label">Department</label>
             <div class="col-sm-4">
-              <p class="form-control-static" id="3"><?php echo $row['cdepartment'];?></p>
+              <input class="form-control" id="cdept" value="<?php echo $row['cdepartment'];?>">
             </div>
           </div>
            
           <div class="form-group">
             <label class="col-sm-2 control-label">Credit</label>
             <div class="col-sm-4">
-              <p class="form-control-static" id="4"><?php echo $row['credit'];?></p>
+              <input class="form-control" id="credit" value="<?php echo $row['credit'];?>">
             </div>
           </div>
           
           <div class="form-group">
             <label class="col-sm-2 control-label">Description</label>
             <div class="col-sm-4">
-              <p class="form-control-static" id="4"><?php echo $row['course_intro'];?></p>
+              <textarea  class="form-control" rows="4" id="cintro"><?php echo $row['course_intro'];?></textarea>
             </div>
           </div>   
-        <!-- <img src="..." alt="..." class="img-rounded">  -->
-      </form>
+          <!-- <img src="..." alt="..." class="img-rounded">  -->
+
+          <div class="form-group">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-primary" type="submit" name="submit" value="submit" id="submitBTN">Submit</button>
+              <input class="btn btn-default" type="button" name="reset" value="reset">
+            </div>
+          </div>
+        </form>
 
       </div>
     </div>
