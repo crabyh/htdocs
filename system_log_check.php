@@ -49,15 +49,18 @@
 
         <!-- page body -->
         <!-- <p class="lead">Enjoy the system. Have fun!</p> -->
+        <!--open system log file and print it -->
         <?php
-        $file=fopen("SystemLog/SystemLog.txt","r")or exit("Unable to open SystemLog file!");
-        while(!feof($file))
+        $sysfile=fopen("SystemLog/SystemLog.txt","a+")or exit("Unable to open SystemLog file!");
+
+        while(!feof($sysfile))
           {
-           echo fgets($file). "<br />";
+           echo fgets($sysfile). "<br />";
           }
 
-        fclose($file);
+        fclose($sysfile);
         ?>
+        <!--上面这段php就是输出系统日志文件的整个结构，如果要美化的话在外面加个框吧 by女王-->
 
 
 
