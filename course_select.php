@@ -16,6 +16,115 @@ $data = mysqli_query($dbc,$query);
 <!-- include head file-->
 <head> 
   <?php include 'header.php'; ?>  
+  <script type="text/javascript">
+  $(document).ready(function(){
+    var seltype = $("#seltype").val();
+    var keyword = $("#keyword").val();
+    var order = $("#order").val();
+    $("#keyword").keyup(function(){
+      var seltype = $("#seltype").val();
+      var keyword = $(this).val();
+      var order = $("#order").val();
+      $.ajax({
+        type:"POST",
+        url: "course_sel.php",
+        dataType: "json",
+        data: "seltype=" + seltype + "&order=" + order + "&keyword=" + keyword,
+        success: function(data){
+          switch (data["res"]) {
+            case "none":
+              $("#fail").show();
+              $("#prompt").html("No query conditions!");
+              break;
+            case "noSeltype":
+              $("#fail").show();
+              $("#prompt").html("No query type!");
+              break;
+            case "fail":
+              $("#fail").show();
+              $("#prompt").html("No records!");
+              break;
+            case "noKeyword":
+              $("#fail").show();
+              $("#prompt").html("No keyword!");
+              break;
+            default:
+              $(".old").empty();
+              $.each(data, function(row){
+                var newrow = document.createElement("tr");
+                var rowData = data[row];
+                $(newrow).addClass("old");
+                var result = "";
+                for (var i = 0; i < 4; i++) {
+                  result += "<td align='center'><small>" + rowData[i] + "</small></td>\n";
+                };
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>\n";
+                $(newrow).append(result);
+                $(newrow).insertAfter( $("#tableHead") );
+                if (keyword) { 
+                  $("#res").show(); 
+                }else{
+                  $("#res").hide();
+                }
+              }); //end foreach
+          }; //end switch
+        }, //end success function
+      }) //end ajax
+    }) // end keyup
+
+    $("#allBTN").click(function(event){
+      event.preventDefault();
+      $.ajax({
+        type:"POST",
+        url: "course_sel.php",
+        data: "seltype=all",
+        success: function(data){
+          switch (data["res"]) {
+            case "none":
+              $("#fail").show();
+              $("#prompt").html("No query conditions!");
+              break;
+            case "noSeltype":
+              $("#fail").show();
+              $("#prompt").html("No query type!");
+              break;
+            case "fail":
+              $("#fail").show();
+              $("#prompt").html("No records!");
+              break;
+            case "noKeyword":
+              $("#fail").show();
+              $("#prompt").html("No keyword!");
+              break;
+            default:
+              $(".old").empty();
+              $.each(data, function(row){
+                var newrow = document.createElement("tr");
+                var rowData = data[row];
+                $(newrow).addClass("old");
+                var result = "";
+                for (var i = 0; i < 4; i++) {
+                  result += "<td align='center'><small>" + rowData[i] + "</small></td>\n";
+                };
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>\n";
+                $(newrow).append(result);
+                $(newrow).insertAfter( $("#tableHead") );
+                if (keyword) { 
+                  $("#res").show(); 
+                }else{
+                  $("#res").hide();
+                }
+              }); //end foreach
+          }; //end switch
+        }, //end success function
+      });
+    });
+
+    
+  })
+  </script>
 </head>
 
 <body>
@@ -35,25 +144,26 @@ $data = mysqli_query($dbc,$query);
       <div class="panel panel-default" id="queryForm"> <!-- 查询框 -->
         <div class="panel-heading">
         <p></p>
+          <!-- 查询表单 -->
           <form>
             <div class="input-group">
               <span class="input-group-addon">
-                <select name="seltype" id="query" class="selectpicker">
+                <select name="seltype" id="seltype" class="selectpicker">
                   <option value="">Query By</option>
-                  <option value="all">All</option>
+                  <!-- <option value="all">All</option> -->
                   <option value="cid">Course ID</option>
                   <option value="cname">Course Name</option>
-                  <option value="dept">Department</option>
+                  <option value="cdepartment">Department</option>
                   <option value="credit">Credit</option>
                 </select>
               </span>
               <span class="input-group-addon">
-                <select name="order" id="order">
+                <select name="" id="order">
                   <option value="">Order By</option>
-                  <option value="all">All</option>
+                  <!-- <option value="all">All</option> -->
                   <option value="cid">Course ID</option>
                   <option value="cname">Course Name</option>
-                  <option value="dept">Department</option>
+                  <option value="cdepartment">Department</option>
                   <option value="credit">Credit</option>
                 </select>
               </span>
@@ -61,59 +171,33 @@ $data = mysqli_query($dbc,$query);
                 <input type="text" placeholder="Keyword" class="form-control" name="keyword" id="keyword">
               </span>
               <span class="input-group-btn">
-                <button class="btn btn-primary" name="submit">Search</button>
+                <button class="btn btn-primary" name="submit" id="allBTN">View ALL courses</button>
               </span>
             </div>
           </form>
         </div> 
-        <?php
-          if(isset($_GET['submit']))
-          {
-            echo'<h4 align="center">Search Results</h4>';
-            $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-            $seltype=$_GET["seltype"];
-            $keyword=$_GET["keyword"];
-            $order=$_GET["order"];
-            if($seltype=="all") //选出所有数据，不需要keyword
-            {
-              if ($order)  //有排序选项 
-                $sql='SELECT * FROM course_info ORDER BY '.$order.';';
-              else 
-                $sql = 'SELECT * FROM course_info;';
-            }
-            else { // 根据seltype来筛选，需要keyword
-              if ($order) 
-                $sql = 'SELECT * FROM course_info WHERE '.$seltype.' LIKE "%'.$keyword.'%" ORDER BY '.$order.';';
-              else 
-                $sql = 'SELECT * FROM course_info WHERE '.$seltype.' LIKE "%'.$keyword.'%";';
-            }
-            
-            $arr=mysqli_query($dbc, $sql); 
-            if($arr){ //如果从数据库中取出数据
-              echo '<table class="table table-striped">';
-              echo '<tr>';
-              echo  "<td align='center'><small> Course ID </small></td>";
-              echo  "<td align='center'><small> Course Name </small></td>";
-              echo  "<td align='center'><small> Department </small></td>";
-              echo  "<td align='center'><small> Credit </small></td>";
-              echo  "<td align='center'><small> Description </small></td>";
-              echo  "<td align='center'colspan='3'><small> Action </small></td>";
-              echo '</tr>';
-              while($val=mysqli_fetch_row($arr)){
-                echo "<tr>";
-                for($i=0;$i<count($val);$i++){
-                  echo "<td align='center'><small>".$val[$i]."</small></td>";
-                }
-                  echo "<td align='right'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=".$val[0]."'>More</a></td>";
-                  echo "<td align='left'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>";
-                  echo "</tr>";
-              } // end WHILE
-              echo "</table>";
-            } // end IF 取数据
-            else echo '<h5 align="center">There is no records!</h5>';
-          } 
-        ?> 
-      </div> 
+
+        <div id="res" style="display: none">
+          <h4 align="center">Search Results</h4>
+          <table class="table table-striped" id="table">
+            <tr id="tableHead">
+            <td align='center'><small> Course ID </small></td>
+            <td align='center'><small> Course Name </small></td>
+            <td align='center'><small> Department </small></td>
+            <td align='center'><small> Credit </small></td>
+            <td align='center'><small> Description </small></td>
+            <td align='center'colspan='3'><small> Action </small></td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+      <!-- 错误提示框 -->
+        <div class='alert alert-warning alert-dismissable' style="display:none" id="fail">
+          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+          <h4>Failed!</h4> 
+          <strong id='prompt'></strong></a>
+        </div> 
 
     </div>
   </div>
@@ -131,6 +215,5 @@ $data = mysqli_query($dbc,$query);
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
-  <script src="../../dist/js/bootstrap.min.js"></script>
 </body>
 </html>

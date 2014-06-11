@@ -136,7 +136,7 @@ $(document).ready(function(){
           <div class="form-group">
             <label class="col-sm-2 control-label">Course ID</label>
             <div class="col-sm-4">
-              <input class="form-control" value="<?php echo $course_id ?>" disabled>
+              <input class="form-control" value="<?php echo $course_id ?>" id="cid" disabled>
             </div>
           </div>
           
