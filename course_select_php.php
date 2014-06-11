@@ -4,7 +4,7 @@
     {
         require_once 'connectvars.php'; 
         $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-        if (isset($_POST['seltype'])) {  //有指定query的type seltype
+        if (isset($_POST['seltype']) && $_POST['seltype']) {  //有指定query的type seltype
             $seltype = $_POST["seltype"];
             if (isset($_POST['order']))  // 指定order
                 $order = $_POST['order'];
@@ -31,8 +31,8 @@
                 }
             }
             $arr = mysqli_query($dbc, $sql);  //执行SQL
-            $res = mysqli_fetch_all($arr);
-            if($res){ //如果从数据库中取出数据
+            if($arr){ //如果从数据库中取出数据
+                $res = mysqli_fetch_all($arr);
                 echo json_encode($res);
             } // end IF 取数据c
             else {

@@ -33,20 +33,32 @@ $data = mysqli_query($dbc,$query);
         success: function(data){
           switch (data["res"]) {
             case "none":
-              $("#fail").show();
+              $("#res").show();
               $("#prompt").html("No query conditions!");
+              $("#table").hide();
+              $(".old").empty();
+              if (!keyword) { $("#res").hide() };
               break;
             case "noSeltype":
-              $("#fail").show();
-              $("#prompt").html("No query type!");
+              $("#prompt").html("No query type!\nPlease choose one query type!");
+              $("#table").hide();
+              $("#res").show();
+              $(".old").empty();
+              if (!keyword) { $("#res").hide() };
               break;
             case "fail":
-              $("#fail").show();
+              $("#res").show();
               $("#prompt").html("No records!");
+              $("#table").hide();
+              $(".old").empty();
+              if (!keyword) { $("#res").hide() };
               break;
             case "noKeyword":
-              $("#fail").show();
-              $("#prompt").html("No keyword!");
+              $("#res").show();
+              $("#prompt").html("No keyword!\nPlease input some keywords!");
+              $("#table").hide();
+              $(".old").empty();
+              if (!keyword) { $("#res").hide() };
               break;
             default:
               $(".old").empty();
@@ -64,6 +76,8 @@ $data = mysqli_query($dbc,$query);
                 $(newrow).insertAfter( $("#tableHead") );
                 if (keyword) { 
                   $("#res").show(); 
+                  $("#prompt").hide();
+                  $("#table").show();
                 }else{
                   $("#res").hide();
                 }
@@ -80,22 +94,27 @@ $data = mysqli_query($dbc,$query);
         url: "course_sel.php",
         data: "seltype=all",
         success: function(data){
-          switch (data["res"]) {
+          switch (data['res']) {
             case "none":
-              $("#fail").show();
+              $("#res").show();
               $("#prompt").html("No query conditions!");
+              $(".old").empty();
               break;
             case "noSeltype":
-              $("#fail").show();
-              $("#prompt").html("No query type!");
+              // $("#prompt").html("No query type!\nPlease choose one query type!");
+              // $(".old").empty();
+              $("#res").show();
+              $("#table").hide();
               break;
             case "fail":
-              $("#fail").show();
+              $("#res").show();
               $("#prompt").html("No records!");
+              $(".old").empty();
               break;
             case "noKeyword":
-              $("#fail").show();
-              $("#prompt").html("No keyword!");
+              $("#res").show();
+              $("#prompt").html("No keyword!\nPlease input some keywords!");
+              $(".old").empty();
               break;
             default:
               $(".old").empty();
@@ -112,6 +131,7 @@ $data = mysqli_query($dbc,$query);
                 $(newrow).append(result);
                 $(newrow).insertAfter( $("#tableHead") );
                 if (keyword) { 
+                  $("#prompt").hide();
                   $("#res").show(); 
                 }else{
                   $("#res").hide();
@@ -179,6 +199,7 @@ $data = mysqli_query($dbc,$query);
 
         <div id="res" style="display: none">
           <h4 align="center">Search Results</h4>
+          <p id="prompt" align="center"></p>
           <table class="table table-striped" id="table">
             <tr id="tableHead">
             <td align='center'><small> Course ID </small></td>
@@ -190,15 +211,7 @@ $data = mysqli_query($dbc,$query);
             </tr>
           </table>
         </div>
-
       </div>
-      <!-- 错误提示框 -->
-        <div class='alert alert-warning alert-dismissable' style="display:none" id="fail">
-          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-          <h4>Failed!</h4> 
-          <strong id='prompt'></strong></a>
-        </div> 
-
     </div>
   </div>
 
