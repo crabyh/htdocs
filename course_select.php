@@ -27,7 +27,7 @@ $data = mysqli_query($dbc,$query);
       var order = $("#order").val();
       $.ajax({
         type:"POST",
-        url: "course_sel.php",
+        url: "course_select_php.php",
         dataType: "json",
         data: "seltype=" + seltype + "&order=" + order + "&keyword=" + keyword,
         success: function(data){

@@ -36,7 +36,7 @@ $(document).ready(function(){
     var cintro = $("#cintro").val();
     $.ajax({
       type: "POST",
-      url: "course.php",
+      url: "course_info_php.php",
       data: "cid="+ cid + "&cname=" + cname + "&cdept=" + cdept + "&credit=" + credit + "&cintro=" + cintro,
       success: function(){
         $("#p_cid").text(cid);
