@@ -61,8 +61,11 @@ include "system_log_write.php";
               $data = mysqli_query($dbc,$query);
               $row = mysqli_fetch_array($data);
               $_SESSION['username']=$row['username'];
-              $home_url = 'loged.php';
-              header('Location: '.$home_url);
+              echo'<script type="text/javascript"> 
+              setTimeout(window.location.href="loged.php",3); 
+              </script>';
+              // $home_url = 'loged.php';
+              // header('Location: '.$home_url);
               $response = "ok";
             } //end IF mysqli_num_rows
           } // end ELSE  
