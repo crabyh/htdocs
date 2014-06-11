@@ -10,6 +10,12 @@ if(isset($_SESSION["user_id"]))
 require_once 'connectvars.php';
 ?>
 
+<?php 
+//插入包含syetemlog write函数的php文件
+include "system_log_write.php";
+?>
+
+
 <html lang="zh-cn">
 <head>
   <?php include 'header.php'; ?>
@@ -44,10 +50,16 @@ require_once 'connectvars.php';
             $data = mysqli_query($dbc,$query);
             $error = true;
             if(mysqli_num_rows($data)==1){ //用用户名和密码进行查询，若查到的记录正好为一条，则将登录写入系统日志，设置SESSION和COOKIE，同时进行页面重定向
+<<<<<<< HEAD
               // //写入系统日志
               // $sysfile=fopen("SystemLog/SystemLog.txt","a+")or exit("Unable to open SystemLog file!");
               //    fwrite($sysfile,"<br /><br />".$_POST['user_id']." loged in the system at ".date('Y-m-d H:i'));
               // fclose($sysfile);
+=======
+              //写入系统日志
+              //   $systemlogdata = "<br /><br />".$_POST['user_id']." loged in the system at ".date('Y-m-d H:i');
+              //   SystemLogWrite($systemlogdata); 
+>>>>>>> FETCH_HEAD
               //写入系统日志结束
               $row = mysqli_fetch_array($data);
               $_SESSION['user_id']=$row['user_id'];
@@ -56,8 +68,11 @@ require_once 'connectvars.php';
               $data = mysqli_query($dbc,$query);
               $row = mysqli_fetch_array($data);
               $_SESSION['username']=$row['username'];
-              $home_url = 'loged.php';
-              header('Location: '.$home_url);
+              echo'<script type="text/javascript"> 
+              setTimeout(window.location.href="loged.php",3); 
+              </script>';
+              // $home_url = 'loged.php';
+              // header('Location: '.$home_url);
               $response = "ok";
             } //end IF mysqli_num_rows
           } // end ELSE  
