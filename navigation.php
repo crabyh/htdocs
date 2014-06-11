@@ -47,7 +47,7 @@
             <li><a href="course_add.php">Add Course</a></li>
           </ul>
         </li>
-        <li><a href="#about">About</a></li>
+        <li><a href="about.php">About</a></li>
       </ul>
       <p class="nav navbar-text navbar-right">
 

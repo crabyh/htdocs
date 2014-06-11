@@ -35,7 +35,12 @@ function act(){
           $repeat_newpassword = $_POST['repeat_newpassword'];
 
           if($input_newpassword != $repeat_newpassword){
-            echo "new passwords are different!";
+            echo'<div class="alert alert-danger alert-dismissable">
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4>
+                      New passwords are different!
+                    </h4> <strong>Please check your password and try again.</strong></a>
+                  </div>';
           }
 
           else{
@@ -44,17 +49,24 @@ function act(){
             $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
             $query = "SELECT password FROM accounts WHERE user_id = '$user_id'";
             $data = mysqli_query($dbc,$query);
-            if(mysqli_num_rows($data)==1){
+            if(mysqli_num_rows($data)==1)//从数据库找出这条user_id相关信息
+            {
               $row = mysqli_fetch_array($data);
               $oldpassword = $row['password'];
               $md5_oldpassword = md5("$input_oldpassword");
-              echo $md5_oldpassword;
-              if($oldpassword == $md5_oldpassword){
+              if($oldpassword == $md5_oldpassword)//检验旧密码是否正确
+              {
                 $md5_newpassword = md5("$input_newpassword");
                 $user_id = $_SESSION['user_id'];
                 $query = "UPDATE accounts SET password = '$md5_newpassword' WHERE user_id = '$user_id'";
                 $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
               }
+              else echo'<div class="alert alert-danger alert-dismissable">
+                           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                          <h4>
+                            Old Password Wrong!
+                          </h4> <strong>Please check your password and try again.</strong></a>
+                        </div>';
             }
           }
         }
@@ -67,21 +79,21 @@ function act(){
         <div class="row clearfix">
 
           <div class="col-md-4 column">
-            <form role="form" action="change_password.php" method="POST">
+            <form role="form" action="password_change.php" method="POST">
 
               <div class="form-group">
                 <label for="OldPassword">Old password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="Password">
+                <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="Password" required>
               </div>
 
               <div class="form-group">
                 <label for="NewPassword">New password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password">
+                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password" required>
               </div>
 
               <div class="form-group">
                 <label for="NewPassword">Input new password again</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password">
+                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password" required>
               </div>
               </br>
               <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
