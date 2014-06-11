@@ -30,7 +30,7 @@
           </h1>
         </div>
 
-        <!-- accessing database -->
+        <!-- accessing database not completed -->
         <?php
         if(isset($_POST['submit'])){
           $input_oldpassword = $_POST['input_oldpassword'];
@@ -64,84 +64,67 @@
         ?>
 
         <!-- page body -->
-        <!-- <div class="row clearfix"> -->
+        <div class="row clearfix"> 
+          <div class="col-md-5 column">
+            <form class="form" id='9'>
+              
+              <div class="form-group">
+                <label>User ID</label>
+                <input type="text" class="form-control" name="user_id" placeholder="">
+              </div>
 
-          <!-- <div class="col-md-4 column"> -->
-          <!-- <form role="form" action="change_password.php" method="POST"> -->
-          <!-- 这部分的只实现了前端yet -->
-          <form class="form-horizontal" id='9'>
-            
-            <div class="form-group">
-              <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label">User ID</label>
-              <div class="col-sm-4">
-                 <input type="text" class="form-control" id="exampleInputPassword1" name="user_id" placeholder="">
-              </div>  
-            </div>
-            
-            <div class="form-group">
-              <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label">User Name</label>
-              <div class="col-sm-4">
-                 <input type="text" class="form-control" id="exampleInputPassword1" name="username" placeholder="">
-              </div>  
-            </div>
+              <div class="form-group">
+                <label>User Name</label>
+                <input type="text" class="form-control" name="user_id" placeholder="">
+              </div>
 
-            <div class="form-group">
-              <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label">Department</label>
-              <div class="col-sm-4">
-                 <input type="text" class="form-control" id="exampleInputPassword1" name="department" placeholder="">
-              </div>  
-            </div>
+              <div class="form-group">
+              <label>User Type</label><br/>
+                <select name="seltype" id="seltype" class="form-control">
+                  <option value="student">Student</option>
+                  <option value="teacher">Teacher</option>
+                  <option value="manager">Manager</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label">Gender</label>
-              <div class="col-sm-4">
-                 <input type="text" class="form-control" id="exampleInputPassword1" name="gender" placeholder="">
-              </div>  
-            </div>
+              <div class="form-group">
+              <label>Gender</label><br/>
+                <select name="seltype" id="seltype" class="form-control">
+                  <option value="M">Man</option>
+                  <option value="F">Woman</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label">Birth Year</label>
-              <div class="col-sm-4">
-                 <input type="text" class="form-control" id="exampleInputPassword1" name="birthyear" placeholder="">
-              </div>  
-            </div>
+              <div class="form-group">
+                <label>Department</label>
+                <input type="text" class="form-control" name="user_id" placeholder="">
+              </div>
 
-            <div class="form-group">
-              <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label">Birth Month</label>
-              <div class="col-sm-4">
-                 <input type="text" class="form-control" id="exampleInputPassword1" name="birthmonth" placeholder="">
-              </div>  
-            </div>
+              <div class="form-group">
+                <label>Enroll Year</label>
+                <input type="number" class="form-control" name="user_id" value="2014">
+              </div>
 
-            <div class="form-group">
-              <!-- <label for="OldPassword">Old password</label> -->
-              <label class="col-sm-2 control-label">Birth Day</label>
-              <div class="col-sm-4">
-                 <input type="text" class="form-control" id="exampleInputPassword1" name="birthday" placeholder="">
-              </div>  
-            </div>
+              <div class="form-group">
+                <label>birthday</label>
+                <input type="date" class="form-control" name="user_id" placeholder="">
+              </div>
 
-            <div class="form-group">
-            </div>
+              <br>
 
-            <div class="form-group">
-           	  <div class="col-sm-2" align='center'>
-           	  </div>
-              <div class="col-sm-4" align='left'>
+              <div class="form-group">
                 <button type="submit" class="btn btn-primary" name="reset" value="submit">Submit</button>
-			   	      <button type="submit" class="btn btn-default" name="reset" value="reset">Reset</button>
-			         	</div>
-	         		</div>
+                <button type="submit" class="btn btn-default" name="reset" value="reset">Reset</button>
+              </div>
 
-          </form>
-      </div> <!--container-->
+            </form>
+          </div>
+        </div>
+
+      </div><!-- container -->
     </div>
+
     <!-- page footer -->
     <?php include"footer.php"; ?>
 

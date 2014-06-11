@@ -60,6 +60,9 @@ function act(){
                 $user_id = $_SESSION['user_id'];
                 $query = "UPDATE accounts SET password = '$md5_newpassword' WHERE user_id = '$user_id'";
                 $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
+                echo'<script type="text/javascript"> 
+                    setTimeout(window.location.href="loged.php?passw_ch=success",3); 
+                    </script>';
               }
               else echo'<div class="alert alert-danger alert-dismissable">
                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

@@ -28,12 +28,8 @@ CheckUserType('manager');
         <div class="page-header">
           <h2 >Add Course</h2>
         </div>
-   <!--  <div class="col-sm-3 page-header" align="right">
-          <h2 class="demo-headline" >
-            Add</h2>
-        </div>
- -->
-        <!-- accessing database -->
+
+        <!-- accessing database not completed -->
         <?php
         if(isset($_POST['submit'])){
           $input_oldpassword = $_POST['input_oldpassword'];

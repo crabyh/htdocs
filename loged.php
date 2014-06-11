@@ -20,25 +20,18 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-        <?php
-        if(isset($_SESSION['login'])) 
-          echo'<div class="alert alert-success alert-dismissable">
-           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-          <h4>
-            Sign Out
-          </h4> <strong>You have been sign out successful.</strong></a>
-        </div>';
-        else if(isset($_SESSION['illegal']))
-          echo'<div class="alert alert-danger fade in"">
-           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-          <h4>
-            Illegal Access
-          </h4> <strong>xxxxxxx.</strong></a>
-        </div>';
-        unset($_SESSION['login']);
-        unset($_SESSION['illegal']);
-        ?>
-      		<h1>Sign in Sucessfully!</h1>
+
+        <?php if(isset($_GET['passw_ch'])):?>
+            <div class="alert alert-success alert-dismissable">
+               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <h4>
+                Password changing success!
+              </h4> <strong>Please remember your new password.</strong></a>
+            </div>
+        <?php endif;?>
+
+
+      		<h1>I'm home page.</h1>
         </div>
 
         <!-- page body -->
