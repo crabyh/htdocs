@@ -1,6 +1,0 @@
-<?php
-if(!isset($_SESSION['user_id']))
-	<script type="text/javascript"> 
-	setTimeout(window.location.href='illegal_access.php',3); 
-	</script> 
-?>
