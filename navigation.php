@@ -3,7 +3,12 @@
   'index' => 'home',
   'user_info' => 'user',
   'password_change' => 'user',
+  'user_add' => 'user',
+  'user_select' => 'user',
+  'system_log_check' => 'user',
   'course_select' => "course",
+  'course_add' => 'course',
+  'about' => 'about',
    );
   $current_page = pathinfo($_SERVER['SCRIPT_FILENAME'], PATHINFO_FILENAME);
   foreach ($nav as $page => $navbar) {
@@ -47,7 +52,7 @@
             <li><a href="course_add.php">Add Course</a></li>
           </ul>
         </li>
-        <li><a href="about.php">About</a></li>
+        <li id="about"><a href="about.php">About</a></li>
       </ul>
       <p class="nav navbar-text navbar-right">
 
