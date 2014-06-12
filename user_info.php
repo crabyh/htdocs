@@ -90,7 +90,7 @@ $(document).ready(function(){
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header" id="page-header">
-          <h1>User Infomation <button class="btn btn-sm btn-default" id='editBTN'>EditTxt</button>
+          <h1 class=value>User Infomation <button class="btn btn-sm btn-default" id='editBTN'>EditTxt</button>
           <button class="btn btn-sm btn-default" id='uploadicon' data-toggle="modal" data-target="#myModal">UploadIcon</button></h1>     <!-- data-tog 到myModal均为下拉菜单的代码部分-->    
           <!-- Modal -->
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -157,122 +157,133 @@ $(document).ready(function(){
         <!-- former table used to display info of user -->
         <!-- 前端显示的class原来为col-sm-格式，被我统一调整成了col-md-4格式。同时添加进了row featurette，允许头像与个人信息并排显示。by女王 -->
     <form class="form-horizontal" id='former'>
-      <div class="col-md-6 column">
+      <div class="row featurette">
+       <div class="col-md-6">
 
-        <div class="form-group">
-          <label for="OldPassword">User ID</label>
-          <p class="form-control-static" id="p_cid"><?php echo $row['user_id'];?></p>
-        </div>
+          <div class="form-group" >
+            <label class="col-md-4 control-label">User ID</label>
+            <div class="col-md-6">
+              <p class="form-control-static"><?php echo $row['user_id'];?></p>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-4 control-label">User Name</label>
+            <div class="col-md-6">
+              <p class="form-control-static"><?php echo $row['username'];?></p>
+            </div>
+          </div>
+           
+          <div class="form-group" >
+            <label class="col-md-4 control-label">Department</label>
+            <div class="col-md-6">
+              <p class="form-control-static"><?php echo $row['department'];?></p>
+            </div>
+          </div>
+           
+          <div class="form-group">
+            <label class="col-md-4 control-label">Gender</label>
+            <div class="col-md-6">
+              <p class="form-control-static"><?php echo $row['gender'];?></p>
+            </div>
+          </div>
+           
+          <div class="form-group">
+            <label class="col-md-4 control-label">Birth Day</label>
+            <div class="col-md-6">
+              <p class="form-control-static"><?php echo $row['birthyear']."-".$row['birthmonth']."-".$row['birthday'];?></p>
+            </div>
+          </div>
+           
+          <div class="form-group">
+            <label class="col-md-4 control-label">Enroll time</label>
+            <div class="col-md-6">
+              <p class="form-control-static"><?php echo $row['enroll_time'];?></p>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <label for="OldPassword">User Name</label>
-          <p class="form-control-static" id="p_cname"><?php echo $row['username'];?></p>
-        </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label">Phone</label>
+            <div class="col-md-6">
+              <p class="form-control-static" id="phone_label"><?php echo $row['phone'];?></p>
+            </div>
+          </div>
 
-        <div class="form-group">
-          <label for="OldPassword">Department</label>
-          <p class="form-control-static" id="p_cdept"><?php echo $row['department'];?></p>
-        </div>
-
-        <div class="form-group">
-          <label for="OldPassword">Credit</label>
-          <p class="form-control-static" id="p_cid"><?php echo $row['gender'];?></p>
-        </div>
-
-        <div class="form-group">
-          <label for="OldPassword">Birth Day</label>
-          <p class="form-control-static" id="p_cid"><?php echo $row['birthyear']."-".$row['birthmonth']."-".$row['birthday'];?></p>
-        </div>
-
-        <div class="form-group">
-          <label for="OldPassword">Enroll time</label>
-          <p class="form-control-static" id="p_cid"><?php echo $row['enroll_time'];?></p>
-        </div>
-
-        <div class="form-group">
-          <label for="OldPassword">Credit</label>
-          <p class="form-control-static" id="p_cid"><?php echo $row['phone'];?></p>
-        </div>
-
-        <div class="form-group">
-          <label for="OldPassword">Email</label>
-          <p class="form-control-static" id="p_cid"><?php echo $row['email'];?></p>
-        </div>
-      <!-- <img src="..." alt="..." class="img-rounded">  -->
-      </div><!-- col-md-6 column -->
-      
+          <div class="form-group">
+            <label class="col-md-4 control-label">Email</label>
+            <div class="col-md-6">
+              <p class="form-control-static" id="email_label"><?php echo $row['email'];?></p>
+            </div>
+          </div>
+        </form>
+      </div>
       <!--即显示头像的语句-->
-      <div class="col-md-4">
+      <div class="col-md-6">
         <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="uploadicon/<?php echo$_SESSION['user_id'];?>.jpg">
       </div>
-    </form>
+    </div>
 
         <!-- latter form used to edit info -->
     <form role='form' method='post' class='form-horizontal' id='latter' style="display: none">
-    <div class="row featurette">
-      <div class="col-md-9">
+      <div class="col-md-4">
+
           <div class='form-group' >
-            <label class='col-md-4 control-label'>User ID</label>
-            <div class='col-md-4'>
-              <input class='form-control' type='text' placeholder='<?php echo $row['user_id'];?>' disabled>
-            </div>
+            <label class='control-label'>User ID</label>
+            <input class='form-control' type='text' value='<?php echo $row['user_id'];?>'>
           </div>
 
           <div class='form-group' >
-            <label class='col-md-4 control-label'>User Name</label>
-            <div class='col-md-4'>
-              <input class='form-control' type='text' placeholder='<?php echo $row['username'];?>' disabled>
-            </div>
+            <label class='control-label'>User Type</label>
+            <select name="seltype" id="seltype" class="form-control">
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+              <option value="manager">Manager</option>
+              <option value="admin">Administration</option>
+            </select>
           </div>
 
           <div class='form-group' >
-            <label class='col-md-4 control-label'>Enroll Time</label>
-            <div class='col-md-4'>
-              <input class='form-control' type='text' placeholder='<?php echo $row['department'];?>' disabled>
-            </div>
+            <label class='control-label'>User Name</label>
+            <input class='form-control' type='text' value='<?php echo $row['username'];?>'>
           </div>
 
           <div class='form-group' >
-            <label class='col-md-4 control-label'>Department</label>
-            <div class='col-md-4'>
-              <input class='form-control' type='text' placeholder='<?php echo $row['gender'];?>' disabled>
-            </div>
-
+            <label class='ontrol-label'>Department</label>
+            <input class='form-control' type='text' value='<?php echo $row['department'];?>'>
           </div>
 
           <div class='form-group' >
-            <label class='col-md-4 control-label'>Gender</label>
-            <div class='col-md-4'>
-              <input class='form-control' type='text' placeholder='<?php echo $row['birthyear'].'-'.$row['birthmonth'].'-'.$row['birthday'];?>'disabled>
-            </div>
-
+            <label class='control-label'>Gender</label>
+            <select name="seltype" id="seltype" class="form-control">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
           </div>
 
           <div class='form-group' >
-            <label class='col-md-4 control-label'>Birth Day</label>
-            <div class='col-md-4'>
-              <input class='form-control' type='text' placeholder='<?php echo $row['enroll_time'];?>' disabled>
-            </div>
+            <label class='control-label'>Birth Day</label>
+            <input type="date" class="form-control" name="user_id" value="<?php echo $row['birthyear'].'-'.$row['birthmonth'].'-'.$row['birthday'];?>">
+          </div>
 
+          <div class='form-group' >
+            <label class='control-label'>Enroll Time</label>
+            <input class='form-control' type='number' value='<?php echo $row['enroll_time'];?>'>
           </div>
 
           <div class='form-group'>
-            <label class='col-md-4 control-label'>Phone</label>
-            <div class='col-md-4'>
-              <input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $row['phone']?>' required>
-            </div>
+            <label class='control-label'>Phone</label>
+            <input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $row['phone']?>'>
           </div>
 
           <div class='form-group'>
-            <label class='col-md-4 control-label'>Email</label>
-            <div class='col-md-4'>
-              <input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $row['email']?>' required>
-            </div>
+            <label class='control-label'>Email</label>
+            <input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $row['email']?>'>
           </div>
 
           <div class='form-group'>
-            <label class='col-sm-6 control-label'></label>
+            <label class='control-label'></label>
             <button class='btn btn-primary' name='submit' type='submit' value='Done' id='doneBTN'>Done</button>
+            <input class="btn btn-default" type="button" name="reset" value="reset">
           </div>
         </div>
       </div>
