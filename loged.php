@@ -26,7 +26,7 @@
                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
               <h4>
                 Password changing success!
-              </h4> <strong>Please remember your new password.</strong></a>
+              </h4> <strong>Please remember your new password.</strong>
             </div>
         <?php endif;?>
 

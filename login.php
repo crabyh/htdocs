@@ -78,7 +78,7 @@ include "system_log_write.php";
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4>
           <?php echo $msg;?>
-        </h4> <strong>please check, then try again.</strong></a>
+        </h4> <strong>please check, then try again.</strong>
       </div>
     <?php } ?>
     <?php if(isset($error)){ ?>
@@ -86,7 +86,7 @@ include "system_log_write.php";
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4>
           Your code is wrong!
-        </h4> <strong>please check, then try again.</strong></a>
+        </h4> <strong>please check, then try again.</strong>
       </div>
     <?php } ?>
 
@@ -108,7 +108,7 @@ include "system_log_write.php";
       <!-- <label class="checkbox">
         <input type="checkbox" value="remember-me">Remember me</label> -->
       <input class="btn btn-lg btn-primary btn-block" name="Submit" type="submit" onclick="return validate();" value="Submit">
-      <a href='#'>Forget password?</a>
+      <center><a class="btn btn-link" href='password_find.php'>Forget password?</a></button>
     </form>
 
   </div>

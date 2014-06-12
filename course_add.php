@@ -26,77 +26,85 @@ CheckUserType('manager');
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-          <h2 >Add Course</h2>
-        </div>
 
         <!-- accessing database not completed -->
         <?php
         if(isset($_POST['submit'])){
-          $input_oldpassword = $_POST['input_oldpassword'];
-          $input_newpassword = $_POST['input_newpassword'];
-          $repeat_newpassword = $_POST['repeat_newpassword'];
-
-          if($input_newpassword != $repeat_newpassword){
-            echo "new passwords are different!";
-          }
-
+          $cid = $_POST['cid'];
+          $cname = $_POST['cname'];
+          $cdepartment = $_POST['cdepartment'];
+          $credit = $_POST['credit'];          
+          require_once 'connectvars.php'; 
+          $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+          $query = "SELECT * FROM course_info WHERE cid = '$cid'";
+          $data = mysqli_query($dbc,$query);
+          if(mysqli_num_rows($data)==1)
+            echo'<div class="alert alert-danger alert-dismissable">
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4>
+                      This cid '.$cid.' is already existed!
+                    </h4> <strong>Please try another one.</strong>
+                  </div>';
           else{
-            require_once 'connectvars.php'; 
-            $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-            $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
-            $query = "SELECT password FROM accounts WHERE user_id = '$user_id'";
-            $data = mysqli_query($dbc,$query);
-            if(mysqli_num_rows($data)==1){
-              $row = mysqli_fetch_array($data);
-              $oldpassword = $row['password'];
-              $md5_oldpassword = md5("$input_oldpassword");
-              echo $md5_oldpassword;
-              if($oldpassword == $md5_oldpassword){
-                $md5_newpassword = md5("$input_newpassword");
-                $user_id = $_SESSION['user_id'];
-                $query = "UPDATE accounts SET password = '$md5_newpassword' WHERE user_id = '$user_id'";
-                $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
-              }
+            $query = "INSERT INTO course_info (cid, cname, cdepartment, credit) VALUES ('$cid', '$cname', '$cdepartment', $credit)";
+            $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
+            if(isset($_POST['course_intro'])){
+              $course_intro = $_POST['course_intro'];
+              $query = "UPDATE course_info SET course_intro = '$course_intro' WHERE cid = '$cid'";
+              $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
+              echo'<div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <h4>
+                        Adding course success!
+                      </h4>
+                      <p>Course ID: '.$cid.'</p>
+                      <p>Course Name: '.$cname.'</p>
+                      <p>Department: '.$cdepartment.'</p>
+                      <p>Credit: '.$credit.'</p>
+                    </div>';
             }
           }
         }
         ?>
 
+          <h2 >Add Course</h2>
+        </div>
+
         <!-- page body -->
         <div class="row clearfix"> 
           <div class="col-md-5 column">
-            <form class="form" id='9'>
+            <form class="form" method="post" id='9'>
               
               <div class="form-group">
                 <label>Course ID</label>
-                <input type="text" class="form-control" name="user_id" placeholder="">
+                <input type="text" class="form-control" name="cid" placeholder="">
               </div>
               
               <div class="form-group">
                 <label>Course Name</label>
-                <input type="text" class="form-control" name="user_id" placeholder="">
+                <input type="text" class="form-control" name="cname" placeholder="">
               </div>
 
               <div class="form-group">
                 <label>Department</label>
-                <input type="text" class="form-control" name="user_id" placeholder="">
+                <input type="text" class="form-control" name="cdepartment" placeholder="">
               </div>
 
               <div class="form-group">
                 <label>Credit</label>
-                <input type="text" class="form-control" name="user_id" placeholder="">
+                <input type="text" class="form-control" name="credit" placeholder="">
               </div>
 
               <div class="form-group">
                 <label>Description</label>
-                <textarea type="text" class="form-control" name="description" rows="5"> </textarea>
+                <textarea type="text" class="form-control" name="course_intro" rows="5"> </textarea>
               </div>
 
               <br>
 
               <div class="form-group">
-                <button type="submit" class="btn btn-primary" name="reset" value="submit">Submit</button>
-                <button type="submit" class="btn btn-default" name="reset" value="reset">Reset</button>
+                <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+                <button type="" class="btn btn-default" name="reset" value="reset">Reset</button>
               </div>
 
             </form>

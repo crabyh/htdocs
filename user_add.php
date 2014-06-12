@@ -91,8 +91,8 @@
               <div class="form-group">
               <label>Gender</label><br/>
                 <select name="seltype" id="seltype" class="form-control">
-                  <option value="M">Man</option>
-                  <option value="F">Woman</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
               </div>
 
