@@ -55,6 +55,27 @@ $(document).ready(function(){
     });
   });
 
+  $("#resetBTN").click(function(event){
+    event.preventDefault();
+    var cid = $("#cid").val();
+    $.ajax({
+      type: "GET",
+      url: "course_info_php.php",
+      data: "cid=" + cid,
+      dataType: "json",
+      success: function(data){
+        var cname = data[0][1];
+        var cdept = data[0][2];
+        var credit = data[0][3];
+        var cintro = data[0][4];
+        $("#cname").val(cname);
+        $("#cdept").val(cdept);
+        $("#credit").val(credit);
+        $("#cintro").val(cintro);
+      }
+    })
+  })
+
 });
 
 </script>
@@ -162,7 +183,7 @@ $(document).ready(function(){
 
             <div class="form-group">
               <button class="btn btn-primary" type="submit" name="submit" value="submit" id="submitBTN">Submit</button>
-              <input class="btn btn-default" type="button" name="reset" value="reset">
+              <input class="btn btn-default" type="button" name="reset" value="reset" id="resetBTN">
             </div>
 
           </div> <!-- col-sm-4 -->

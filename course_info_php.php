@@ -8,25 +8,30 @@
       $cname = $_POST['cname'];
       $query = "UPDATE course_info SET cname = '$cname' WHERE cid = '$cid'";
       $data = mysqli_query($dbc,$query);
-      echo "1";
     }
     if($_POST['cdept']!=''){
       $cdept=$_POST['cdept'];
       $query = "UPDATE course_info SET cdepartment = '$cdept' WHERE cid = '$cid'";
       $data = mysqli_query($dbc,$query);
-      echo "2";
     }
     if($_POST['credit']!=''){
       $credit=$_POST['credit'];
       $query = "UPDATE course_info SET credit = '$credit' WHERE cid = '$cid'";
       $data = mysqli_query($dbc,$query);
-      echo "3";
     }
     if($_POST['cintro']!=''){
       $cintro=$_POST['cintro'];
       $query = "UPDATE course_info SET course_intro = '$cintro' WHERE cid = '$cid'";
       $data = mysqli_query($dbc,$query);
-      echo "4";
+    }
+  }
+  else if($_GET){
+    $cid = $_GET['cid'];
+    $query = "SELECT * FROM course_info WHERE cid='$cid'";
+    $data = mysqli_query($dbc, $query);
+    if ($data) {
+      $result = mysqli_fetch_all($data);
+      echo json_encode($result);
     }
   }
 

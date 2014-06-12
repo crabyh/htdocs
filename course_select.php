@@ -18,9 +18,7 @@ $data = mysqli_query($dbc,$query);
   <?php include 'header.php'; ?>  
   <script type="text/javascript">
   $(document).ready(function(){
-    var seltype = $("#seltype").val();
-    var keyword = $("#keyword").val();
-    var order = $("#order").val();
+
     $("#keyword").keyup(function(){
       var seltype = $("#seltype").val();
       var keyword = $(this).val();
@@ -81,7 +79,6 @@ $data = mysqli_query($dbc,$query);
           }; //end switch
         }
 
-
       $.ajax({
         type:"POST",
         url: "course_select_php.php",
@@ -90,7 +87,7 @@ $data = mysqli_query($dbc,$query);
         success: myFunction, //end success function
       }) //end ajax
     }) // end keyup
-
+    
   })
   </script>
 </head>
