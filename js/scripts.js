@@ -39,10 +39,10 @@ $(document).ready(function(){
                 $(newrow).addClass("old");
                 var result = "";
                 for (var i = 0; i < 4; i++) {
-                  result += "<td align='center'><small>" + rowData[i] + "</small></td>\n";
+                  result += "<td align='center' id='" + i + "'>" + rowData[i] + "</td>\n";
                 };
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
+                result += "<td align='center'><button type='button' class='btn btn-sm btn-danger del'>Delete</button></td>\n";
                 $(newrow).append(result);
                 $(newrow).insertAfter( $("#tableHead") );
                 if (keyword) { 
@@ -69,6 +69,24 @@ $(document).ready(function(){
       success: courseSuccess, //end success function  
     }) //end ajax
   }) // end keyup
+
+  $(".del").click(function(event){
+    event.preventDefault();
+    var cid = $(this).parent().siblings("#0").html();
+    $.ajax({
+      type: "POST",
+      url: "course_select_php.php",
+      data: "delcid=" + cid,
+      success: function(data){
+        if (data == "deleteSuccess") {
+          $(this).parent().parent().empty();
+        }
+        else {
+          $("#delfail").show();
+        }
+      } // end success function
+    }) // end ajax
+  })
 
   var userSuccess = function(data){
           var keyword = $("#userKeyword").val();
@@ -111,8 +129,8 @@ $(document).ready(function(){
                 for (var i = 0; i < 8; i++) {
                   result += "<td align='center'><small>" + rowData[i] + "</small></td>\n";
                 };
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='user_info.php?user_id=" + rowData[0] + "'>More</a></td>\n";
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='user_info.php?user_id=" + rowData[0] + "'>More</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-danger' href=''>Delete</a></td>\n";
                 $(newrow).append(result);
                 $(newrow).insertAfter( $("#tableHead") );
                 if (keyword) { 

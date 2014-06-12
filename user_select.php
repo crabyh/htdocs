@@ -75,6 +75,7 @@ $data = mysqli_query($dbc,$query);
               <td align='center'><small> Enroll Time </small></td>
               <td align='center'><small> Phone </small></td>
               <td align='center'><small> Email </small></td>
+              <td align='center'><small> Description </small></td>
               <td align='center'colspan='3'><small> Action </small></td>
               </tr>
             </table>
