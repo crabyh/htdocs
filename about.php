@@ -70,11 +70,10 @@ function act(){
 
             </br>
 
-            </form>
           </div>
-        </div>
-      </div>
-    </div>
+        </div> <!-- row clearfix -->
+      </div> <!-- container -->
+    </div> <!-- wrap -->
 
 
     <!-- page footer -->
