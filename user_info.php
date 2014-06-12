@@ -218,13 +218,8 @@ $(document).ready(function(){
         </form>
       </div>
       <!--即显示头像的语句-->
-<<<<<<< HEAD
       <div class="col-md-4">
         <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="uploadicon/<?php echo md5($_SESSION['user_id']);?>.jpg">
-=======
-      <div class="col-md-6">
-        <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="uploadicon/<?php echo$_SESSION['user_id'];?>.jpg">
->>>>>>> FETCH_HEAD
       </div>
     </div>
 
