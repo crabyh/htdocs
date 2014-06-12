@@ -15,28 +15,7 @@ $data = mysqli_query($dbc,$query);
 
 <!-- include head file-->
 <head> 
-  <?php include 'header.php'; ?> 
-  <script type="text/javascript">
-   $(".del").click(function(event){
-      event.preventDefault();
-      alert("");
-      var cid = $(this).parent().siblings("#0").html();
-      $.ajax({
-        type: "POST",
-        url: "course_select_php.php",
-        data: "delcid=" + cid,
-        dataType: "json",
-        success: function(data){
-          if (data['res'] == "deleteSuccess") {
-            $(this).parent().parent().remove();
-          }
-          else {
-            $("#delfail").show();
-          }
-        } // end success function
-      }) // end ajax
-    })
-  </script> 
+  <?php include 'header.php'; ?>  
 </head>
 
 <body>
@@ -51,12 +30,6 @@ $data = mysqli_query($dbc,$query);
         <h1> 
           Course Information 
         </h1>      
-      </div>
-
-      <div class='alert alert-warning alert-dismissable' style="display:none" id="delfail">
-        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-        <h4>Delete Failed!</h4> 
-        <strong>Try again!</strong></a>
       </div>
 
       <div class="panel panel-default" id="queryForm"> <!-- 查询框 -->
