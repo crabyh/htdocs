@@ -47,56 +47,7 @@ if(isset($_FILES["file"]))
 <!-- include head file-->
 <head>
 <?php include 'header.php'; ?>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    $("button#editBTN").click(function(){
-      $("form#former").hide();
-      $("form#latter").show();
-      $("button#editBTN").hide();
-    });
-    $("button#doneBTN").click(function(event){
-      event.preventDefault();
-      var newphone = $("input#phonenum").val();
-      var newemail = $("input#emailaddr").val(); 
-      var user_id = $("#user_id").val();
-      $.ajax({
-        type: "POST",
-        url:"user_info_php.php",
-        data: "phone=" + newphone + "&email=" + newemail + "&user_id=" + user_id,  
-        success: function(){
-          $('#phone_label').text(newphone);
-          $('#email_label').text(newemail);
-          $("form#former").show();
-          $("form#latter").hide();
-          $("#success").show();
-          $("#editBTN").show();
-        },
-        error: function(){
-          $("#fail").show()
-        }
-      }); // end ajax
-    }); //end click
-
-    $("#resetBTN").click(function(event){
-      event.preventDefault();
-      var user_id = $("#user_id").val();
-      $.ajax({
-        type: "GET",
-        url: "user_info_php.php",
-        data: "user_id=" + user_id,
-        dataType: "json",
-        success: function(data){
-          var phone = data[0][6];
-          var email = data[0][7];
-          $("#phonenum").val(phone);
-          $("#emailaddr").val(email);
-        }
-      })
-    })
-
-}); //end ready function
-</script>
+<script type="text/javascript" src="js/user.js"></script>
 </head>
 
 <body>

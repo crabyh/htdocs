@@ -14,7 +14,10 @@ $data = mysqli_query($dbc,$query);
 ?>
 
 <!-- include head file-->
-<head> <?php include 'header.php'; ?>  </head>
+<head> 
+  <?php include 'header.php'; ?>  
+  <script type="text/javascript" src="js/user.js"></script>
+</head>
 
 <body>
     <div id="wrap">

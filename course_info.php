@@ -18,67 +18,8 @@ if(mysqli_num_rows($data)==1)
         
 <!-- include head file-->
 <head>
-<?php include 'header.php'; ?>
-<script type="text/javascript">
-$(document).ready(function(){
-  $("#editBTN").click(function(){
-    $("#former").hide();
-    $("#latter").show();
-    $(this).hide();
-  });
-
-  $("#submitBTN").click(function(event){
-    event.preventDefault();
-    var cid = $("#cid").val();
-    var cname = $("#cname").val();
-    var cdept = $("#cdept").val();
-    var credit = $("#credit").val();
-    var cintro = $("#cintro").val();
-    $.ajax({
-      type: "POST",
-      url: "course_info_php.php",
-      data: "cid="+ cid + "&cname=" + cname + "&cdept=" + cdept + "&credit=" + credit + "&cintro=" + cintro,
-      success: function(){
-        $("#p_cid").text(cid);
-        $("#p_cname").text(cname);
-        $("#p_cdept").text(cdept);
-        $("#p_credit").text(credit);
-        $("#p_cintro").text(cintro);
-        $("#latter").hide();
-        $("#former").show();
-        $("#editBTN").show();
-        $("#success").show();
-      },
-      error: function(){
-        $("#fail").show();
-      }
-    });
-  });
-
-  $("#resetBTN").click(function(event){
-    event.preventDefault();
-    var cid = $("#cid").val();
-    $.ajax({
-      type: "GET",
-      url: "course_info_php.php",
-      data: "cid=" + cid,
-      dataType: "json",
-      success: function(data){
-        var cname = data[0][1];
-        var cdept = data[0][2];
-        var credit = data[0][3];
-        var cintro = data[0][4];
-        $("#cname").val(cname);
-        $("#cdept").val(cdept);
-        $("#credit").val(credit);
-        $("#cintro").val(cintro);
-      }
-    })
-  })
-
-});
-
-</script>
+  <?php include 'header.php'; ?>
+  <script type="text/javascript" src="js/course.js"></script>
 </head>
 
 <body>
