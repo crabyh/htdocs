@@ -52,12 +52,12 @@ $data = mysqli_query($dbc,$query);
                   </select>
                 </span>
                 <span>
-                  <input type="text" id="input_1" placeholder="Keyword" class="form-control" name="keyword">
+                  <input type="text" id="userKeyword" placeholder="Keyword" class="form-control" name="keyword">
                 </span>
               </div> 
             </form>
           </div>  
-                
+
         </div>
       </div>
     </div> 
