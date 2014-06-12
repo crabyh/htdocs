@@ -6,12 +6,14 @@ $(document).ready(function(){
             case "none":
               $("#res").show();
               $("#prompt").html("No query conditions!");
+              $("#prompt").show();
               $("#table").hide();
               $(".old").empty();
               if (!keyword) { $("#res").hide() };
               break;
             case "noSeltype":
               $("#prompt").html("No query type!\nPlease choose one query type!");
+              $("#prompt").show();
               $("#table").hide();
               $("#res").show();
               $(".old").empty();
@@ -20,6 +22,7 @@ $(document).ready(function(){
             case "fail":
               $("#res").show();
               $("#prompt").html("No records!");
+              $("#prompt").show();
               $("#table").hide();
               $(".old").empty();
               if (!keyword) { $("#res").hide() };
@@ -27,6 +30,7 @@ $(document).ready(function(){
             case "noKeyword":
               $("#res").show();
               $("#prompt").html("No keyword!\nPlease input some keywords!");
+              $("#prompt").show();
               $("#table").hide();
               $(".old").empty();
               if (!keyword) { $("#res").hide() };
@@ -41,8 +45,8 @@ $(document).ready(function(){
                 for (var i = 0; i < 4; i++) {
                   result += "<td align='center'><small>" + rowData[i] + "</small></td>\n";
                 };
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-danger' href=''>Delete</a></td>\n";
                 $(newrow).append(result);
                 $(newrow).insertAfter( $("#tableHead") );
                 if (keyword) { 
@@ -76,12 +80,14 @@ $(document).ready(function(){
             case "none":
               $("#res").show();
               $("#prompt").html("No query conditions!");
+              $("#prompt").show();
               $("#table").hide();
               $(".old").empty();
               if (!keyword) { $("#res").hide() };
               break;
             case "noSeltype":
               $("#prompt").html("No query type!\nPlease choose one query type!");
+              $("#prompt").show();
               $("#table").hide();
               $("#res").show();
               $(".old").empty();
@@ -90,6 +96,7 @@ $(document).ready(function(){
             case "fail":
               $("#res").show();
               $("#prompt").html("No records!");
+              $("#prompt").show();
               $("#table").hide();
               $(".old").empty();
               if (!keyword) { $("#res").hide() };
@@ -97,6 +104,7 @@ $(document).ready(function(){
             case "noKeyword":
               $("#res").show();
               $("#prompt").html("No keyword!\nPlease input some keywords!");
+              $("#prompt").show();
               $("#table").hide();
               $(".old").empty();
               if (!keyword) { $("#res").hide() };
@@ -111,8 +119,8 @@ $(document).ready(function(){
                 for (var i = 0; i < 8; i++) {
                   result += "<td align='center'><small>" + rowData[i] + "</small></td>\n";
                 };
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='user_info.php?user_id=" + rowData[0] + "'>More</a></td>\n";
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='user_info.php?user_id=" + rowData[0] + "'>More</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-danger' href=''>Delete</a></td>\n";
                 $(newrow).append(result);
                 $(newrow).insertAfter( $("#tableHead") );
                 if (keyword) { 

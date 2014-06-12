@@ -31,8 +31,8 @@
                 }
             }
             $arr = mysqli_query($dbc, $sql);  //执行SQL
-            if($arr){ //如果从数据库中取出数据
-                $res = mysqli_fetch_all($arr);
+            $res = mysqli_fetch_all($arr);
+            if($res){ //如果从数据库中取出数据
                 echo json_encode($res);
             } // end IF 取数据c
             else {

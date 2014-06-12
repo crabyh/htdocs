@@ -8,7 +8,6 @@
 <?php 
 require_once 'connectvars.php'; 
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
 $query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
 $data = mysqli_query($dbc,$query);
@@ -75,6 +74,7 @@ $data = mysqli_query($dbc,$query);
               <td align='center'><small> Enroll Time </small></td>
               <td align='center'><small> Phone </small></td>
               <td align='center'><small> Email </small></td>
+              <td align='center'><small> Description </small></td>
               <td align='center'colspan='3'><small> Action </small></td>
               </tr>
             </table>

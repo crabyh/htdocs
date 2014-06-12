@@ -10,7 +10,6 @@ require_once 'connectvars.php';
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
 if (isset($_GET['user_id']))  $user_id = $_GET['user_id']; // 如果有get的话，覆盖掉自己的；
-var_dump($user_id);
 $query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
 $data = mysqli_query($dbc,$query);
 if(mysqli_num_rows($data)==1){
@@ -63,7 +62,7 @@ $(document).ready(function(){
       var user_id = $("#user_id").val();
       $.ajax({
         type: "POST",
-        url:"user_info.php",
+        url:"user_info_php.php",
         data: "phone=" + newphone + "&email=" + newemail + "&user_id=" + user_id,  
         success: function(){
           $('#phone_label').text(newphone);

@@ -8,12 +8,12 @@
     if($_POST['phone']!=''){
       $phone=$_POST['phone'];
       $query = "UPDATE user_info SET phone = '$phone' WHERE user_id = '$user_id'";
-      $data = mysqli_query($dbc,$query) or die ("update user_info error!");
+      $data = mysqli_query($dbc,$query);
     }
     if($_POST['email']!=''){
       $email=$_POST['email'];
       $query = "UPDATE user_info SET email = '$email' WHERE user_id = '$user_id'";
-      $data = mysqli_query($dbc,$query) or die ("update user_info error!");
+      $data = mysqli_query($dbc,$query);
     }
     if ($data == TRUE) {
       $data = mysqli_query($dbc, $query);
