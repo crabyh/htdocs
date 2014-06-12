@@ -32,55 +32,96 @@
 
         <!-- accessing database not completed -->
         <?php
-        if(isset($_POST['submit'])){
-          $input_oldpassword = $_POST['input_oldpassword'];
-          $input_newpassword = $_POST['input_newpassword'];
-          $repeat_newpassword = $_POST['repeat_newpassword'];
+          if(isset($_POST['submit']))
+          {
+            $input_newpassword = $_POST['input_newpassword'];
+            $repeat_newpassword = $_POST['repeat_newpassword'];
+            // echo $input_newpassword." ".$repeat_newpassword;
+            if($input_newpassword != $repeat_newpassword)
+            {
+              echo'<div class="alert alert-danger alert-dismissable">
+                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                      <h4>
+                         The two passwords are different!
+                      </h4> <strong>Please check your password and try again.</strong></a>
+                    </div>';
 
-          if($input_newpassword != $repeat_newpassword){
-            echo "new passwords are different!";
-          }
-
-          else{
-            require_once 'connectvars.php'; 
-            $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-            $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
-            $query = "SELECT password FROM accounts WHERE user_id = '$user_id'";
-            $data = mysqli_query($dbc,$query);
-            if(mysqli_num_rows($data)==1){
-              $row = mysqli_fetch_array($data);
-              $oldpassword = $row['password'];
-              $md5_oldpassword = md5("$input_oldpassword");
-              echo $md5_oldpassword;
-              if($oldpassword == $md5_oldpassword){
-                $md5_newpassword = md5("$input_newpassword");
-                $user_id = $_SESSION['user_id'];
-                $query = "UPDATE accounts SET password = '$md5_newpassword' WHERE user_id = '$user_id'";
-                $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
-              }
             }
-          }
-        }
-        ?>
+            else 
 
+            {
+                require_once 'connectvars.php'; 
+                $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+                $u_id=$_POST['u_id']; 
+                $u_name=$_POST['u_name'];
+                $typ=$_POST['typ'];
+                $gender=$_POST['gender'];
+                $department=$_POST['department'];
+                $enroll_time=$_POST['enroll_time'];
+                $birthday=$_POST['birthday'];
+                $email=$_POST['email'];
+                $phone=$_POST['phone'];
+                $query = "SELECT * FROM accounts WHERE user_id = '$u_id';";
+                $data = mysqli_query($dbc,$query);
+                if(mysqli_num_rows($data)==1)
+                {
+                  echo'<div class="alert alert-danger alert-dismissable">
+                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4>
+                          This User '.$u_id.' is already existed!
+                        </h4> <strong>Please try another one.</strong>
+                      </div>';
+                }
+                else
+                {
+                    $md5_newpassword = md5("$input_newpassword");
+                    $user_id = $_SESSION['user_id'];
+                    $query = "INSERT INTO accounts VALUES('$u_id','$md5_newpassword','$typ');";
+                    $data = mysqli_query($dbc,$query);
+
+                    $query = "INSERT INTO user_info VALUES('$u_id','$u_name','$department','$gender',date('$birthday'),'$enroll_time','$phone','$email');";
+                    $data = mysqli_query($dbc,$query);
+                    echo mysqli_errno($dbc)." ".mysqli_error($dbc);
+
+                    // echo'<script type="text/javascript"> 
+                    //     setTimeout(window.location.href="loged.php?passw_ch=success",3); 
+                    //     </script>';
+                }
+            }
+
+
+
+
+          }
+        ?>
         <!-- page body -->
         <div class="row clearfix"> 
           <div class="col-md-5 column">
-            <form class="form" id='9'>
+            <form class="form" id='9' method="POST" action="user_add.php">
               
               <div class="form-group">
                 <label>User ID</label>
-                <input type="text" class="form-control" name="user_id" placeholder="">
+                <input type="text" class="form-control" name="u_id" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label >New password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password" required>
+              </div>
+
+              <div class="form-group">
+                <label for="NewPassword">Confirm your password again</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password" required>
               </div>
 
               <div class="form-group">
                 <label>User Name</label>
-                <input type="text" class="form-control" name="user_id" placeholder="">
+                <input type="text" class="form-control" name="u_name" placeholder="">
               </div>
 
               <div class="form-group">
               <label>User Type</label><br/>
-                <select name="seltype" id="seltype" class="form-control">
+                <select name="typ" id="seltype" class="form-control">
                   <option value="student">Student</option>
                   <option value="teacher">Teacher</option>
                   <option value="manager">Manager</option>
@@ -90,32 +131,42 @@
 
               <div class="form-group">
               <label>Gender</label><br/>
-                <select name="seltype" id="seltype" class="form-control">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
+                <select name="gender" id="seltype" class="form-control">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label>Department</label>
-                <input type="text" class="form-control" name="user_id" placeholder="">
+                <input type="text" class="form-control" name="department" placeholder="">
               </div>
 
               <div class="form-group">
                 <label>Enroll Year</label>
-                <input type="number" class="form-control" name="user_id" value="2014">
+                <input type="number" class="form-control" name="enroll_time" value="2014">
               </div>
 
               <div class="form-group">
-                <label>birthday</label>
-                <input type="date" class="form-control" name="user_id" placeholder="">
+                <label>Birthday "YY-MM-DD"</label>
+                <input type="text" class="form-control" name="birthday" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="text" class="form-control" name="email" placeholder="">
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="phone" placeholder="">
               </div>
 
               <br>
 
               <div class="form-group">
-                <button type="submit" class="btn btn-primary" name="reset" value="submit">Submit</button>
-                <button type="submit" class="btn btn-default" name="reset" value="reset">Reset</button>
+                <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+                <button type="reset" class="btn btn-default" name="reset" value="reset">Reset</button>
               </div>
 
             </form>
