@@ -191,7 +191,7 @@ $(document).ready(function(){
           <div class="form-group">
             <label class="col-md-4 control-label">Birth Day</label>
             <div class="col-md-6">
-              <p class="form-control-static"><?php echo $row['birthyear']."-".$row['birthmonth']."-".$row['birthday'];?></p>
+              <p class="form-control-static"><?php echo $row['birthday'];?></p>
             </div>
           </div>
            
@@ -224,7 +224,7 @@ $(document).ready(function(){
     </div>
 
         <!-- latter form used to edit info -->
-    <form role='form' method='post' class='form-horizontal' id='latter' style="display: none">
+    <form role='form' class='form-horizontal' id='latter' style="display: none">
       <div class="col-md-4">
 
           <div class='form-group' >
@@ -262,7 +262,7 @@ $(document).ready(function(){
 
           <div class='form-group' >
             <label class='control-label'>Birth Day</label>
-            <input type="date" class="form-control" name="user_id" value="<?php echo $row['birthyear'].'-'.$row['birthmonth'].'-'.$row['birthday'];?>">
+            <input type="date" class="form-control" name="user_id" value="<?php echo $row['birthday'];?>">
           </div>
 
           <div class='form-group' >
