@@ -8,8 +8,10 @@
   'system_log_check' => 'user',
   'course_select' => "course",
   'course_add' => 'course',
+  'course_info' => 'course',
   'about' => 'about',
    );
+  var_dump($_SERVER['SCRIPT_FILENAME']);
   $current_page = pathinfo($_SERVER['SCRIPT_FILENAME'], PATHINFO_FILENAME);
   foreach ($nav as $page => $navbar) {
     if ($page == $current_page) {

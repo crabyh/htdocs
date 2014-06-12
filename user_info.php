@@ -90,7 +90,7 @@ $(document).ready(function(){
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header" id="page-header">
-          <h1 class=value>User Infomation <button class="btn btn-sm btn-default" id='editBTN'>EditTxt</button>
+          <h1 class=value>User Infomation <button class="btn btn-sm btn-default" id='editBTN'>Edit</button>
           <button class="btn btn-sm btn-default" id='uploadicon' data-toggle="modal" data-target="#myModal">UploadIcon</button></h1>     <!-- data-tog 到myModal均为下拉菜单的代码部分-->    
           <!-- Modal -->
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
