@@ -81,11 +81,19 @@
 
                     $query = "INSERT INTO user_info VALUES('$u_id','$u_name','$department','$gender',date('$birthday'),'$enroll_time','$phone','$email');";
                     $data = mysqli_query($dbc,$query);
-                    echo mysqli_errno($dbc)." ".mysqli_error($dbc);
+                    if(mysqli_num_rows($data)==1)
+                    {
+                      echo'<script type="text/javascript"> 
+                       setTimeout(window.location.href="loged.php?passw_ch=success",3); 
+                       </script>';
+                    }
+                    else
+                    {
+                      // echo mysqli_errno($dbc)." ".mysqli_error($dbc);
 
-                    // echo'<script type="text/javascript"> 
-                    //     setTimeout(window.location.href="loged.php?passw_ch=success",3); 
-                    //     </script>';
+                      echo'<script type="text/javascript"> 
+                         setTimeout(window.location.href="loged.php?passw_ch=success",3); 
+                        </script>';}
                 }
             }
 
@@ -149,7 +157,7 @@
 
               <div class="form-group">
                 <label>Birthday "YY-MM-DD"</label>
-                <input type="text" class="form-control" name="birthday" placeholder="">
+                <input type="date" class="form-control" name="birthday" placeholder="">
               </div>
 
               <div class="form-group">
