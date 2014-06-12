@@ -78,6 +78,24 @@ $(document).ready(function(){
         }
       }); // end ajax
     }); //end click
+
+    $("#resetBTN").click(function(event){
+      event.preventDefault();
+      var user_id = $("#user_id").val();
+      $.ajax({
+        type: "GET",
+        url: "user_info_php.php",
+        data: "user_id=" + user_id,
+        dataType: "json",
+        success: function(data){
+          var phone = data[0][6];
+          var email = data[0][7];
+          $("#phonenum").val(phone);
+          $("#emailaddr").val(email);
+        }
+      })
+    })
+
 }); //end ready function
 </script>
 </head>
@@ -133,29 +151,7 @@ $(document).ready(function(){
         </div>
 
         <!-- 用来与数据库交互 --> <!-- 因为上传文件的提交方式也是post，所以我在下面的if判断句中加了一个判断条件isset($_POST['phone']) by女王 -->
-        <?php
-          if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['phone'])){ 
-            $data = FALSE;
-            $user_id = $_POST['user_id'];
-            if($_POST['phone']!=''){
-              $phone=$_POST['phone'];
-              $query = "UPDATE user_info SET phone = '$phone' WHERE user_id = '$user_id'";
-              $data = mysqli_query($dbc,$query) or die ("update user_info error!");
-            }
-            if($_POST['email']!=''){
-              $email=$_POST['email'];
-              $query = "UPDATE user_info SET email = '$email' WHERE user_id = '$user_id'";
-              $data = mysqli_query($dbc,$query) or die ("update user_info error!");
-            }
-            if ($data == TRUE) {
-              $data = mysqli_query($dbc, $query);
-              echo "success";
-            }
-            else{
-              echo "fail";       
-            }
-          }
-        ?>
+        
 
         <!-- page body -->
         <!-- former table used to display info of user -->
@@ -287,7 +283,7 @@ $(document).ready(function(){
           <div class='form-group'>
             <label class='control-label'></label>
             <button class='btn btn-primary' name='submit' type='submit' value='Done' id='doneBTN'>Done</button>
-            <input class="btn btn-default" type="button" name="reset" value="reset">
+            <input class="btn btn-default" type="button" name="reset" value="reset" id="resetBTN">
           </div>
         </div>
       </div>
