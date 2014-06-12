@@ -157,71 +157,55 @@ $(document).ready(function(){
         <!-- former table used to display info of user -->
         <!-- 前端显示的class原来为col-sm-格式，被我统一调整成了col-md-4格式。同时添加进了row featurette，允许头像与个人信息并排显示。by女王 -->
     <form class="form-horizontal" id='former'>
-      <div class="row featurette">
-       <div class="col-md-8">
+      <div class="col-md-6 column">
 
-          <div class="form-group" >
-            <label class="col-md-4 control-label">User ID</label>
-            <div class="col-md-4">
-              <p class="form-control-static"><?php echo $row['user_id'];?></p>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label class="col-md-4 control-label">User Name</label>
-            <div class="col-md-4">
-              <p class="form-control-static"><?php echo $row['username'];?></p>
-            </div>
-          </div>
-           
-          <div class="form-group" >
-            <label class="col-md-4 control-label">Department</label>
-            <div class="col-md-4">
-              <p class="form-control-static"><?php echo $row['department'];?></p>
-            </div>
-          </div>
-           
-          <div class="form-group">
-            <label class="col-md-4 control-label">Gender</label>
-            <div class="col-md-4">
-              <p class="form-control-static"><?php echo $row['gender'];?></p>
-            </div>
-          </div>
-           
-          <div class="form-group">
-            <label class="col-md-4 control-label">Birth Day</label>
-            <div class="col-md-4">
-              <p class="form-control-static"><?php echo $row['birthyear']."-".$row['birthmonth']."-".$row['birthday'];?></p>
-            </div>
-          </div>
-           
-          <div class="form-group">
-            <label class="col-md-4 control-label">Enroll time</label>
-            <div class="col-md-4">
-              <p class="form-control-static"><?php echo $row['enroll_time'];?></p>
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="OldPassword">User ID</label>
+          <p class="form-control-static" id="p_cid"><?php echo $row['user_id'];?></p>
+        </div>
 
-          <div class="form-group">
-            <label class="col-md-4 control-label">Phone</label>
-            <div class="col-md-4">
-              <p class="form-control-static" id="phone_label"><?php echo $row['phone'];?></p>
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="OldPassword">User Name</label>
+          <p class="form-control-static" id="p_cname"><?php echo $row['username'];?></p>
+        </div>
 
-          <div class="form-group">
-            <label class="col-md-4 control-label">Email</label>
-            <div class="col-md-4">
-              <p class="form-control-static" id="email_label"><?php echo $row['email'];?></p>
-            </div>
-          </div>
-        </form>
-      </div>
+        <div class="form-group">
+          <label for="OldPassword">Department</label>
+          <p class="form-control-static" id="p_cdept"><?php echo $row['department'];?></p>
+        </div>
+
+        <div class="form-group">
+          <label for="OldPassword">Credit</label>
+          <p class="form-control-static" id="p_cid"><?php echo $row['gender'];?></p>
+        </div>
+
+        <div class="form-group">
+          <label for="OldPassword">Birth Day</label>
+          <p class="form-control-static" id="p_cid"><?php echo $row['birthyear']."-".$row['birthmonth']."-".$row['birthday'];?></p>
+        </div>
+
+        <div class="form-group">
+          <label for="OldPassword">Enroll time</label>
+          <p class="form-control-static" id="p_cid"><?php echo $row['enroll_time'];?></p>
+        </div>
+
+        <div class="form-group">
+          <label for="OldPassword">Credit</label>
+          <p class="form-control-static" id="p_cid"><?php echo $row['phone'];?></p>
+        </div>
+
+        <div class="form-group">
+          <label for="OldPassword">Email</label>
+          <p class="form-control-static" id="p_cid"><?php echo $row['email'];?></p>
+        </div>
+      <!-- <img src="..." alt="..." class="img-rounded">  -->
+      </div><!-- col-md-6 column -->
+      
       <!--即显示头像的语句-->
       <div class="col-md-4">
         <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="uploadicon/<?php echo$_SESSION['user_id'];?>.jpg">
       </div>
-    </div>
+    </form>
 
         <!-- latter form used to edit info -->
     <form role='form' method='post' class='form-horizontal' id='latter' style="display: none">

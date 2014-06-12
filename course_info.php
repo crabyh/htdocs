@@ -93,76 +93,80 @@ $(document).ready(function(){
         
         <!-- page body -->
         <form class="form-horizontal" id="former">
-        <div class="col-md-6 column">
 
             <div class="form-group">
-              <label for="OldPassword">Course ID</label>
-              <p class="form-control-static" id="p_cid"><?php echo $course_id ?></p>
+              <label class="col-sm-2 control-label">Course ID</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_cid"><?php echo $course_id ?></p>
+              </div>
             </div>
-
+            
             <div class="form-group">
-              <label for="OldPassword">Course Name</label>
-              <p class="form-control-static" id="p_cname"><?php echo $row['cname'];?></p>
+              <label class="col-sm-2 control-label">Course Name</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_cname"><?php echo $row['cname'];?></p>
+              </div>
             </div>
-
+             
+            <div class="form-group" >
+              <label class="col-sm-2 control-label">Department</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_cdept"><?php echo $row['cdepartment'];?></p>
+              </div>
+            </div>
+             
             <div class="form-group">
-              <label for="OldPassword">Department</label>
-              <p class="form-control-static" id="p_cdept"><?php echo $row['cdepartment'];?></p>
+              <label class="col-sm-2 control-label">Credit</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_credit"><?php echo $row['credit'];?></p>
+              </div>
             </div>
-
+            
             <div class="form-group">
-              <label for="OldPassword">Credit</label>
-              <p class="form-control-static" id="p_cid"><?php echo $row['credit'];?></p>
-            </div>
-
-            <div class="form-group">
-              <label for="OldPassword">Description</label>
-              <p class="form-control-static" id="p_cid"><?php echo $row['course_intro'];?></p>
-            </div>
+              <label class="col-sm-2 control-label">Description</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_cintro"><?php echo $row['course_intro'];?></p>
+              </div>
+            </div>   
           <!-- <img src="..." alt="..." class="img-rounded">  -->
-          </div><!-- col-md-6 column -->
-          
         </form>
 
         <form class="form-horizontal" id="latter" style="display: none">
-          <div class="col-md-4 column">
+          <div class="col-sm-4">
 
             <div class="form-group">
-              <label for="OldPassword">Course ID</label>
+              <label class="control-label">Course ID</label>
               <input class="form-control" value="<?php echo $course_id ?>" id="cid" disabled>
             </div>
-
+            
             <div class="form-group">
-              <label for="OldPassword">Course Name</label>
+              <label class="control-label">Course Name</label>
               <input class="form-control" id="cname" value="<?php echo $row['cname'];?>">
             </div>
-
-            <div class="form-group">
-              <label for="OldPassword">Department</label>
-              <input class="form-control" id="cname" value="<?php echo $row['cdepartment'];?>">
+             
+            <div class="form-group" >
+              <label class="control-label">Department</label>
+              <input class="form-control" id="cdept" value="<?php echo $row['cdepartment'];?>">
             </div>
-
+             
             <div class="form-group">
-              <label for="OldPassword">Credit</label>
-              <input class="form-control" id="cname" value="<?php echo $row['credit'];?>">
+              <label class="control-label">Credit</label>
+              <input class="form-control" id="credit" value="<?php echo $row['credit'];?>">
             </div>
-
+            
             <div class="form-group">
-              <label for="OldPassword">Description</label>
-              <textarea  class="form-control" rows="4" id="cintro"><?php echo $row['course_intro'];?></textarea>
-            </div><br>
-        
+              <label class="control-label">Description</label>
+                <textarea  class="form-control" rows="4" id="cintro"><?php echo $row['course_intro'];?></textarea>
+            </div>   
+          <!-- <img src="..." alt="..." class="img-rounded">  -->
+
             <div class="form-group">
               <button class="btn btn-primary" type="submit" name="submit" value="submit" id="submitBTN">Submit</button>
               <input class="btn btn-default" type="button" name="reset" value="reset">
             </div>
-          
-                    
-          <!-- <img src="..." alt="..." class="img-rounded">  -->
-          </div> <!-- col-md-4 column -->
-        </form>
 
-        
+          </div> <!-- col-sm-4 -->
+        </form>
 
       </div>
     </div>
