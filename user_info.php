@@ -9,6 +9,8 @@
 require_once 'connectvars.php'; 
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
+if (isset($_GET['user_id']))  $user_id = $_GET['user_id']; // 如果有get的话，覆盖掉自己的；
+var_dump($user_id);
 $query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
 $data = mysqli_query($dbc,$query);
 if(mysqli_num_rows($data)==1){
@@ -58,10 +60,11 @@ $(document).ready(function(){
       event.preventDefault();
       var newphone = $("input#phonenum").val();
       var newemail = $("input#emailaddr").val(); 
+      var user_id = $("#user_id").val();
       $.ajax({
         type: "POST",
         url:"user_info.php",
-        data: "phone=" + newphone + "&email=" + newemail,  
+        data: "phone=" + newphone + "&email=" + newemail + "&user_id=" + user_id,  
         success: function(){
           $('#phone_label').text(newphone);
           $('#email_label').text(newemail);
@@ -133,6 +136,7 @@ $(document).ready(function(){
         <?php
           if($_SERVER['REQUEST_METHOD']=="POST" and isset($_POST['phone'])){ 
             $data = FALSE;
+            $user_id = $_POST['user_id'];
             if($_POST['phone']!=''){
               $phone=$_POST['phone'];
               $query = "UPDATE user_info SET phone = '$phone' WHERE user_id = '$user_id'";
@@ -229,7 +233,7 @@ $(document).ready(function(){
 
           <div class='form-group' >
             <label class='control-label'>User ID</label>
-            <input class='form-control' type='text' value='<?php echo $row['user_id'];?>'>
+            <input class='form-control' type='text' value='<?php echo $row['user_id'];?>' id="user_id">
           </div>
 
           <div class='form-group' >

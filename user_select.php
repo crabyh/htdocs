@@ -67,11 +67,14 @@ $data = mysqli_query($dbc,$query);
             <p id="prompt" align="center"></p>
             <table class="table table-striped" id="table">
               <tr id="tableHead">
-              <td align='center'><small> Course ID </small></td>
-              <td align='center'><small> Course Name </small></td>
+              <td align='center'><small> User ID </small></td>
+              <td align='center'><small> User Name </small></td>
               <td align='center'><small> Department </small></td>
-              <td align='center'><small> Credit </small></td>
-              <td align='center'><small> Description </small></td>
+              <td align='center'><small> Gender </small></td>
+              <td align='center'><small> Birthday </small></td>
+              <td align='center'><small> Enroll Time </small></td>
+              <td align='center'><small> Phone </small></td>
+              <td align='center'><small> Email </small></td>
               <td align='center'colspan='3'><small> Action </small></td>
               </tr>
             </table>

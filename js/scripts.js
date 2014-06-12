@@ -108,10 +108,10 @@ $(document).ready(function(){
                 var rowData = data[row];
                 $(newrow).addClass("old");
                 var result = "";
-                for (var i = 0; i < 4; i++) {
+                for (var i = 0; i < 8; i++) {
                   result += "<td align='center'><small>" + rowData[i] + "</small></td>\n";
                 };
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
+                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='user_info.php?user_id=" + rowData[0] + "'>More</a></td>\n";
                 result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>\n";
                 $(newrow).append(result);
                 $(newrow).insertAfter( $("#tableHead") );
