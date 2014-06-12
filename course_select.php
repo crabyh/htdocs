@@ -18,19 +18,13 @@ $data = mysqli_query($dbc,$query);
   <?php include 'header.php'; ?>  
   <script type="text/javascript">
   $(document).ready(function(){
-    var seltype = $("#seltype").val();
-    var keyword = $("#keyword").val();
-    var order = $("#order").val();
+
     $("#keyword").keyup(function(){
       var seltype = $("#seltype").val();
       var keyword = $(this).val();
       var order = $("#order").val();
-      $.ajax({
-        type:"POST",
-        url: "course_select_php.php",
-        dataType: "json",
-        data: "seltype=" + seltype + "&order=" + order + "&keyword=" + keyword,
-        success: function(data){
+
+      var myFunction = function(data){
           switch (data["res"]) {
             case "none":
               $("#res").show();
@@ -83,65 +77,16 @@ $data = mysqli_query($dbc,$query);
                 }
               }); //end foreach
           }; //end switch
-        }, //end success function
-      }) //end ajax
-    }) // end keyup
+        }
 
-    $("#allBTN").click(function(event){
-      event.preventDefault();
       $.ajax({
         type:"POST",
-        url: "course_sel.php",
-        data: "seltype=all",
-        success: function(data){
-          switch (data['res']) {
-            case "none":
-              $("#res").show();
-              $("#prompt").html("No query conditions!");
-              $(".old").empty();
-              break;
-            case "noSeltype":
-              // $("#prompt").html("No query type!\nPlease choose one query type!");
-              // $(".old").empty();
-              $("#res").show();
-              $("#table").hide();
-              break;
-            case "fail":
-              $("#res").show();
-              $("#prompt").html("No records!");
-              $(".old").empty();
-              break;
-            case "noKeyword":
-              $("#res").show();
-              $("#prompt").html("No keyword!\nPlease input some keywords!");
-              $(".old").empty();
-              break;
-            default:
-              $(".old").empty();
-              $.each(data, function(row){
-                var newrow = document.createElement("tr");
-                var rowData = data[row];
-                $(newrow).addClass("old");
-                var result = "";
-                for (var i = 0; i < 4; i++) {
-                  result += "<td align='center'><small>" + rowData[i] + "</small></td>\n";
-                };
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
-                result += "<td align='center'><a type='button' class='btn btn-sm btn-default' href=''>Delete</a></td>\n";
-                $(newrow).append(result);
-                $(newrow).insertAfter( $("#tableHead") );
-                if (keyword) { 
-                  $("#prompt").hide();
-                  $("#res").show(); 
-                }else{
-                  $("#res").hide();
-                }
-              }); //end foreach
-          }; //end switch
-        }, //end success function
-      });
-    });
-
+        url: "course_select_php.php",
+        dataType: "json",
+        data: "seltype=" + seltype + "&order=" + order + "&keyword=" + keyword,
+        success: myFunction, //end success function
+      }) //end ajax
+    }) // end keyup
     
   })
   </script>
@@ -189,9 +134,6 @@ $data = mysqli_query($dbc,$query);
               </span>
               <span>
                 <input type="text" placeholder="Keyword" class="form-control" name="keyword" id="keyword">
-              </span>
-              <span class="input-group-btn">
-                <button class="btn btn-primary" name="submit" id="allBTN">View ALL courses</button>
               </span>
             </div>
           </form>

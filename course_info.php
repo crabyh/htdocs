@@ -55,6 +55,27 @@ $(document).ready(function(){
     });
   });
 
+  $("#resetBTN").click(function(event){
+    event.preventDefault();
+    var cid = $("#cid").val();
+    $.ajax({
+      type: "GET",
+      url: "course_info_php.php",
+      data: "cid=" + cid,
+      dataType: "json",
+      success: function(data){
+        var cname = data[0][1];
+        var cdept = data[0][2];
+        var credit = data[0][3];
+        var cintro = data[0][4];
+        $("#cname").val(cname);
+        $("#cdept").val(cdept);
+        $("#credit").val(credit);
+        $("#cintro").val(cintro);
+      }
+    })
+  })
+
 });
 
 </script>
@@ -132,51 +153,40 @@ $(document).ready(function(){
         </form>
 
         <form class="form-horizontal" id="latter" style="display: none">
+          <div class="col-sm-4">
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Course ID</label>
-            <div class="col-sm-4">
+            <div class="form-group">
+              <label class="control-label">Course ID</label>
               <input class="form-control" value="<?php echo $course_id ?>" id="cid" disabled>
             </div>
-          </div>
-          
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Course Name</label>
-            <div class="col-sm-4">
+            
+            <div class="form-group">
+              <label class="control-label">Course Name</label>
               <input class="form-control" id="cname" value="<?php echo $row['cname'];?>">
             </div>
-          </div>
-           
-          <div class="form-group" >
-            <label class="col-sm-2 control-label">Department</label>
-            <div class="col-sm-4">
+             
+            <div class="form-group" >
+              <label class="control-label">Department</label>
               <input class="form-control" id="cdept" value="<?php echo $row['cdepartment'];?>">
             </div>
-          </div>
-           
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Credit</label>
-            <div class="col-sm-4">
+             
+            <div class="form-group">
+              <label class="control-label">Credit</label>
               <input class="form-control" id="credit" value="<?php echo $row['credit'];?>">
             </div>
-          </div>
-          
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Description</label>
-            <div class="col-sm-4">
-              <textarea  class="form-control" rows="4" id="cintro"><?php echo $row['course_intro'];?></textarea>
-            </div>
-          </div>   
+            
+            <div class="form-group">
+              <label class="control-label">Description</label>
+                <textarea  class="form-control" rows="4" id="cintro"><?php echo $row['course_intro'];?></textarea>
+            </div>   
           <!-- <img src="..." alt="..." class="img-rounded">  -->
 
-          <div class="form-group">
-            <div class="col-sm-2">
-            </div>
-            <div class="col-sm-6">
+            <div class="form-group">
               <button class="btn btn-primary" type="submit" name="submit" value="submit" id="submitBTN">Submit</button>
-              <input class="btn btn-default" type="button" name="reset" value="reset">
+              <input class="btn btn-default" type="button" name="reset" value="reset" id="resetBTN">
             </div>
-          </div>
+
+          </div> <!-- col-sm-4 -->
         </form>
 
       </div>
