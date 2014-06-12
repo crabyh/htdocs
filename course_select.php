@@ -41,7 +41,6 @@ $data = mysqli_query($dbc,$query);
               <span class="input-group-addon">
                 <select name="seltype" id="seltype" class="selectpicker">
                   <option value="">Query By</option>
-                  <!-- <option value="all">All</option> -->
                   <option value="cid">Course ID</option>
                   <option value="cname">Course Name</option>
                   <option value="cdepartment">Department</option>
@@ -51,7 +50,6 @@ $data = mysqli_query($dbc,$query);
               <span class="input-group-addon">
                 <select name="" id="order">
                   <option value="">Order By</option>
-                  <!-- <option value="all">All</option> -->
                   <option value="cid">Course ID</option>
                   <option value="cname">Course Name</option>
                   <option value="cdepartment">Department</option>

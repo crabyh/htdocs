@@ -34,21 +34,25 @@ $data = mysqli_query($dbc,$query);
             <form>
               <div class="input-group">
                 <span class="input-group-addon">
-                  <select name="seltype" class="selectpicker">
-                    <option value="">Sort By</option>
-                    <option value="cid">Course ID</option>
-                    <option value="cname">Course Name</option>
-                    <option value="dept">Department</option>
-                    <option value="credit">Credit</option>
+                  <select name="seltype" class="selectpicker" id="seltype">
+                    <option value="">Query By</option>
+                    <option value="user_id">User ID</option>
+                    <option value="username">User Name</option>
+                    <option value="gender">Gender</option>
+                    <option value="enroll_time">Enroll Time</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
                   </select>
                 </span>
                 <span class="input-group-addon">
-                  <select name="order">
+                  <select name="order" id='order'>
                     <option value="">Order By</option>
-                    <option value="cid">Course ID</option>
-                    <option value="cname">Course Name</option>
-                    <option value="dept">Department</option>
-                    <option value="credit">Credit</option>
+                    <option value="user_id">User ID</option>
+                    <option value="username">User Name</option>
+                    <option value="gender">Gender</option>
+                    <option value="enroll_time">Enroll Time</option>
+                    <option value="phone">Phone</option>
+                    <option value="email">Email</option>
                   </select>
                 </span>
                 <span>
@@ -57,6 +61,21 @@ $data = mysqli_query($dbc,$query);
               </div> 
             </form>
           </div>  
+
+          <div id="res" style="display: none">
+            <h4 align="center">Search Results</h4>
+            <p id="prompt" align="center"></p>
+            <table class="table table-striped" id="table">
+              <tr id="tableHead">
+              <td align='center'><small> Course ID </small></td>
+              <td align='center'><small> Course Name </small></td>
+              <td align='center'><small> Department </small></td>
+              <td align='center'><small> Credit </small></td>
+              <td align='center'><small> Description </small></td>
+              <td align='center'colspan='3'><small> Action </small></td>
+              </tr>
+            </table>
+          </div>
 
         </div>
       </div>
