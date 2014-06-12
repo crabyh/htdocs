@@ -32,7 +32,7 @@ if(isset($_FILES["file"]))
       }
     else
       {
-      $iconname = $_SESSION['user_id'] . ".jpg";
+      $iconname = md5($_SESSION['user_id']) . ".jpg";
       move_uploaded_file($_FILES["file"]["tmp_name"],"uploadicon/" . $iconname);
       echo "Stored in: " . "uploadicon/" . $iconname;          
       }
@@ -219,7 +219,7 @@ $(document).ready(function(){
       </div>
       <!--即显示头像的语句-->
       <div class="col-md-4">
-        <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="uploadicon/<?php echo$_SESSION['user_id'];?>.jpg">
+        <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="uploadicon/<?php echo md5($_SESSION['user_id']);?>.jpg">
       </div>
     </div>
 
