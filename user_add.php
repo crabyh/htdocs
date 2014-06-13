@@ -159,13 +159,8 @@
 
               <div class="form-group">
                 <label>Birthday</label>
-                <!-- <input type="text" class="form-control" id="date-input" name="birthday" /> -->
 
-                <div class="control-group">
-                          <!-- <div class="form-control input-append date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd"> -->
-                          
-
-                      
+                <div class="control-group">                      
                           <div class="controls input-append date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                               <input class="form-control" size="71" value="">
                               <span class="add-on">
@@ -175,11 +170,6 @@
                                 <i class="icon-th"></i>
                               </span>
                           </div>
-
-
-
-
-                  <!-- <input type="hidden" id="dtp_input2" value="" /><br/> -->
                 </div>
 
               </div>
