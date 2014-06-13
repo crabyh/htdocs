@@ -71,7 +71,6 @@ if(isset($_FILES["file"]))
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                   <h4 class="modal-title" id="myModalLabel">Upload Icon</h4>
                 </div><!-- 里面的内容 -->
-
                 <div class="modal-body">
                   <p>Choose a picture from your computer to upload as your icon.<br />
                   Pay attention that you could only upload <b>jpg</b> file ,and the size of your file couldn't be lager than <b>20kb</b> and <b>140x140</b>.<br /><br /></p>
