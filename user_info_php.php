@@ -1,4 +1,5 @@
 <?php
+  session_start();
   require_once 'connectvars.php'; 
   $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
   $data = false;
@@ -19,7 +20,7 @@
       $data = mysqli_query($dbc, $query);
     }
   }
-  else if($_GET) {
+  else if(isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
     $query = "SELECT * FROM user_info WHERE user_id ='$user_id'";
     $data = mysqli_query($dbc, $query);
@@ -28,4 +29,5 @@
       echo json_encode($result);
     }
   }
+  else echo $_SESSION['usertype'];
 ?>

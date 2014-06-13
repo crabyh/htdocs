@@ -98,6 +98,13 @@ $(document).ready(function(){
     $("#latter").show();
     $("#editBTN").hide();
     $("#upload").show();
+    $.get("user_info_php.php", function(data){
+      if (data === "admin") {
+        $(".admin").removeAttr("disabled");
+      }else if (data === "manager") {
+        $(".manager").removeAttr("disabled");
+      }
+    })
   });
   
   $("button#doneBTN").click(function(event){

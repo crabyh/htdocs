@@ -178,7 +178,7 @@ if(isset($_FILES["file"]))
 
             <div class='form-group' >
               <label class='control-label'>User Type</label>
-              <select name="seltype" id="seltype" class="form-control" disabled>
+              <select name="seltype" id="seltype" class="form-control admin" disabled>
                 <option value="student">Student</option>
                 <option value="teacher">Teacher</option>
                 <option value="manager">Manager</option>
@@ -188,17 +188,17 @@ if(isset($_FILES["file"]))
 
             <div class='form-group' >
               <label class='control-label'>User Name</label>
-              <input class='form-control' type='text' value='<?php echo $row['username'];?>' disabled>
+              <input class='form-control admin manager' type='text' value='<?php echo $row['username'];?>' disabled>
             </div>
 
             <div class='form-group' >
               <label class='ontrol-label'>Department</label>
-              <input class='form-control' type='text' value='<?php echo $row['department'];?>' disabled>
+              <input class='form-control admin manager' type='text' value='<?php echo $row['department'];?>' disabled>
             </div>
 
             <div class='form-group' >
               <label class='control-label'>Gender</label>
-              <select name="seltype" id="seltype" class="form-control" disabled>
+              <select name="seltype" id="seltype" class="form-control admin manager" disabled>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
@@ -206,12 +206,12 @@ if(isset($_FILES["file"]))
 
             <div class='form-group' >
               <label class='control-label'>Birth Day</label>
-              <input type="date" class="form-control" name="birthday" value="<?php echo $row['birthday'];?>" disabled>
+              <input type="date" class="form-control admin manager" name="birthday" value="<?php echo $row['birthday'];?>" disabled>
             </div>
 
             <div class='form-group' >
               <label class='control-label'>Enroll Time</label>
-              <input class='form-control' type='number' value='<?php echo $row['enroll_time'];?>' disabled>
+              <input class='form-control admin manager' type='number' value='<?php echo $row['enroll_time'];?>' disabled>
             </div>
 
             <div class='form-group'>
