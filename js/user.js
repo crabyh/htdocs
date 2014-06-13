@@ -94,15 +94,16 @@ $(document).ready(function(){
   })
 
   $("button#editBTN").click(function(){
-    $("form#former").hide();
-    $("form#latter").show();
-    $("button#editBTN").hide();
+    $("#former").hide();
+    $("#latter").show();
+    $("#editBTN").hide();
+    $("#upload").show();
   });
   
   $("button#doneBTN").click(function(event){
     event.preventDefault();
-    var newphone = $("input#phonenum").val();
-    var newemail = $("input#emailaddr").val(); 
+    var newphone = $("#phonenum").val();
+    var newemail = $("#emailaddr").val(); 
     var user_id = $("#user_id").val();
     $.ajax({
       type: "POST",
@@ -115,6 +116,7 @@ $(document).ready(function(){
         $("form#latter").hide();
         $("#success").show();
         $("#editBTN").show();
+        $("#upload").show();
       },
       error: function(){
         $("#fail").show()
