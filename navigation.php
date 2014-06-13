@@ -9,6 +9,7 @@
   'course_select' => "team1",
   'course_add' => 'team1',
   'course_info' => 'team1',
+  'check_db' => 'team1',
   'about' => 'about',
    );
   var_dump($_SERVER['SCRIPT_FILENAME']);
