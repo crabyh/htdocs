@@ -46,7 +46,22 @@
             echo json_encode($response);
         }
     } 
-    else{
+    else if(isset($_POST['deluid'])) {
+        $deluid = $_POST['deluid'];
+        require_once 'connectvars.php'; 
+        $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+        $query = "DELETE FROM accounts WHERE user_id = '$deluid';";
+        $data = mysqli_query($dbc, $query);
+        if ($data) {
+            $response = array('res' => 'delSuccess');
+            echo json_encode($response);
+        }
+        else {
+            $response = array('res' => 'delFail');
+            echo json_encode($response);
+        }
+    } 
+    else {
         $response = array('res' => "none");
         echo json_encode($response);
     }

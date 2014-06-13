@@ -45,7 +45,7 @@ $(document).ready(function(){
             result += "<td align='center' id='" + i + "'><small>" + rowData[i] + "</small></td>\n";
           };
           result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
-          result += "<td align='center'><button class='btn btn-sm btn-danger del' id='del" + i + "'>Delete</button></td>\n";
+          result += "<td align='center'><button class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + i + "'>Delete</button></td>\n";
           $(newrow).append(result);
           $(newrow).insertAfter( $("#tableHead") );
           if (keyword) { 
@@ -60,16 +60,21 @@ $(document).ready(function(){
           event.preventDefault();
           var delcid = $(this).parent().siblings("#0").children().html();
           var delid = $(this).attr("id");
-          $.ajax({
-            type: "POST",
-            url: "course_select_php.php",
-            data: "delcid=" + delcid,
-            success: function(data){
-              $("#"+delid).parent().parent().remove();
-            }
-          });
-          }
-        )
+          $("#deleteBTN").mousedown(function(){
+            $.ajax({
+              type: "POST",
+              url: "course_select_php.php",
+              data: "delcid=" + delcid,
+              dataType: "json",
+              success: function(data){
+                if (data['res'] === "delSuccess") {
+                  $("#"+delid).parent().parent().remove();
+                }
+                else $("#failModal").show();
+              }
+            });// end of ajax
+          }) //end of mousedown
+        }) //end of bind click
     }; //end switch
   }
 

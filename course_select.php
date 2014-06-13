@@ -36,6 +36,63 @@ $data = mysqli_query($dbc,$query);
       <div class="panel panel-default" id="queryForm"> <!-- 查询框 -->
         <div class="panel-heading">
         <p></p>
+
+        <!-- Warn Modal -->
+        <div class="modal fade" id="warnModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="warnModalLabel">Delete</h4>
+              </div>
+              <div class="modal-body">
+                Are you sure to delete?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="closeBTN">Close</button>
+                <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" id="deleteBTN" data-toggle='modal' data-target='#successModal'>Delete</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- success Modal -->
+        <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="successModalLabel">Success</h4>
+              </div>
+              <div class="modal-body">
+                You have deleted course successfully!
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- Fail Modal -->
+        <div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="failModalLabel">Failed</h4>
+              </div>
+              <div class="modal-body">
+                Delete falied! Please try agian!
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+  
+
           <!-- 查询表单 -->
           <form>
             <div class="input-group">
