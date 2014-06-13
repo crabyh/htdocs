@@ -184,7 +184,7 @@
 
               <div class="form-group">
                 <label>Phone</label>
-                <input type="text" class="form-control" data-format="ddd-dddd-dddd" name="phone" placeholder="">
+                <input type="tel" class="form-control" data-format="ddd-dddd-dddd" name="phone" placeholder="">
               </div>
 
               <br>

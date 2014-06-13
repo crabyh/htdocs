@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
   var courseSuccess = function(data){
     var keyword = $("#courseKeyword").val();
     switch (data["res"]) {
@@ -35,8 +36,11 @@ $(document).ready(function(){
         if (!keyword) { $("#res").hide() };
         break;
       default:
+        var usertype = data[data.length-1][0];
         $(".old").empty();
-        $.each(data, function(row){
+        if (usertype === "admin") 
+            $("#description").parent().append("<td align='center'><small> Action </small></td>");
+        for (var row = 0; row < data.length - 1; row++) {
           var newrow = document.createElement("tr");
           var rowData = data[row];
           $(newrow).addClass("old");
@@ -45,7 +49,9 @@ $(document).ready(function(){
             result += "<td align='center' id='" + i + "'><small>" + rowData[i] + "</small></td>\n";
           };
           result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='course_info.php?course_id=" + rowData[0] + "'>More</a></td>\n";
-          result += "<td align='center'><button class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + i + "'>Delete</button></td>\n";
+          if (usertype === "admin") {
+            result += "<td align='center'><button class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + i + "'>Delete</button></td>\n";
+          }
           $(newrow).append(result);
           $(newrow).insertAfter( $("#tableHead") );
           if (keyword) { 
@@ -55,7 +61,7 @@ $(document).ready(function(){
           }else{
             $("#res").hide();
           }
-        }); //end foreach
+        } //end foreach
         $(".del").bind("click",function(event){
           event.preventDefault();
           var delcid = $(this).parent().siblings("#0").children().html();

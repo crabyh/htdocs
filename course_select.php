@@ -2,15 +2,13 @@
 <html lang="en">
 
 <!-- checking illegal access -->
-<?php include 'check_access.php'; ?>
+<?php 
+include 'check_access.php'; 
+?>
 
 <!-- accessing database -->
 <?php 
-require_once 'connectvars.php'; 
-$dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-$user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
-$query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
-$data = mysqli_query($dbc,$query);
+// $user_id = $_SEESION['user_id'];
 ?>
 
 <!-- include head file-->
@@ -33,7 +31,8 @@ $data = mysqli_query($dbc,$query);
         </h1>      
       </div>
 
-      <div class="panel panel-default" id="queryForm"> <!-- 查询框 -->
+      <!-- 查询框 -->
+      <div class="panel panel-default" id="queryForm"> 
         <div class="panel-heading">
         <p></p>
 
@@ -130,8 +129,7 @@ $data = mysqli_query($dbc,$query);
             <td align='center'><small> Course Name </small></td>
             <td align='center'><small> Department </small></td>
             <td align='center'><small> Credit </small></td>
-            <td align='center'><small> Description </small></td>
-            <td align='center'colspan='3'><small> Action </small></td>
+            <td align='center' id="description"><small> Description </small></td>
             </tr>
           </table>
         </div>
