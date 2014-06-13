@@ -45,15 +45,25 @@ include "system_log_write.php";
             $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
             $user_id = mysqli_real_escape_string($dbc,trim($_POST['user_id']));
             $user_password = mysqli_real_escape_string($dbc,trim($_POST['password']));
+            //sqlinjection test begin
+            $sqltest1 = strlen($user_id) - strlen(trim($_POST['user_id']));//若有注入，则值不为0
+            $sqltest2 = strlen($user_password) - strlen(trim($_POST['password']));
+            if( ($sqltest1!= 0) || ($sqltest2!=0) ){
+              //发现sql注入 写入系统日志
+              $systemloginput = "<br /><br /> Someone tried sql injection in login interface using User Name:" .$_POST['user_id'] . " and Password:".$_POST['password'] . " at ".date('Y-m-d H:i');
+              systemlogwrite($systemloginput);
+              //系统日志写入结束 需要报错并不再执行以下语句
+              //包子加一下报错？
+            }
+            //sqlinjection test end 下面是不是应该加个else？
             $md5_user_password=md5("$user_password"); //PHP中的mds()函数用于对字符串进行加密
             $query = "SELECT user_id, usertype FROM accounts WHERE user_id = '$user_id' AND password = '$md5_user_password'";
             $data = mysqli_query($dbc,$query);
             $error = true;
             if(mysqli_num_rows($data)==1){ //用用户名和密码进行查询，若查到的记录正好为一条，则将登录写入系统日志，设置SESSION和COOKIE，同时进行页面重定向
-              // //写入系统日志
-              // $sysfile=fopen("SystemLog/SystemLog.txt","a+")or exit("Unable to open SystemLog file!");
-              //    fwrite($sysfile,"<br /><br />".$_POST['user_id']." loged in the system at ".date('Y-m-d H:i'));
-              // fclose($sysfile);
+              //写入系统日志 这里有过修改 by女王 6.13 12:15
+              //$systemloginput = "<br /><br />".$_POST['user_id']." loged in the system at ".date('Y-m-d H:i');
+              //systemlogwrite($systemloginput);
               //写入系统日志结束
               $row = mysqli_fetch_array($data);
               $_SESSION['user_id']=$row['user_id'];
