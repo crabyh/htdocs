@@ -1,5 +1,5 @@
 <div id="footer">
   <div class="container">
-    <p class="text-muted">This part is implemented by Group1 Team1 Mr. Bao and his little friends.</p>
+    <p class="text-muted">© Group1 2014. Framework and basic UI by Team1 Mr. Bao and his little friends.</p>
   </div>
 </div>
