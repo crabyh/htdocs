@@ -31,8 +31,6 @@ $arruser = mysqli_query($dbc, $sqluser);
 $resacc = mysqli_fetch_all($arracc);
 $rescourse = mysqli_fetch_all($arrcourse);
 $resuser = mysqli_fetch_all($arruser);
-
-
 ?>
 
 <!-- include head file-->
@@ -55,76 +53,81 @@ $resuser = mysqli_fetch_all($arruser);
         </h1>      
       </div>
 
+    <div class="bs-example bs-example-tabs">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#accounts" data-toggle="tab">accounts</a></li>
+        <li class=""><a href="#course_info" data-toggle="tab" id="profileLable">course_info</a></li>
+        <li class=""><a href="#user_info" data-toggle="tab" id="proLable">user_info</a></li>
+      </ul>
 
-      <h4 align="center">accounts</h4>
-      <p id="prompt" align="center"></p>
-      <table class="table table-striped" id="table">
-        <tr>
-          <td align='center'><small> user_id </small></td>
-          <td align='center'><small> password </small></td>
-          <td align='center'><small> usertype </small></td>
-        </tr> 
-        <?php 
-          foreach ($arracc as $accountRow){
-            echo "<tr>";
-            foreach ($accountRow as $col){
-              echo "<td align='center'><small>".$col."</small></td>";
-            }
-            echo "</tr>";
-          }
-        ?>
-      </table>
-      <br/>
+      <div class="tab-content">
+        <div class="tab-pane fade active in" id="accounts">
+          <table class="table table-striped">
+            <tr>
+              <td align='center'><small> user_id </small></td>
+              <td align='center'><small> password </small></td>
+              <td align='center'><small> usertype </small></td>
+            </tr> 
+            <?php
+              foreach ($arracc as $accountRow){
+                echo "<tr>";
+                foreach ($accountRow as $col){
+                  echo "<td align='center'><small>".$col."</small></td>";
+                }
+                echo "</tr>";
+             }
+            ?>
+          </table>
+        </div>
 
+        <div class="tab-pane fade" id="course_info">
+          <table class="table table-striped">
+            <tr>
+            <td align='center'><small> cid </small></td>
+            <td align='center'><small> cname </small></td>
+            <td align='center'><small> cdepartment </small></td>
+            <td align='center'><small> credit </small></td>
+            <td align='center'><small> course_intro </small></td>
+            </tr>
+            <?php 
+              foreach ($arrcourse as $courseRow){
+                echo "<tr>";
+                foreach ($courseRow as $col){
+                  echo "<td align='center'><small>".$col."</small></td>";
+                }
+                echo "</tr>";
+              }
+            ?>
+          </table>
+        </div>
 
+         <div class="tab-pane fade" id="user_info">
+          <table class="table table-striped">
+            <tr>
+            <td align='center'><small> user_id </small></td>
+            <td align='center'><small> username </small></td>
+            <td align='center'><small> department </small></td>
+            <td align='center'><small> gender </small></td>
+            <td align='center'><small> birthday </small></td>
+            <td align='center'><small> enroll_time </small></td>
+            <td align='center'><small> phone </small></td>
+            <td align='center'><small> email </small></td>
+            </tr>
+            <?php
+              $resuser = mysqli_fetch_all($arruser);
+              foreach ($arruser as $userRow){
+                echo "<tr>";
+                foreach ($userRow as $col){
+                  echo "<td align='center'><small>".$col."</small></td>";
+                }
+                echo "</tr>";
+              }
+            ?>
+          </table>
 
-      <h4 align="center">course_info</h4>
-      <p id="prompt" align="center"></p>
-      <table class="table table-striped" id="table">
-        <tr>
-        <td align='center'><small> cid </small></td>
-        <td align='center'><small> cname </small></td>
-        <td align='center'><small> cdepartment </small></td>
-        <td align='center'><small> credit </small></td>
-        <td align='center'><small> course_intro </small></td>
-        </tr>
-        <?php 
-          foreach ($arrcourse as $courseRow){
-            echo "<tr>";
-            foreach ($courseRow as $col){
-              echo "<td align='center'><small>".$col."</small></td>";
-            }
-            echo "</tr>";
-          }
-        ?>
-      </table>
-      <br/>
-
-
-      <h4 align="center">user_info</h4>
-      <p id="prompt" align="center"></p>
-      <table class="table table-striped" id="table">
-        <tr>
-        <td align='center'><small> user_id </small></td>
-        <td align='center'><small> username </small></td>
-        <td align='center'><small> department </small></td>
-        <td align='center'><small> gender </small></td>
-        <td align='center'><small> birthday </small></td>
-        <td align='center'><small> enroll_time </small></td>
-        <td align='center'><small> phone </small></td>
-        <td align='center'><small> email </small></td>
-        </tr>
-        <?php 
-          foreach ($arruser as $userRow){
-            echo "<tr>";
-            foreach ($userRow as $col){
-              echo "<td align='center'><small>".$col."</small></td>";
-            }
-            echo "</tr>";
-          }
-        ?>
-      </table>
-
+        </div>
+      </div>
+    </div>
 
 
 
