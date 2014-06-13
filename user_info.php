@@ -212,7 +212,7 @@ if(isset($_FILES["file"]))
 
           <div class='form-group' >
             <label class='control-label'>Birth Day</label>
-            <input type="date" class="form-control" name="user_id" value="<?php echo $row['birthday'];?>">
+            <input type="date" class="form-control" name="birthday" value="<?php echo $row['birthday'];?>">
           </div>
 
           <div class='form-group' >

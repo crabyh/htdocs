@@ -83,19 +83,34 @@
 
                     $query = "INSERT INTO user_info VALUES('$u_id','$u_name','$department','$gender',date('$birthday'),'$enroll_time','$phone','$email');";
                     $data = mysqli_query($dbc,$query);
-                    if(mysqli_num_rows($data)==1)
-                    {
-                      echo'<script type="text/javascript"> 
-                       setTimeout(window.location.href="loged.php?passw_ch=success",3); 
-                       </script>';
-                    }
-                    else
-                    {
-                      // echo mysqli_errno($dbc)." ".mysqli_error($dbc);
+                    echo'<div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                          <h4>
+                            Adding user success!
+                          </h4>
+                          <p>User ID: '.$u_id.'</p>
+                          <p>User Name: '.$u_name.'</p>
+                          <p>User Type: '.$typ.'</p>
+                          <p>Gender: '.$gender.'</p>
+                          <p>Department: '.$department.'</p>
+                          <p>Enroll Time: '.$enroll_time.'</p>
+                          <p>Birthday: '.$birthday.'</p>
+                          <p>Email: '.$email.'</p>
+                          <p>Phone: '.$phone.'</p>
+                        </div>';
+                    // if(mysqli_num_rows($data)==1)
+                    // {
+                    //   echo'<script type="text/javascript"> 
+                    //    setTimeout(window.location.href="loged.php?passw_ch=success",3); 
+                    //    </script>';
+                    // }
+                    // else
+                    // {
+                    //   // echo mysqli_errno($dbc)." ".mysqli_error($dbc);
 
-                      echo'<script type="text/javascript"> 
-                         setTimeout(window.location.href="loged.php?passw_ch=success",3); 
-                        </script>';}
+                    //   echo'<script type="text/javascript"> 
+                    //      setTimeout(window.location.href="loged.php?passw_ch=success",3); 
+                    //     </script>';}
                 }
             }
 
@@ -157,21 +172,9 @@
                 <input type="number" class="form-control" name="enroll_time" value="2014">
               </div>
 
-              <div class="form-group">
-                <label>Birthday</label>
-
-                <div class="control-group">                      
-                          <div class="controls input-append date form_date" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                              <input class="form-control" size="71" value="">
-                              <span class="add-on">
-                                <i class="icon-remove"></i>
-                              </span>
-                              <span class="add-on">
-                                <i class="icon-th"></i>
-                              </span>
-                          </div>
-                </div>
-
+              <div class='form-group' >
+                <label class='control-label'>Birth Day</label>
+                <input type="date" class="form-control" name="birthday" value="">
               </div>
 
               <div class="form-group">
@@ -181,7 +184,7 @@
 
               <div class="form-group">
                 <label>Phone</label>
-                <input type="tel" class="form-control" name="phone" placeholder="">
+                <input type="text" class="form-control" data-format="ddd-dddd-dddd" name="phone" placeholder="">
               </div>
 
               <br>
