@@ -35,7 +35,7 @@ if(isset($_FILES["file"]))
       {
       $iconname = md5($_SESSION['user_id']) . ".jpg";
       move_uploaded_file($_FILES["file"]["tmp_name"],"uploadicon/" . $iconname);
-      echo "Stored in: " . "uploadicon/" . $iconname;          
+      //echo "Stored in: " . "uploadicon/" . $iconname;          
       }
     }
     else

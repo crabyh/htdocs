@@ -1,7 +1,7 @@
 <?php
-function SystemLogWrite($data)
+function systemlogwrite($data)
 {
-$sysfile=fopen("SystemLog/SystemLog.txt","a+")or exit("Unable to open SystemLog file!");
+$sysfile=fopen("systemlog/systemlog.txt","a+")or exit("Unable to open SystemLog file!");
 fwrite($sysfile,$data);
 fclose($sysfile);
 }

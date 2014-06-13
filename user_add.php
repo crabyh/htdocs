@@ -5,6 +5,12 @@
 <!-- checking illegal access -->
 <?php include 'check_access.php'; ?>
 
+<!--CheckUserType-->
+<?php 
+include 'check_user_type.php';
+CheckUserType('manager');
+?> 
+
 <!-- include head file-->
 <head>
 <?php include 'header.php'; ?>
@@ -12,21 +18,70 @@
 </head>
 
 <body>
-
     <!-- Wrap all page content here -->
     <div id="wrap">
 
       <!-- Fixed navbar -->
       <?php include 'navigation.php'; ?>
 
-      <!--CheckUserType-->
-      <?php 
-      include 'check_user_type.php';
-      CheckUserType('manager');
-      ?> 
-
       <!-- Begin page content -->
       <div class="container">
+        <!-- success Modal -->
+          <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="successModalLabel">Success</h4>
+                </div>
+                <div class="modal-body">
+                  You have deleted course successfully!
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+          
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="myModalLabel">Upload Icon</h4>
+                </div><!-- 里面的内容 -->
+
+                <div class="modal-body">
+                  <p>Choose a picture from your computer to upload as your icon.<br />
+                  Pay attention that you could only upload <b>jpg</b> file ,and the size of your file couldn't be lager than <b>20kb</b> and <b>140x140</b>.<br /><br /></p>
+                  <form method="POST" action="user_info.php" enctype="multipart/form-data">
+                    <input type="hidden" name="MAX_FILE_SIZE" value="1024000" />
+                    <input type="file" name="file" id="file"/><br />
+                    <input class="btn btn-primary" type="submit" value="Upload" /></p>
+                  </form>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+          <!-- Fail Modal -->
+          <div class="modal fade" id="failModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="failModalLabel">Failed</h4>
+                </div>
+                <div class="modal-body">
+                  Delete falied! Please try agian!
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
         <div class="page-header">
           <h1>Add User
           </h1>
@@ -130,7 +185,7 @@
               </div>
 
               <div class="form-group">
-                <label >New password</label>
+                <label >Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password" required>
               </div>
 
