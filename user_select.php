@@ -4,6 +4,12 @@
 <!-- checking illegal access -->
 <?php include 'check_access.php'; ?>
 
+<!--CheckUserType-->
+<?php 
+include 'check_user_type.php';
+CheckUserType('manager');
+?> 
+
 <!-- accessing database -->
 <?php 
 require_once 'connectvars.php'; 

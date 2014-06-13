@@ -44,6 +44,7 @@
             <li><a href="user_add.php">Add User</a></li>
             <li><a href="user_select.php">User Select</a></li>
             <li><a href="system_log_check.php">Check SystemLog</a></li>
+            <li><a href="check_db.php">View Database</a></li>
 
           </ul>
         </li>

@@ -5,6 +5,12 @@
 <!-- checking illegal access -->
 <?php include 'check_access.php'; ?>
 
+<!--CheckUserType-->
+<?php 
+include 'check_user_type.php';
+CheckUserType('manager');
+?> 
+
 <!-- include head file-->
 <head>
 <?php include 'header.php'; ?>
@@ -17,12 +23,6 @@
 
       <!-- Fixed navbar -->
       <?php include 'navigation.php'; ?>
-
-      <!--CheckUserType-->
-      <?php 
-      include 'check_user_type.php';
-      CheckUserType('manager');
-      ?> 
 
       <!-- Begin page content -->
       <div class="container">
