@@ -3,7 +3,7 @@
   require_once 'connectvars.php'; 
   $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
   $data = false;
-  if($_POST){ 
+  if(isset($_POST['user_id'])) { 
     $data = FALSE;
     $user_id = $_POST['user_id'];
     if($_POST['phone']!=''){
@@ -30,4 +30,5 @@
     }
   }
   else echo $_SESSION['usertype'];
+
 ?>

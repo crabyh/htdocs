@@ -17,31 +17,6 @@ if(mysqli_num_rows($data)==1){
 }
 ?>
 
-<!--上传头像的php部分 by 女王-->
-<?php 
-if(isset($_FILES["file"]))
-{
-  if ((//($_FILES["file"]["type"] == "image/png")||
-     ($_FILES["file"]["type"] == "image/jpeg")
-  || ($_FILES["file"]["type"] == "image/pjpeg")
-  )
-  && ($_FILES["file"]["size"] < 2000000))
-    {
-    if ($_FILES["file"]["error"] > 0)
-      {
-      echo "Error: " . $_FILES["file"]["error"] . "<br />";//上传错误
-      }
-    else
-      {
-      $iconname = md5($_SESSION['user_id']) . ".jpg";
-      move_uploaded_file($_FILES["file"]["tmp_name"],"uploadicon/" . $iconname);
-      //echo "Stored in: " . "uploadicon/" . $iconname;          
-      }
-    }
-    else
-      echo "file type or size wrong.";
-}
-?>
 
 
 <!-- include head file-->
@@ -66,8 +41,33 @@ if(isset($_FILES["file"]))
             <button class="btn btn-sm btn-default" id='editBTN'>Edit</button>
           </small>
         </h1>
-          <!-- <button class="btn btn-sm btn-default" id='uploadicon' data-toggle="modal" data-target="#myModal" style="display: none">UploadIcon</button></h1>  -->   
-          <!-- data-tog 到myModal均为下拉菜单的代码部分     -->
+
+        <!--上传头像的php部分 by 女王-->
+        <?php 
+        if(isset($_FILES["file"]))
+        {
+          if ((
+              ($_FILES["file"]["type"] == "image/jpeg") 
+              || ($_FILES["file"]["type"] == "image/pjpeg"))
+              && ($_FILES["file"]["size"] < 2000000))
+          {
+            if ($_FILES["file"]["error"] > 0)
+            {
+              echo '<script type="text/javascript">$(document).ready(function(){ $("#fail").show(); })</script>';
+            }
+            else
+            {
+              $iconname = md5($_SESSION['user_id']) . ".jpg";
+              move_uploaded_file($_FILES["file"]["tmp_name"],"uploadicon/" . $iconname);
+              echo '<script type="text/javascript">$(document).ready(function(){ $("#success").show(); })</script>';    
+            }
+          }
+            else
+              echo '<script type="text/javascript">$(document).ready(function(){ $("#fail").show(); })</script>';
+        }
+        ?>
+
+          
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -83,7 +83,7 @@ if(isset($_FILES["file"]))
                 <form method="POST" action="user_info.php" enctype="multipart/form-data">
                   <input type="hidden" name="MAX_FILE_SIZE" value="1024000" />
                   <input type="file" name="file" id="file"/><br />
-                  <input class="btn btn-primary" type="submit" value="Upload" /></p>
+                  <input class="btn btn-primary" type="submit" value="Upload" id="uploadInModal"/></p>
                 </form>
               </div>
             </div><!-- /.modal-content -->
