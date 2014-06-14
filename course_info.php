@@ -94,7 +94,7 @@ if(mysqli_num_rows($data)==1)
         </form>
 
         <form class="form-horizontal" id="latter" style="display: none">
-          <div class="col-sm-4">
+          <div class="col-sm-5">
 
             <div class="form-group">
               <label class="control-label">Course ID</label>

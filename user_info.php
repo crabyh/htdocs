@@ -107,8 +107,9 @@ if(mysqli_num_rows($data)==1){
 
       <!-- page body -->
       <!-- former table used to display info of user -->
-      <div class="col-md-6">
+
         <form class="form-horizontal" id='former'>
+          <div class="col-md-5">
 
               <div class="form-group" >
                 <label class="col-md-4 control-label">User ID</label>
@@ -165,11 +166,13 @@ if(mysqli_num_rows($data)==1){
                   <p class="form-control-static" id="email_label"><?php echo $row['email'];?></p>
                 </div>
               </div>
-            
+
+            </div>
         </form>
 
         <!-- latter form used to edit info -->
         <form role='form' class='form-horizontal' id='latter' style="display: none">
+          <div class="col-md-5">
 
             <div class='form-group' >
               <label class='control-label'>User ID</label>
@@ -229,9 +232,9 @@ if(mysqli_num_rows($data)==1){
               <button class='btn btn-primary' name='submit' type='submit' value='Done' id='doneBTN'>Done</button>
               <input class="btn btn-default" type="button" name="reset" value="reset" id="resetBTN">
             </div>
+          </div>
 
         </form>
-      </div>
 
       <!--即显示头像的语句-->
       <div class="col-md-4">
