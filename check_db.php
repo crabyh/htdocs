@@ -28,9 +28,6 @@ $arracc = mysqli_query($dbc, $sqlacc);
 $arrcourse = mysqli_query($dbc, $sqlcourse);
 $arruser = mysqli_query($dbc, $sqluser);
 
-$resacc = mysqli_fetch_all($arracc);
-$rescourse = mysqli_fetch_all($arrcourse);
-$resuser = mysqli_fetch_all($arruser);
 ?>
 
 <!-- include head file-->
@@ -69,13 +66,14 @@ $resuser = mysqli_fetch_all($arruser);
               <td align='center'><small> usertype </small></td>
             </tr> 
             <?php
-              foreach ($arracc as $accountRow){
-                echo "<tr>";
-                foreach ($accountRow as $col){
-                  echo "<td align='center'><small>".$col."</small></td>";
+				
+                while($row = mysqli_fetch_row($arracc)){
+                    echo "<tr>";
+                    foreach ($row as $key => $value){
+                        echo "<td align='center'><small>".$value."</small></td>";
+                    }
+                    echo "<tr>";
                 }
-                echo "</tr>";
-             }
             ?>
           </table>
         </div>
@@ -90,13 +88,13 @@ $resuser = mysqli_fetch_all($arruser);
             <td align='center'><small> course_intro </small></td>
             </tr>
             <?php 
-              foreach ($arrcourse as $courseRow){
-                echo "<tr>";
-                foreach ($courseRow as $col){
-                  echo "<td align='center'><small>".$col."</small></td>";
+				while($row = mysqli_fetch_row($arrcourse)){
+                    echo "<tr>";
+                    foreach ($row as $key => $value){
+                        echo "<td align='center'><small>".$value."</small></td>";
+                    }
+                    echo "<tr>";
                 }
-                echo "</tr>";
-              }
             ?>
           </table>
         </div>
@@ -114,14 +112,13 @@ $resuser = mysqli_fetch_all($arruser);
             <td align='center'><small> email </small></td>
             </tr>
             <?php
-              $resuser = mysqli_fetch_all($arruser);
-              foreach ($arruser as $userRow){
-                echo "<tr>";
-                foreach ($userRow as $col){
-                  echo "<td align='center'><small>".$col."</small></td>";
+				while($row = mysqli_fetch_row($arruser)){
+                    echo "<tr>";
+                    foreach ($row as $key => $value){
+                        echo "<td align='center'><small>".$value."</small></td>";
+                    }
+                    echo "<tr>";
                 }
-                echo "</tr>";
-              }
             ?>
           </table>
 
