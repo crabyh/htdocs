@@ -31,11 +31,11 @@
                 }
             }
             $arr = mysqli_query($dbc, $sql);  //执行SQL
-            if($arr){ //如果从数据库中取出数据
+            if(mysqli_num_rows($arr)){ //如果从数据库中取出数据
                 while ($row = mysqli_fetch_row($arr)) {
                     $res[] = $row;
                 }
-                $res[] = $_SESSION['usertype'];
+                $res[] = array($_SESSION['usertype']);
                 echo json_encode($res);
             } // end IF 取数据
             else {

@@ -36,7 +36,8 @@ $(document).ready(function(){
               if (!keyword) { $("#res").hide() };
               break;
             default:
-              $(".old").empty();
+              if (usertype === "admin" || usertype === "manager") 
+                $("#description").parent().append("<td align='center'><small> Action </small></td>");
               $.each(data, function(row){
                 var newrow = document.createElement("tr");
                 var rowData = data[row];

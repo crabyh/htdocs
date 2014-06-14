@@ -37,6 +37,7 @@ $(document).ready(function(){
         break;
       default:
         var usertype = data[data.length-1][0];
+        console.log(usertype);
         $(".old").empty();
         if (usertype === "admin" || usertype === "manager") 
             $("#description").parent().append("<td align='center'><small> Action </small></td>");
