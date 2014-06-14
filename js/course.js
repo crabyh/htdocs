@@ -8,7 +8,7 @@ $(document).ready(function(){
         $("#prompt").html("No query conditions!");
         $("#prompt").show();
         $("#table").hide();
-        $(".old").empty();
+        $(".old").remove();
         if (!keyword) { $("#res").hide() };
         break;
       case "noSeltype":
@@ -16,7 +16,7 @@ $(document).ready(function(){
         $("#prompt").show();
         $("#table").hide();
         $("#res").show();
-        $(".old").empty();
+        $(".old").remove();
         if (!keyword) { $("#res").hide() };
         break;
       case "fail":
@@ -24,7 +24,7 @@ $(document).ready(function(){
         $("#prompt").html("No records!");
         $("#prompt").show();
         $("#table").hide();
-        $(".old").empty();
+        $(".old").remove();
         if (!keyword) { $("#res").hide() };
         break;
       case "noKeyword":
@@ -32,15 +32,15 @@ $(document).ready(function(){
         $("#prompt").html("No keyword!\nPlease input some keywords!");
         $("#prompt").show();
         $("#table").hide();
-        $(".old").empty();
+        $(".old").remove();
         if (!keyword) { $("#res").hide() };
         break;
       default:
         var usertype = data[data.length-1][0];
         console.log(usertype);
-        $(".old").empty();
+        $(".old").remove();
         if (usertype === "admin" || usertype === "manager") 
-            $("#description").parent().append("<td align='center'><small> Action </small></td>");
+            $("#description").parent().append("<td align='center' class='old'><small> Action </small></td>");
         for (var row = 0; row < data.length - 1; row++) {
           var newrow = document.createElement("tr");
           var rowData = data[row];
