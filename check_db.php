@@ -59,68 +59,80 @@ $arruser = mysqli_query($dbc, $sqluser);
 
       <div class="tab-content">
         <div class="tab-pane fade active in" id="accounts">
-          <table class="table table-striped">
-            <tr>
-              <td align='center'><small> user_id </small></td>
-              <td align='center'><small> password </small></td>
-              <td align='center'><small> usertype </small></td>
-            </tr> 
-            <?php
-				
-                while($row = mysqli_fetch_row($arracc)){
-                    echo "<tr>";
-                    foreach ($row as $key => $value){
-                        echo "<td align='center'><small>".$value."</small></td>";
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table table-striped">
+                <tr>
+                  <td align='center'><small> user_id </small></td>
+                  <td align='center'><small> password </small></td>
+                  <td align='center'><small> usertype </small></td>
+                </tr> 
+                <?php
+    				
+                    while($row = mysqli_fetch_row($arracc)){
+                        echo "<tr>";
+                        foreach ($row as $key => $value){
+                            echo "<td align='center'><small>".$value."</small></td>";
+                        }
+                        echo "<tr>";
                     }
-                    echo "<tr>";
-                }
-            ?>
-          </table>
+                ?>
+              </table>
+            </div>
+          </div>
         </div>
 
         <div class="tab-pane fade" id="course_info">
-          <table class="table table-striped">
-            <tr>
-            <td align='center'><small> cid </small></td>
-            <td align='center'><small> cname </small></td>
-            <td align='center'><small> cdepartment </small></td>
-            <td align='center'><small> credit </small></td>
-            <td align='center'><small> course_intro </small></td>
-            </tr>
-            <?php 
-				while($row = mysqli_fetch_row($arrcourse)){
-                    echo "<tr>";
-                    foreach ($row as $key => $value){
-                        echo "<td align='center'><small>".$value."</small></td>";
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table table-striped">
+                <tr>
+                <td align='center'><small> cid </small></td>
+                <td align='center'><small> cname </small></td>
+                <td align='center'><small> cdepartment </small></td>
+                <td align='center'><small> credit </small></td>
+                <td align='center'><small> course_intro </small></td>
+                </tr>
+                <?php 
+    				while($row = mysqli_fetch_row($arrcourse)){
+                        echo "<tr>";
+                        foreach ($row as $key => $value){
+                            echo "<td align='center'><small>".$value."</small></td>";
+                        }
+                        echo "<tr>";
                     }
-                    echo "<tr>";
-                }
-            ?>
-          </table>
+                ?>
+              </table>
+            </div>
+          </div>
         </div>
 
          <div class="tab-pane fade" id="user_info">
-          <table class="table table-striped">
-            <tr>
-            <td align='center'><small> user_id </small></td>
-            <td align='center'><small> username </small></td>
-            <td align='center'><small> department </small></td>
-            <td align='center'><small> gender </small></td>
-            <td align='center'><small> birthday </small></td>
-            <td align='center'><small> enroll_time </small></td>
-            <td align='center'><small> phone </small></td>
-            <td align='center'><small> email </small></td>
-            </tr>
-            <?php
-				while($row = mysqli_fetch_row($arruser)){
-                    echo "<tr>";
-                    foreach ($row as $key => $value){
-                        echo "<td align='center'><small>".$value."</small></td>";
-                    }
-                    echo "<tr>";
-                }
-            ?>
-          </table>
+          <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-striped">
+                  <tr>
+                  <td align='center'><small> user_id </small></td>
+                  <td align='center'><small> username </small></td>
+                  <td align='center'><small> department </small></td>
+                  <td align='center'><small> gender </small></td>
+                  <td align='center'><small> birthday </small></td>
+                  <td align='center'><small> enroll_time </small></td>
+                  <td align='center'><small> phone </small></td>
+                  <td align='center'><small> email </small></td>
+                  </tr>
+                  <?php
+      				while($row = mysqli_fetch_row($arruser)){
+                          echo "<tr>";
+                          foreach ($row as $key => $value){
+                              echo "<td align='center'><small>".$value."</small></td>";
+                          }
+                          echo "<tr>";
+                      }
+                  ?>
+                </table>
+              </div>
+            </div>
 
         </div>
       </div>
