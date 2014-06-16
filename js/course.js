@@ -154,4 +154,17 @@ $(document).ready(function(){
     })
   })
 
+  $("#addClass").click(function(event){
+    event.preventDefault();
+    var newClass = '<div class="form-group col-md-6"> \
+                      <label>Teacher Name</label> \
+                      <input type="text" class="form-control" name="teacher[]"> \
+                    </div>\
+                    <div class="form-group col-md-6"> \
+                      <label>Quantity</label> \
+                      <input type="text" class="form-control" name="quantity[]"> \
+                    </div>';
+    $(newClass).insertBefore( $("#addClass").parent() );
+  })
+
 })

@@ -12,7 +12,6 @@
   'check_db' => 'team1',
   'about' => 'about',
    );
-  var_dump($_SERVER['SCRIPT_FILENAME']);
   $current_page = pathinfo($_SERVER['SCRIPT_FILENAME'], PATHINFO_FILENAME);
   foreach ($nav as $page => $navbar) {
     if ($page == $current_page) {

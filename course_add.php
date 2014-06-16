@@ -13,6 +13,7 @@ CheckUserType('manager');
 <!-- include head file-->
 <head>
 <?php include 'header.php'; ?>
+<script type="text/javascript" src="js/course.js"></script>
 </head>
 
 <body>
@@ -33,11 +34,13 @@ CheckUserType('manager');
           $cid = $_POST['cid'];
           $cname = $_POST['cname'];
           $cdepartment = $_POST['cdepartment'];
-          $credit = $_POST['credit'];          
+          $credit = $_POST['credit'];         
           require_once 'connectvars.php'; 
           $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
           $query = "SELECT * FROM course_info WHERE cid = '$cid'";
           $data = mysqli_query($dbc,$query);
+          $course_intro = $_POST['course_intro'];
+          $c_hour = $_POST['c_hour'];
           if(mysqli_num_rows($data)==1)
             echo'<div class="alert alert-danger alert-dismissable">
                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -46,23 +49,25 @@ CheckUserType('manager');
                     </h4> <strong>Please try another one.</strong>
                   </div>';
           else{
-            $query = "INSERT INTO course_info (cid, cname, cdepartment, credit) VALUES ('$cid', '$cname', '$cdepartment', $credit)";
-            $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
-            if(isset($_POST['course_intro'])){
-              $course_intro = $_POST['course_intro'];
-              $query = "UPDATE course_info SET course_intro = '$course_intro' WHERE cid = '$cid'";
-              $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
-              echo'<div class="alert alert-success alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                      <h4>
-                        Adding course success!
-                      </h4>
-                      <p>Course ID: '.$cid.'</p>
-                      <p>Course Name: '.$cname.'</p>
-                      <p>Department: '.$cdepartment.'</p>
-                      <p>Credit: '.$credit.'</p>
-                    </div>';
+            $courseQuery = "INSERT INTO course_info (cid, cname, cdepartment, credit, course_intro) VALUES ('$cid', '$cname', '$cdepartment', $credit, '$course_intro')";
+            mysqli_query($dbc, $courseQuery);
+            for ($i=0; $i < count($_POST['teacher']); $i++) { 
+              $teacher = $_POST['teacher'][$i];
+              $quantity = $_POST['quantity'][$i];
+              $class_id = $cid."$i";
+              $classQuery = "INSERT INTO class_info (class_id, user_id, c_hour, quantity, cid) VALUES ('$class_id', '$teacher', $c_hour, $quantity, '$cid')";
+              mysqli_query($dbc, $classQuery);
             }
+            echo'<div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h4>
+                    Adding course success!
+                  </h4>
+                  <p>Course ID: '.$cid.'</p>
+                  <p>Course Name: '.$cname.'</p>
+                  <p>Department: '.$cdepartment.'</p>
+                  <p>Credit: '.$credit.'</p>
+                </div>';
           }
         }
         ?>
@@ -72,50 +77,70 @@ CheckUserType('manager');
 
         <!-- page body -->
         <div class="row clearfix"> 
-          <div class="col-md-5 column">
-            <form class="form" method="post" id='9'>
-              
-              <div class="form-group">
-                <label>Course ID</label>
-                <input type="text" class="form-control" name="cid" placeholder="">
-              </div>
-              
-              <div class="form-group">
-                <label>Course Name</label>
-                <input type="text" class="form-control" name="cname" placeholder="">
-              </div>
+          <form class="form" method="post">
+            <div class="col-md-6 column">
+                
+                <div class="form-group">
+                  <label>Course ID</label>
+                  <input type="text" class="form-control" name="cid" placeholder="">
+                </div>
+                
+                <div class="form-group">
+                  <label>Course Name</label>
+                  <input type="text" class="form-control" name="cname" placeholder="">
+                </div>
 
-              <div class="form-group">
-                <label>Department</label>
-                <input type="text" class="form-control" name="cdepartment" placeholder="">
-              </div>
+                <div class="form-group">
+                  <label>Department</label>
+                  <input type="text" class="form-control" name="cdepartment" placeholder="">
+                </div>
 
-              <div class="form-group">
-                <label>Credit</label>
-                <input type="text" class="form-control" name="credit" placeholder="">
-              </div>
+                <div class="form-group">
+                  <label>Credit</label>
+                  <input type="text" class="form-control" name="credit" placeholder="">
+                </div>
 
-              <div class="form-group">
-                <label>Description</label>
-                <textarea type="text" class="form-control" name="course_intro" rows="5"> </textarea>
-              </div>
+                <div class="form-group">
+                  <label>Course Hours</label>
+                  <input type="text" class="form-control" name="c_hour" placeholder="">
+                </div>
 
-              <br>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea type="text" class="form-control" name="course_intro" rows="5"> </textarea>
+                </div>
 
-              <div class="form-group">
-                <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
-                <button type="" class="btn btn-default" name="reset" value="reset">Reset</button>
-              </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+                  <button type="" class="btn btn-default" name="reset" value="reset">Reset</button>
+                </div>
+       
+            </div> <!-- 左边的框 -->
 
-            </form>
-          </div>
+            <div class="col-md-6 column">
+
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label>Teacher Name</label>
+                  <input type="text" class="form-control" name="teacher[]" placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label>Quantity</label>
+                  <input type="text" class="form-control" name="quantity[]" placeholder="">
+                </div>
+
+                <div class="form-group col-md-6">
+                  <button class="btn btn-primary" id="addClass">Add Classes</button>
+                </div>
+              </div> <!-- end row -->
+
+            </div>  <!-- 右边的框 -->
+          </form> 
         </div>
 
       </div><!-- container -->
     </div>
-      <!-- </div>
-    </div>
- -->
 
     <!-- page footer -->
     <?php include"footer.php"; ?>
