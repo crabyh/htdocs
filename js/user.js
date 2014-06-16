@@ -8,7 +8,7 @@ $(document).ready(function(){
               $("#prompt").html("No query conditions!");
               $("#prompt").show();
               $("#table").hide();
-              $(".old").empty();
+              $(".old").remove();
               if (!keyword) { $("#res").hide() };
               break;
             case "noSeltype":
@@ -16,7 +16,7 @@ $(document).ready(function(){
               $("#prompt").show();
               $("#table").hide();
               $("#res").show();
-              $(".old").empty();
+              $(".old").remove();
               if (!keyword) { $("#res").hide() };
               break;
             case "fail":
@@ -24,7 +24,7 @@ $(document).ready(function(){
               $("#prompt").html("No records!");
               $("#prompt").show();
               $("#table").hide();
-              $(".old").empty();
+              $(".old").remove();
               if (!keyword) { $("#res").hide() };
               break;
             case "noKeyword":
@@ -32,11 +32,10 @@ $(document).ready(function(){
               $("#prompt").html("No keyword!\nPlease input some keywords!");
               $("#prompt").show();
               $("#table").hide();
-              $(".old").empty();
+              $(".old").remove();
               if (!keyword) { $("#res").hide() };
               break;
             default:
-              $(".old").empty();
               $.each(data, function(row){
                 var newrow = document.createElement("tr");
                 var rowData = data[row];
@@ -94,15 +93,23 @@ $(document).ready(function(){
   })
 
   $("button#editBTN").click(function(){
-    $("form#former").hide();
-    $("form#latter").show();
-    $("button#editBTN").hide();
+    $("#former").hide();
+    $("#latter").show();
+    $("#editBTN").hide();
+    $("#upload").show();
+    $.get("user_info_php.php", function(data){
+      if (data === "admin") {
+        $(".admin").removeAttr("disabled");
+      }else if (data === "manager") {
+        $(".manager").removeAttr("disabled");
+      }
+    })
   });
   
   $("button#doneBTN").click(function(event){
     event.preventDefault();
-    var newphone = $("input#phonenum").val();
-    var newemail = $("input#emailaddr").val(); 
+    var newphone = $("#phonenum").val();
+    var newemail = $("#emailaddr").val(); 
     var user_id = $("#user_id").val();
     $.ajax({
       type: "POST",
@@ -115,6 +122,7 @@ $(document).ready(function(){
         $("form#latter").hide();
         $("#success").show();
         $("#editBTN").show();
+        $("#upload").show();
       },
       error: function(){
         $("#fail").show()

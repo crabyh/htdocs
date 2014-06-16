@@ -1,5 +1,5 @@
 <?php
-    
+    session_start();
     if(isset($_POST["seltype"]) || isset($_POST["keyword"]) || isset($_POST["order"]))
     {
         require_once 'connectvars.php'; 
@@ -31,8 +31,11 @@
                 }
             }
             $arr = mysqli_query($dbc, $sql);  //执行SQL
-            $res = mysqli_fetch_all($arr);
-            if($res){ //如果从数据库中取出数据
+            if(mysqli_num_rows($arr)){ //如果从数据库中取出数据
+                while ($row = mysqli_fetch_row($arr)) {
+                    $res[] = $row;
+                }
+                // $res[] = $_SESSION['usertype'];
                 echo json_encode($res);
             } // end IF 取数据c
             else {
