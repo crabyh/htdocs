@@ -9,7 +9,16 @@
 require_once 'connectvars.php'; 
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
-if (isset($_GET['user_id']))  $user_id = $_GET['user_id']; // 如果有get的话，覆盖掉自己的；
+if (isset($_GET['user_id'])) {
+  if ($_SESSION['usertype'] == 'manager' || $_SESSION['usertype'] == 'admin') { //如果是manager或者admin访问的话
+    $user_id = $_GET['user_id']; // 如果有get的话，覆盖掉自己的；
+  }
+  else {
+    echo'<script type="text/javascript"> 
+    setTimeout(window.location.href="index.php?access=illegal",3); 
+    </script>';
+  }
+}
 $query = "SELECT * FROM user_info WHERE user_id = '$user_id'";
 $data = mysqli_query($dbc,$query);
 if(mysqli_num_rows($data)==1){
