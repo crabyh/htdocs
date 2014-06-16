@@ -46,21 +46,23 @@
             <li class="divider"></li>
 
             <li><a href="course_select.php">Course Query</a></li>
-            <?php if ("admin" == $_SESSION["usertype"] || "manager" == $_SESSION["usertype"]):?>
-              <li><a href="course_add.php">Add Course</a></li>
-            <?php endif;?>
+            <?php if(isset($_SESSION['user_id'])):?>
 
-            <?php if ("admin" == $_SESSION["usertype"] || "manager" == $_SESSION["usertype"]):?>
-
-              <li class="divider"></li>
-
-              <li><a href="user_select.php">User Query</a></li>
-              <li><a href="user_add.php">Add User</a></li>
-              <?php if ("admin" == $_SESSION["usertype"]):?>
-                <li><a href="system_log_check.php">Check SystemLog</a></li>
-                <li><a href="check_db.php">View Database</a></li>
+              <?php if ("admin" == $_SESSION["usertype"] || "manager" == $_SESSION["usertype"]):?>
+                <li><a href="course_add.php">Add Course</a></li>
               <?php endif;?>
-            <?php endif;?>  
+
+              <?php if ("admin" == $_SESSION["usertype"] || "manager" == $_SESSION["usertype"]):?>
+                <li class="divider"></li>
+                <li><a href="user_select.php">User Query</a></li>
+                <li><a href="user_add.php">Add User</a></li>
+                <?php if ("admin" == $_SESSION["usertype"]):?>
+                  <li><a href="system_log_check.php">Check SystemLog</a></li>
+                  <li><a href="check_db.php">View Database</a></li>
+                <?php endif;?>
+              <?php endif;?>  
+
+            <?php endif;?>
 
           </ul>
         </li>
