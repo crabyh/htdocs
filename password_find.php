@@ -5,6 +5,7 @@
 <!--?php include 'check_access.php'; ?-->
 
 <!-- include head file-->
+
 <head>
 <?php include 'header.php'; ?>
 <script type="text/javascript">
@@ -29,78 +30,51 @@ function act(){
 
         <!-- accessing database -->
         <?php
-        if(isset($_POST['submit'])){
-          $input_oldpassword = $_POST['input_oldpassword'];
-          $input_newpassword = $_POST['input_newpassword'];
-          $repeat_newpassword = $_POST['repeat_newpassword'];
-
-          if($input_newpassword != $repeat_newpassword){
-            echo'<div class="alert alert-danger alert-dismissable">
-                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h4>
-                      New passwords are different!
-                    </h4> <strong>Please check your password and try again.</strong>
-                  </div>';
-          }
-
-          else{
-            require_once 'connectvars.php'; 
+			require_once 'connectvars.php'; 
             $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-            $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
-            $query = "SELECT password FROM accounts WHERE user_id = '$user_id'";
-            $data = mysqli_query($dbc,$query);
-            if(mysqli_num_rows($data)==1)//从数据库找出这条user_id相关信息
-            {
-              $row = mysqli_fetch_array($data);
-              $oldpassword = $row['password'];
-              $md5_oldpassword = md5("$input_oldpassword");
-              if($oldpassword == $md5_oldpassword)//检验旧密码是否正确
-              {
-                $md5_newpassword = md5("$input_newpassword");
-                $user_id = $_SESSION['user_id'];
-                $query = "UPDATE accounts SET password = '$md5_newpassword' WHERE user_id = '$user_id'";
-                $data = mysqli_query($dbc,$query) or die ("update accounts failed!");
-                echo'<script type="text/javascript"> 
-                    setTimeout(window.location.href="loged.php?passw_ch=success",3); 
-                    </script>';
-              }
-              else echo'<div class="alert alert-danger alert-dismissable">
+			$query = "SELECT * FROM user_info WHERE username = 'admin'";
+			$data = mysqli_query($dbc,$query);
+			if(mysqli_num_rows($data)==0)//没有这个用户
+			{
+			 echo'<div class="alert alert-danger alert-dismissable">
                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                           <h4>
-                            Old Password Wrong!
-                          </h4> <strong>Please check your password and try again.</strong>
+                            User does not exist!
+                          </h4> <strong>Please check the user name and try again.</strong></a>
                         </div>';
-            }
-          }
-        }
+			}
+			else
+			{
+			    if(mysqli_num_rows($data)==1)
+			    {
+				    $row = mysqli_fetch_array($data);
+					$adminemail = $row['email'];
+					$admintel = $row['phone'];
+			    }
+			}			
+          
         ?>
 
-          <h1>Find Password</h1>
+        <h1>Find Password</h1>
+		<h2>Please contact the admin to find the password for you.</h2>
         </div>
 
         <!-- page body -->
         <div class="row clearfix">
 
           <div class="col-md-4 column">
-            <form role="form" action="password_change.php" method="POST">
+            <form role="form" id = "former" action="password_find.php?" method="POST">
 
               <div class="form-group">
-                <label for="OldPassword">User Id</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="Password" required>
+                <label for="UserID">Tel: </label>
+				<?php echo $admintel;?>
               </div>
 
               <div class="form-group">
-                <label for="NewPassword">New password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password" required>
+                <label for="E-mail">E-mail: </label>
+				<?php echo $adminemail;?>
               </div>
-
-              <div class="form-group">
-                <label for="NewPassword">Input new password again</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password" required>
-              </div>
-              </br>
-              <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
-            </form>
+			
           </div>
         </div>
       </div>
