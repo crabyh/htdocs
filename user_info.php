@@ -16,7 +16,11 @@ if(mysqli_num_rows($data)==1){
   $row = mysqli_fetch_array($data);
 }
 ?>
-
+    
+<!--New a storage-->
+<?php
+$storage = new SaeStorage();
+?>
 
 
 <!-- include head file-->
@@ -31,7 +35,7 @@ if(mysqli_num_rows($data)==1){
   <div id="wrap">
 
     <!-- Fixed navbar -->
-    <?php include 'navigation.php'; ?>
+      <?php include 'navigation.php'; ?>
 
     <!-- Begin page content -->
     <div class="container">
@@ -56,10 +60,18 @@ if(mysqli_num_rows($data)==1){
               echo '<script type="text/javascript">$(document).ready(function(){ $("#fail").show(); })</script>';
             }
             else
-            {
-              $iconname = md5($_SESSION['user_id']) . ".jpg";
-              move_uploaded_file($_FILES["file"]["tmp_name"],"uploadicon/" . $iconname);
-              echo '<script type="text/javascript">$(document).ready(function(){ $("#success").show(); })</script>';    
+            { //online upload file
+              $domain = 'uploadicon';
+              $destFileName = md5($_SESSION['user_id']) . ".jpg";
+              $srcFileName = $_FILES["file"]["tmp_name"];
+              $result = $storage->upload($domain,$destFileName,$srcFileName);
+              //online upload file end
+              //$iconname = md5($_SESSION['user_id']) . ".jpg";
+              //move_uploaded_file($_FILES["file"]["tmp_name"],"uploadicon/" . $iconname);
+              if(!$result)
+                  echo '<script type="text/javascript">$(document).ready(function(){ $("#fail").show(); })</script>';
+              else
+                  echo '<script type="text/javascript">$(document).ready(function(){ $("#success").show(); })</script>';    
             }
           }
             else
@@ -239,9 +251,18 @@ if(mysqli_num_rows($data)==1){
       <!--即显示头像的语句-->
       <div class="col-md-4">
         <br />
-        <div class="form-group" align="center">
-          <img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="uploadicon/<?php echo md5($_SESSION['user_id']);?>.jpg">
-        </div> <!-- end显示头像的4块 -->
+        <div class="form-group" align="center"> 
+		<?php
+            $domain = 'uploadicon';
+			$iconname = md5($_SESSION['user_id']).".jpg";
+			if($storage->fileExists($domain,$iconname))
+            {
+				echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/'. $iconname . '">';               
+            }
+                else
+                echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/default.jpg">';
+		?>
+		</div> <!-- end显示头像的4块 --> <!-- 本地显示图片代码：将 http://esst1-uploadicon.stor.sinaapp.com/替换为uploadicon/-->
 
         <div class="form-group" align="center">
           <button class="btn btn-sm btn-default" id='upload' data-toggle="modal" data-target="#myModal" style="display: none">UploadIcon</button> 
