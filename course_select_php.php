@@ -54,7 +54,9 @@
         require_once 'connectvars.php'; 
         $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
         $query = "DELETE FROM course_info WHERE cid = '$delcid'";
+        $query2 = "DELETE FROM class_info WHERE cid = '$delcid'";
         $data = mysqli_query($dbc, $query);
+        $data = mysqli_query($dbc, $query2);
         if ($data) {
             $response = array('res' => 'delSuccess');
             echo json_encode($response);
