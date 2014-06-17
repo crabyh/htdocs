@@ -243,11 +243,12 @@ CheckUserType('manager');
               </div>
 
               <br>
-
               <div class="form-group">
                 <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
-                <button type="reset" class="btn btn-default" name="reset" value="reset">Reset</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn" name="reset" value="reset">Reset</button>
               </div>
+              <br>
 
             </form>
           </div>

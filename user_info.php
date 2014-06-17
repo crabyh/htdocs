@@ -258,11 +258,14 @@ if(mysqli_num_rows($data)==1){
               <input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $row['email']?>'>
             </div>
 
+            <br>
             <div class='form-group'>
               <label class='control-label'></label>
               <button class='btn btn-primary' name='submit' type='submit' value='Done' id='doneBTN'>Done</button>
-              <input class="btn btn-default" type="button" name="reset" value="reset" id="resetBTN">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="btn" type="button" name="reset" value="reset" id="resetBTN">Reset</button>
             </div>
+            <br>
           </div>
 
         </form>

@@ -153,9 +153,12 @@ if($data) {
                 <textarea  class="form-control" rows="4" id="cintro"><?php echo $row['course_intro'];?></textarea>
             </div>   
 
+            <br>
             <div class="form-group">
               <button class="btn btn-primary" type="submit" name="submit" value="submit" id="submitBTN">Submit</button>
-              <input class="btn btn-default" type="button" name="reset" value="reset" id="resetBTN">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="btn" type="button" name="reset" value="reset" id="resetBTN">Reset</button>
+              <br>
             </div>
 
           </div> <!-- col-md-6 -->

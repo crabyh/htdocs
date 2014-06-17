@@ -108,8 +108,8 @@ require_once 'connectvars.php';
       <p></p>
       <!-- <label class="checkbox">
         <input type="checkbox" value="remember-me">Remember me</label> -->
-      <input class="btn btn-lg btn-primary btn-block" name="Submit" type="submit" onclick="return validate();" value="Submit">
-      <center><a class="btn btn-link" href='password_find.php'>Forget password?</a></button>
+      <button class="btn btn-lg btn-primary btn-block" name="Submit" type="submit" onclick="return validate();" value="Submit">Submit</button>
+      <center><a class="btn btn-link" href='password_find.php'>Forget password?</a></center>
     </form>
 
   </div>
