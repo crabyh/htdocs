@@ -98,31 +98,25 @@ $(document).ready(function(){
     $("#latter").show();
     $("#editBTN").hide();
     $("#upload").show();
-    $.get("user_info_php.php", function(data){
-      switch (data) {
-        case "admin":
-          $(".admin").removeAttr("disabled");
-          $("#passwordInput").show();
-          $("#admin").attr("selected", "selected");
-          break;
-        case "manager":
-          $(".manager").removeAttr("disabled");
-          $("#manager").attr("selected", "selected");
-          break;
-        case "student":
-          $("#student").attr("selected", "selected");
-          break;
-        case "teacher":
-          $("#teacher").attr("selected", "selected");
-          break;
-      }
-      // alert();
-      // if (data === "admin") {
-      //   $(".admin").removeAttr("disabled");
-      //   $("#passwordInput").show();
-      // }else if (data === "manager") {
-      //   $(".manager").removeAttr("disabled");
-      // }
+    var userid = $("#user_id").val();
+    // $.get("user_info_php.php", "userid=" + userid, function(data){
+    $.ajax({ 
+      type: "GET",
+      url: "user_info_php.php",
+      data: "userid=" + userid,
+      dataType: "json",
+      success: function(data) {
+        $("#"+data[1]).attr("selected", "selected");
+        switch (data[0]) {
+          case "admin":
+            $(".admin").removeAttr("disabled");
+            if(data[0] !== data[1])  $("#passwordInput").show();
+            break;
+          case "manager":
+            $(".manager").removeAttr("disabled");
+            break;
+        } // end switch
+      } // end success function 
     })
   });
   

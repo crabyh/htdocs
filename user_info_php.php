@@ -58,15 +58,27 @@
     }
     echo "$usertype";
   }
-  else if(isset($_GET['user_id'])) {
+  else if(isset($_GET['user_id'])) { //用于reset 
     $user_id = $_GET['user_id'];
     $query = "SELECT * FROM user_info WHERE user_id ='$user_id'";
     $data = mysqli_query($dbc, $query);
     if ($data) {
-      $result = mysqli_fetch_all($data);
+      $result = mysqli_fetch_row($data);
       echo json_encode($result);
     }
   }
-  else echo $_SESSION['usertype'];
+  else if(isset($_GET['userid'])) {
+    $userid = $_GET['userid'];
+    $query = "SELECT * FROM accounts WHERE user_id ='$userid'";
+    $data = mysqli_query($dbc, $query);
+    if ($data) {
+      $result = mysqli_fetch_array($data);
+      $usertype = $result['usertype'];
+      $UserTypes[] = $_SESSION['usertype'];
+      $UserTypes[] = $usertype;
+      echo json_encode($UserTypes);
+    }
+  }
+  else echo $_SESSION['usertype']; 
 
 ?>

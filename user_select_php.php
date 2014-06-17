@@ -56,7 +56,7 @@
         $query = "DELETE FROM accounts WHERE user_id = '$deluid';";
         $query2 = "DELETE FROM user_info WHERE user_id ='$deluid'";
         $data = mysqli_query($dbc, $query);
-        $data = mysqli_query($dbc, $query2)
+        $data = mysqli_query($dbc, $query2);
         if ($data) {
             $response = array('res' => 'delSuccess');
             echo json_encode($response);
