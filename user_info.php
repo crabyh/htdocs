@@ -275,11 +275,11 @@ if(mysqli_num_rows($data)==1){
       $domain = 'uploadicon';
       $iconname = md5($user_id).".jpg";
       if($storage->fileExists($domain,$iconname))
-            {
+      {
         echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/'. $iconname . '">';               
-            }
-            else
-                echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/default.jpg">';
+      }
+      else
+        echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/default.jpg">';
     ?>
     </div> <!-- end显示头像的4块 --> <!-- 本地显示图片代码：将 http://esst1-uploadicon.stor.sinaapp.com/替换为uploadicon/-->
 
