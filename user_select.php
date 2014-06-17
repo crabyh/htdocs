@@ -68,7 +68,7 @@ $data = mysqli_query($dbc,$query);
                   <h4 class="modal-title" id="successModalLabel">Success</h4>
                 </div>
                 <div class="modal-body">
-                  You have deleted course successfully!
+                  You have deleted user successfully!
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

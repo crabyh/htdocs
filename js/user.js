@@ -46,7 +46,7 @@ $(document).ready(function(){
                   result += "<td align='center' id='" + i + "'><small>" + rowData[i] + "</small></td>\n";
                 };
                 result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='user_info.php?user_id=" + rowData[0] + "'>More</a></td>\n";
-                result += "<td align='center'><button type='button' class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + i + "'>Delete</button></td>\n";
+                result += "<td align='center'><button type='button' class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + row + "'>Delete</button></td>\n";
                 $(newrow).append(result);
                 $(newrow).insertAfter( $("#tableHead") );
                 if (keyword) { 

@@ -25,7 +25,7 @@
       $data = mysqli_query($dbc,$query);
     }
   }
-  else if($_GET){
+  else if($_GET){ //用于reset
     $cid = $_GET['cid'];
     $query = "SELECT * FROM course_info WHERE cid='$cid'";
     $data = mysqli_query($dbc, $query);
