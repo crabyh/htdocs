@@ -97,9 +97,8 @@ $data = mysqli_query($dbc,$query);
           
             <form>
               <div class="input-group">
-                <span class="input-group-addon">
+              	<span class="input-group-addon">Query Criteria
                   <select name="seltype" class="selectpicker" id="seltype">
-                    <option value="">Query By</option>
                     <option value="user_id">User ID</option>
                     <option value="username">User Name</option>
                     <option value="gender">Gender</option>
@@ -108,9 +107,8 @@ $data = mysqli_query($dbc,$query);
                     <option value="email">Email</option>
                   </select>
                 </span>
-                <span class="input-group-addon">
+                <span class="input-group-addon">Order By
                   <select name="order" id='order'>
-                    <option value="">Order By</option>
                     <option value="user_id">User ID</option>
                     <option value="username">User Name</option>
                     <option value="gender">Gender</option>

@@ -95,18 +95,16 @@ include 'check_access.php';
           <!-- 查询表单 -->
           <form>
             <div class="input-group">
-              <span class="input-group-addon">
+              <span class="input-group-addon">Query Criteria
                 <select name="seltype" id="seltype" class="selectpicker">
-                  <option value="">Query By</option>
                   <option value="cid">Course ID</option>
                   <option value="cname">Course Name</option>
                   <option value="cdepartment">Department</option>
                   <option value="credit">Credit</option>
                 </select>
               </span>
-              <span class="input-group-addon">
+              <span class="input-group-addon">Order By
                 <select name="" id="order">
-                  <option value="">Order By</option>
                   <option value="cid">Course ID</option>
                   <option value="cname">Course Name</option>
                   <option value="cdepartment">Department</option>
