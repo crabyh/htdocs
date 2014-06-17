@@ -80,8 +80,8 @@ CheckUserType('manager');
         </div>
 
         <!-- page body -->
-        <div class="row clearfix"> 
-          <form class="form" method="post">
+        <form class="form" method="post">
+          <div class="row clearfix">
             <div class="col-md-6 column">
                 
                 <div class="form-group">
@@ -101,25 +101,43 @@ CheckUserType('manager');
 
                 <div class="form-group">
                   <label>Credit</label>
-                  <input type="text" class="form-control" name="credit" placeholder="">
+                  <select name="credit" id="" class="form-control">
+                    <option value="0.5">0.5</option>
+                    <option value="1">1</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2">2</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3">3</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4">4</option>
+                    <option value="4.5">4.5</option>
+                    <option value="5">5</option>
+                    <option value="5.5">5.5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
                 </div>
 
                 <div class="form-group">
                   <label>Course Hours</label>
-                  <input type="text" class="form-control" name="c_hour" placeholder="">
+                  <select name="c_hour" id="" class="form-control">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
                 </div>
 
                 <div class="form-group">
                   <label>Description</label>
                   <textarea type="text" class="form-control" name="course_intro" rows="5"> </textarea>
                 </div>
-
-                <div class="form-group">
-                  <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
-                  <button type="" class="btn btn-default" name="reset" value="reset">Reset</button>
-                </div>
-       
-            </div> <!-- 左边的框 -->
+              </div> <!-- 左边的框 -->
 
             <div class="col-md-6 column">
 
@@ -135,13 +153,18 @@ CheckUserType('manager');
                 </div>
 
                 <div class="form-group col-md-6">
-                  <button class="btn btn-primary" id="addClass">Add Classes</button>
+                  <button class="btn btn-default" id="addClass">Add Classes</button>
                 </div>
               </div> <!-- end row -->
 
             </div>  <!-- 右边的框 -->
-          </form> 
-        </div>
+          </div><!-- end row -->
+          <br>
+          <div class="form-group" align="center">
+            <button type="submit" class="btn btn-lg btn-primary" name="submit" value="submit">Submit</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="" class="btn btn-lg" name="reset" value="reset">Reset</button>
+          </div>
 
       </div><!-- container -->
     </div>

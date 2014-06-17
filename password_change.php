@@ -86,17 +86,17 @@ function act(){
 
               <div class="form-group">
                 <label for="OldPassword">Old password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="" required>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="input_oldpassword" placeholder="Password" required>
               </div>
 
               <div class="form-group">
                 <label for="NewPassword">New password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="" required>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password" required>
               </div>
 
               <div class="form-group">
                 <label for="NewPassword">Input new password again</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="" required>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password" required>
               </div>
               </br>
               <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>

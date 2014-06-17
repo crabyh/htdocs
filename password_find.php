@@ -27,39 +27,35 @@ function act(){
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-
-        <!-- accessing database -->
-        <?php
-    			require_once 'connectvars.php'; 
-                $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-    			$query = "SELECT * FROM user_info WHERE username = 'admin'";
-    			$data = mysqli_query($dbc,$query);
-    			if(mysqli_num_rows($data)==0)//没有这个用户
-    			{
-    			 echo'<div class="alert alert-danger alert-dismissable">
-                               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                              <h4>
-                                User does not exist!
-                              </h4> <strong>Please check the user name and try again.</strong></a>
-                            </div>';
-    			}
-    			else
-    			{
-    			    if(mysqli_num_rows($data)==1)
-    			    {
-    				  $row = mysqli_fetch_array($data);
-    					$adminemail = $row['email'];
-    					$admintel = $row['phone'];
-    			    }
-    			}			
-        ?>
-
-        <h1>Find Password</h1>
+          <h1>Find Password</h1>
         </div>
 
         <!-- page body -->
-        <p class="lead">Please contact the administrator to find the password for you.</p>
-        <p class="lead">Here is his Contact Information: Tel:<?php echo $admintel;?>;Email:<?php echo $adminemail;?></p>
+        <!-- accessing database -->
+        <?php
+          require_once 'connectvars.php'; 
+          $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+          $query = "SELECT * FROM accounts WHERE usertype = 'admin'";
+          $data = mysqli_query($dbc,$query);
+          if(!mysqli_num_rows($data))
+            echo'<p class="lead">Sorry, but we can not find the information of the admin.We are trying to solve the problem for you.</p>';
+          else
+          {
+            $row = mysqli_fetch_array($data);
+            $id = $row['user_id'];
+            $query1 = "SELECT * FROM user_info WHERE user_id = '$id'";
+            $data1 = mysqli_query($dbc,$query1);
+            if(mysqli_num_rows($data1))
+            {
+              $row1 = mysqli_fetch_array($data1);
+              $adminemail = $row1['email'];
+              $admintel = $row1['phone'];
+              echo'<p class="lead">Please contact the administrator to find the password for you.Here is his Contact Information:</p>
+                   <p class="lead">Tel:'.$admintel.'  Email:'.$adminemail.'</p>';
+            }
+          }     
+        ?>
+
       </div>
     </div>
 
