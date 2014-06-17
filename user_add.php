@@ -175,9 +175,10 @@ CheckUserType('manager');
           }
         ?>
         <!-- page body -->
-        <form class="form" id='9' method="POST" action="user_add.php">
-          <div class="row clearfix"> 
-            <div class="col-md-6 column">
+        <div class="row clearfix"> 
+          <div class="col-md-5 column">
+            <form class="form" id='9' method="POST" action="user_add.php">
+              
               <div class="form-group">
                 <label>User ID</label>
                 <input type="text" class="form-control" name="u_id" placeholder="">
@@ -216,9 +217,6 @@ CheckUserType('manager');
                 </select>
               </div>
 
-            </div><!-- col-md-6 column -->
-            <div class="col-md-6 column">
-
               <div class="form-group">
                 <label>Department</label>
                 <input type="text" class="form-control" name="department" placeholder="">
@@ -243,18 +241,17 @@ CheckUserType('manager');
                 <label>Phone</label>
                 <input type="tel" class="form-control" data-format="ddd-dddd-dddd" name="phone" placeholder="">
               </div>
-            </div><!-- col-md-6 column -->
-          </div><!-- row -->
-            <br>
-              <div class="form-group" align="center">
-                <button type="submit" class="btn btn-lg btn-primary" name="submit" value="submit">Submit</button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="reset" class="btn btn-lg btn-default" name="reset" value="reset">Reset</button>
-              </div>
-          </div>
-            
-        </form>
 
+              <br>
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary" name="submit" value="submit">Submit</button>
+                <button type="reset" class="btn btn-default" name="reset" value="reset">Reset</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
 
       </div><!-- container -->
     </div>
