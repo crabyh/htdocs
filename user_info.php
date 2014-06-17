@@ -34,7 +34,7 @@ if(mysqli_num_rows($data)==1){
 
 <!-- include head file-->
 <head>
-<?php include 'header.php'; ?>
+<?php include 'header.php';?>
 <script type="text/javascript" src="js/user.js"></script>
 </head>
 
@@ -44,7 +44,7 @@ if(mysqli_num_rows($data)==1){
   <div id="wrap">
 
     <!-- Fixed navbar -->
-      <?php include 'navigation.php'; ?>
+      <?php include 'navigation.php';?>
 
     <!-- Begin page content -->
     <div class="container">
@@ -62,7 +62,7 @@ if(mysqli_num_rows($data)==1){
           if ((
               ($_FILES["file"]["type"] == "image/jpeg") 
               || ($_FILES["file"]["type"] == "image/pjpeg"))
-              && ($_FILES["file"]["size"] < 2000000))
+              && ($_FILES["file"]["size"] < 102400))
           {
             if ($_FILES["file"]["error"] > 0)
             {
@@ -71,7 +71,7 @@ if(mysqli_num_rows($data)==1){
             else
             { //online upload file
               $domain = 'uploadicon';
-              $destFileName = md5($_SESSION['user_id']) . ".jpg";
+              $destFileName = md5($user_id) . ".jpg";
               $srcFileName = $_FILES["file"]["tmp_name"];
               $result = $storage->upload($domain,$destFileName,$srcFileName);
               //online upload file end
@@ -79,8 +79,8 @@ if(mysqli_num_rows($data)==1){
               //move_uploaded_file($_FILES["file"]["tmp_name"],"uploadicon/" . $iconname);
               if(!$result)
                   echo '<script type="text/javascript">$(document).ready(function(){ $("#fail").show(); })</script>';
-              else
-                  echo '<script type="text/javascript">$(document).ready(function(){ $("#success").show(); })</script>';    
+                else{
+                    echo '<script type="text/javascript">$(document).ready(function(){ $("#success").show(); })</script>';}    
             }
           }
             else
@@ -100,8 +100,13 @@ if(mysqli_num_rows($data)==1){
 
               <div class="modal-body">
                 <p>Choose a picture from your computer to upload as your icon.<br />
-                Pay attention that you could only upload <b>jpg</b> file ,and the size of your file couldn't be lager than <b>20kb</b> and <b>140x140</b>.<br /><br /></p>
-                <form method="POST" action="user_info.php" enctype="multipart/form-data">
+                Pay attention that you could only upload <b>jpg</b> file ,and the size of your file couldn't be lager than <b>100kb</b>.<br /><br /></p>
+                  <?php
+                  if(isset($_GET['user_id']))
+                     echo '<form method="POST" action="user_info.php?user_id='.$user_id.'" enctype="multipart/form-data">';
+                  else
+                     echo '<form method="POST" action="user_info.php" enctype="multipart/form-data">';
+                  ?>
                   <input type="hidden" name="MAX_FILE_SIZE" value="1024000" />
                   <input type="file" name="file" id="file"/><br />
                   <input class="btn btn-primary" type="submit" value="Upload" id="uploadInModal"/></p>
@@ -266,16 +271,18 @@ if(mysqli_num_rows($data)==1){
       <div class="col-md-4">
         <br />
         <div class="form-group" align="center"> 
-		    <?php
-        $domain = 'uploadicon';
-			  $iconname = md5($_SESSION['user_id']).".jpg";
-    			//if($storage->fileExists($domain,$iconname))
-    			//	echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/'. $iconname . '">';
-          //else
-          //  echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/default.jpg">';
-    		?>
+    <?php
+      $domain = 'uploadicon';
+      $iconname = md5($user_id).".jpg";
+      if($storage->fileExists($domain,$iconname))
+            {
+        echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/'. $iconname . '">';               
+            }
+            else
+                echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/default.jpg">';
+    ?>
+    </div> <!-- end显示头像的4块 --> <!-- 本地显示图片代码：将 http://esst1-uploadicon.stor.sinaapp.com/替换为uploadicon/-->
 
-  		</div> <!-- end显示头像的4块 --> <!-- 本地显示图片代码：将 http://esst1-uploadicon.stor.sinaapp.com/替换为uploadicon/-->
         <div class="form-group" align="center">
           <button class="btn btn-sm btn-default" id='upload' data-toggle="modal" data-target="#myModal" style="display: none">UploadIcon</button> 
         </div>
