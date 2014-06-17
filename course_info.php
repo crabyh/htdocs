@@ -167,12 +167,12 @@ if($data) {
                 echo '
                   <div class="form-group col-md-6">
                     <label>Teacher Name</label>
-                    <input type="text" class="form-control" name="teacher[]" value="'.$teacherResult[$i].'">
+                    <input type="text" class="form-control" name="teacher[]" id="teacher'.$i.'" value="'.$teacherResult[$i].'"disabled>
                   </div>
 
                   <div class="form-group col-md-6">
-                    <label>Quantity</label>
-                    <input type="text" class="form-control" name="quantity[]" value="'.$quantityResult[$i].'">
+                    <label>Capacity</label>
+                    <input type="text" class="form-control" name="quantity[]" id="quantity'.$i.'" value="'.$quantityResult[$i].'"disabled>
                   </div>';
               } //end for
               echo '

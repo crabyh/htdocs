@@ -59,10 +59,8 @@ CheckUserType('manager');
               }
               else $j = $i; 
               $class_id = $cid."$j";
-              echo $class_id;
               $classQuery = "INSERT INTO class_info (class_id, user_id, c_hour, quantity, cid) VALUES ('$class_id', '$teacher', $c_hour, $quantity, '$cid')";
-              var_dump(mysqli_query($dbc, $classQuery));
-
+              mysqli_query($dbc, $classQuery);
             }
             echo'<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
