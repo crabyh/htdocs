@@ -11,7 +11,7 @@ $course_id=$_GET['course_id'];
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
 $query = "SELECT * FROM course_info NATURAL JOIN class_info WHERE course_info.cid='$course_id'";
-$teacherQuery = "SELECT user_id, username FROM class_info NATURAL JOIN user_info WHERE class_info.cid = '$course_id'";
+$teacherQuery = "SELECT user_id, username, quantity FROM class_info NATURAL JOIN user_info WHERE class_info.cid = '$course_id'";
 $data = mysqli_query($dbc, $query);
 $teacherData = mysqli_query($dbc, $teacherQuery);
 if($data) {
@@ -57,6 +57,7 @@ if($data) {
         </div>
         
         <!-- page body -->
+        
         <form class="form-horizontal" id="former">
 
             <div class="form-group">
@@ -108,17 +109,19 @@ if($data) {
                   <?php 
                     while ($teacherArray = mysqli_fetch_array($teacherData)) {
                       echo $teacherArray['username']." ".$teacherArray['user_id'];
+                      $teacherResult[] = $teacherArray['username'];
+                      $quantityResult[] = $teacherArray['quantity'];
                       echo "<br />";
                     }
                   ?>
                 </p>
               </div>
             </div> 
-
         </form>
 
-        <form class="form-horizontal" id="latter" style="display: none">
-          <div class="col-sm-5">
+        <div class="row clearfix">
+        <form class="form" id="latter" style="display: none">
+          <div class="col-md-6 column">
 
             <div class="form-group">
               <label class="control-label">Course ID</label>
@@ -155,8 +158,31 @@ if($data) {
               <input class="btn btn-default" type="button" name="reset" value="reset" id="resetBTN">
             </div>
 
-          </div> <!-- col-sm-4 -->
+          </div> <!-- col-md-6 -->
+
+          <div class="col-md-6 column">
+            <?php if ($teacherNum = count($teacherResult)) { 
+              echo '<div class="row">';
+              for ($i=0; $i < $teacherNum; $i++){ 
+                echo '
+                  <div class="form-group col-md-6">
+                    <label>Teacher Name</label>
+                    <input type="text" class="form-control" name="teacher[]" value="'.$teacherResult[$i].'">
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label>Quantity</label>
+                    <input type="text" class="form-control" name="quantity[]" value="'.$quantityResult[$i].'">
+                  </div>';
+              } //end for
+              echo '
+              </div> <!-- end row -->
+            </div> <!-- 右边的框 -->';
+          } //end if
+          ?>
+
         </form>
+        </div>
 
 
 
