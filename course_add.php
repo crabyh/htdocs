@@ -54,7 +54,7 @@ CheckUserType('manager');
             for ($i=0; $i < count($_POST['teacher']); $i++) { 
               $teacher = $_POST['teacher'][$i];
               $quantity = $_POST['quantity'][$i];
-              $class_id = $cid."$i";
+              $class_id = $cid.'"$i"+10';
               $classQuery = "INSERT INTO class_info (class_id, user_id, c_hour, quantity, cid) VALUES ('$class_id', '$teacher', $c_hour, $quantity, '$cid')";
               mysqli_query($dbc, $classQuery);
             }

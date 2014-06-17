@@ -6,6 +6,13 @@
   if(isset($_POST['user_id'])) { 
     $data = FALSE;
     $user_id = $_POST['user_id'];
+    $usertype = $_SESSION['usertype'];
+    if($_POST['password']!=''){
+      $newpassword = $_POST['password'];
+      $md5_newpassword = md5("$newpassword");
+      $query = "UPDATE accounts SET password = '$md5_newpassword' WHERE user_id = '$user_id'";
+      $data = mysqli_query($dbc,$query);
+    }
     if($_POST['phone']!=''){
       $phone=$_POST['phone'];
       $query = "UPDATE user_info SET phone = '$phone' WHERE user_id = '$user_id'";
@@ -19,6 +26,7 @@
     if ($data == TRUE) {
       $data = mysqli_query($dbc, $query);
     }
+    echo "$usertype";
   }
   else if(isset($_GET['user_id'])) {
     $user_id = $_GET['user_id'];

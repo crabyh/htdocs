@@ -200,6 +200,11 @@ if(mysqli_num_rows($data)==1){
               <input class='form-control' type='text' value='<?php echo $row['user_id'];?>' id="user_id" disabled>
             </div>
 
+            <div class='form-group' style="display:none" id="passwordInput">
+              <label class='ontrol-label'>Password</label>
+              <input class='form-control' type='password' id="password" value=''>
+            </div>
+
             <div class='form-group' >
               <label class='control-label'>User Type</label>
               <select name="seltype" id="seltype" class="form-control admin" disabled>

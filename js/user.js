@@ -36,6 +36,7 @@ $(document).ready(function(){
               if (!keyword) { $("#res").hide() };
               break;
             default:
+              $(".old").remove();
               $.each(data, function(row){
                 var newrow = document.createElement("tr");
                 var rowData = data[row];
@@ -100,6 +101,7 @@ $(document).ready(function(){
     $.get("user_info_php.php", function(data){
       if (data === "admin") {
         $(".admin").removeAttr("disabled");
+        $("#passwordInput").show();
       }else if (data === "manager") {
         $(".manager").removeAttr("disabled");
       }
@@ -111,13 +113,15 @@ $(document).ready(function(){
     var newphone = $("#phonenum").val();
     var newemail = $("#emailaddr").val(); 
     var user_id = $("#user_id").val();
+    var password = $("#password").val();
     $.ajax({
       type: "POST",
       url:"user_info_php.php",
-      data: "phone=" + newphone + "&email=" + newemail + "&user_id=" + user_id,  
-      success: function(){
+      data: "phone=" + newphone + "&email=" + newemail + "&user_id=" + user_id + "&password=" + password,  
+      success: function(data){
         $('#phone_label').text(newphone);
         $('#email_label').text(newemail);
+        $("#password").text(password);
         $("form#former").show();
         $("form#latter").hide();
         $("#success").show();

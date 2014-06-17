@@ -36,8 +36,8 @@ $(document).ready(function(){
         if (!keyword) { $("#res").hide() };
         break;
       default:
+        $(".old").remove();
         var usertype = data[data.length-1][0];
-        console.log(usertype);
         $(".old").remove();
         if (usertype === "admin" || usertype === "manager") 
             $("#description").parent().append("<td align='center' class='old'><small> Action </small></td>");

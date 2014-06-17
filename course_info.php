@@ -10,10 +10,13 @@ require_once 'connectvars.php';
 $course_id=$_GET['course_id'];
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
-$query = "SELECT * FROM course_info WHERE cid='$course_id'";
-$data = mysqli_query($dbc,$query);
-if(mysqli_num_rows($data)==1)
+$query = "SELECT * FROM course_info NATURAL JOIN class_info WHERE course_info.cid='$course_id'";
+$teacherQuery = "SELECT user_id, username FROM class_info NATURAL JOIN user_info WHERE class_info.cid = '$course_id'";
+$data = mysqli_query($dbc, $query);
+$teacherData = mysqli_query($dbc, $teacherQuery);
+if($data) {
   $row = mysqli_fetch_array($data);
+}
 ?>
         
 <!-- include head file-->
@@ -85,12 +88,33 @@ if(mysqli_num_rows($data)==1)
             </div>
             
             <div class="form-group">
+              <label class="col-sm-2 control-label">Course Hour</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="p_c_hour"><?php echo $row['c_hour'];?></p>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label class="col-sm-2 control-label">Description</label>
               <div class="col-sm-4">
                 <p class="form-control-static" id="p_cintro"><?php echo $row['course_intro'];?></p>
               </div>
-            </div>   
-          <!-- <img src="..." alt="..." class="img-rounded">  -->
+            </div>    
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Teacher</label>
+              <div class="col-sm-4">
+                <p class="form-control-static" id="teacher">
+                  <?php 
+                    while ($teacherArray = mysqli_fetch_array($teacherData)) {
+                      echo $teacherArray['username']." ".$teacherArray['user_id'];
+                      echo "<br />";
+                    }
+                  ?>
+                </p>
+              </div>
+            </div> 
+
         </form>
 
         <form class="form-horizontal" id="latter" style="display: none">
@@ -115,12 +139,16 @@ if(mysqli_num_rows($data)==1)
               <label class="control-label">Credit</label>
               <input class="form-control" id="credit" value="<?php echo $row['credit'];?>">
             </div>
+
+            <div class="form-group">
+              <label class="control-label">Class Hour</label>
+              <input class="form-control" id="c_hour" value="<?php echo $row['c_hour'];?>">
+            </div>
             
             <div class="form-group">
               <label class="control-label">Description</label>
                 <textarea  class="form-control" rows="4" id="cintro"><?php echo $row['course_intro'];?></textarea>
             </div>   
-          <!-- <img src="..." alt="..." class="img-rounded">  -->
 
             <div class="form-group">
               <button class="btn btn-primary" type="submit" name="submit" value="submit" id="submitBTN">Submit</button>
@@ -129,6 +157,8 @@ if(mysqli_num_rows($data)==1)
 
           </div> <!-- col-sm-4 -->
         </form>
+
+
 
       </div>
     </div>

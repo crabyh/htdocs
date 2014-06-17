@@ -53,7 +53,7 @@
         $delcid = $_POST['delcid'];
         require_once 'connectvars.php'; 
         $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-        $query = "DELETE FROM course_info WHERE cid = '$delcid';";
+        $query = "DELETE FROM course_info WHERE cid = '$delcid'";
         $data = mysqli_query($dbc, $query);
         if ($data) {
             $response = array('res' => 'delSuccess');
