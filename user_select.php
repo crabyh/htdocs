@@ -118,7 +118,7 @@ $data = mysqli_query($dbc,$query);
                   </select>
                 </span>
                 <span>
-                  <input type="text" id="userKeyword" placeholder="Keyword" class="form-control" name="keyword">
+                  <input type="text" id="userKeyword" placeholder="Typing keyword here to start search" class="form-control" name="keyword">
                 </span>
               </div> 
             </form>

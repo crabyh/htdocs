@@ -112,7 +112,7 @@ include 'check_access.php';
                 </select>
               </span>
               <span>
-                <input type="text" placeholder="Keyword" class="form-control" name="keyword" id="courseKeyword">
+                <input type="text" placeholder="Typing keyword here to start search" class="form-control" name="keyword" id="courseKeyword">
               </span>
             </div>
           </form>
