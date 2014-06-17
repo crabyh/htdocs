@@ -7,12 +7,42 @@
     $data = FALSE;
     $user_id = $_POST['user_id'];
     $usertype = $_SESSION['usertype'];
-    if($_POST['password']!=''){
-      $newpassword = $_POST['password'];
-      $md5_newpassword = md5("$newpassword");
-      $query = "UPDATE accounts SET password = '$md5_newpassword' WHERE user_id = '$user_id'";
-      $data = mysqli_query($dbc,$query);
+    if ($usertype == "admin") {
+      if($_POST['password']!=''){
+        $newpassword = $_POST['password'];
+        $md5_newpassword = md5("$newpassword");
+        $query = "UPDATE accounts SET password = '$md5_newpassword' WHERE user_id = '$user_id'";
+        $data = mysqli_query($dbc,$query);
+      }
     }
+    if ($usertype == "admin" || $usertype == "manager") {
+      if($_POST['username']!=''){
+        $username = $_POST['username'];
+        $query = "UPDATE user_info SET username = '$username' WHERE user_id = '$user_id'";
+        $data = mysqli_query($dbc,$query);
+      }
+      if($_POST['enroll_time']!=''){
+        $enroll_time = $_POST['enroll_time'];
+        $query = "UPDATE user_info SET enroll_time = '$enroll_time' WHERE user_id = '$user_id'";
+        $data = mysqli_query($dbc,$query);
+      }
+      if($_POST['department']!=''){
+        $department = $_POST['department'];
+        $query = "UPDATE user_info SET department = '$department' WHERE user_id = '$user_id'";
+        $data = mysqli_query($dbc,$query);
+      }
+      if($_POST['gender']!=''){
+        $gender = $_POST['gender'];
+        $query = "UPDATE user_info SET gender = '$gender' WHERE user_id = '$user_id'";
+        $data = mysqli_query($dbc,$query);
+      }
+      if($_POST['birthday']!=''){
+        $birthday = $_POST['birthday'];
+        $query = "UPDATE user_info SET birthday = '$birthday' WHERE user_id = '$user_id'";
+        $data = mysqli_query($dbc,$query);
+      }
+    }
+
     if($_POST['phone']!=''){
       $phone=$_POST['phone'];
       $query = "UPDATE user_info SET phone = '$phone' WHERE user_id = '$user_id'";

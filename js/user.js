@@ -99,12 +99,30 @@ $(document).ready(function(){
     $("#editBTN").hide();
     $("#upload").show();
     $.get("user_info_php.php", function(data){
-      if (data === "admin") {
-        $(".admin").removeAttr("disabled");
-        $("#passwordInput").show();
-      }else if (data === "manager") {
-        $(".manager").removeAttr("disabled");
+      switch (data) {
+        case "admin":
+          $(".admin").removeAttr("disabled");
+          $("#passwordInput").show();
+          $("#admin").attr("selected", "selected");
+          break;
+        case "manager":
+          $(".manager").removeAttr("disabled");
+          $("#manager").attr("selected", "selected");
+          break;
+        case "student":
+          $("#student").attr("selected", "selected");
+          break;
+        case "teacher":
+          $("#teacher").attr("selected", "selected");
+          break;
       }
+      // alert();
+      // if (data === "admin") {
+      //   $(".admin").removeAttr("disabled");
+      //   $("#passwordInput").show();
+      // }else if (data === "manager") {
+      //   $(".manager").removeAttr("disabled");
+      // }
     })
   });
   
@@ -114,10 +132,17 @@ $(document).ready(function(){
     var newemail = $("#emailaddr").val(); 
     var user_id = $("#user_id").val();
     var password = $("#password").val();
+    var username = $("#username").val();
+    var department = $("#department").val();
+    var gender = $("#gender").val();
+    var birthday = $("#birthday").val();
+    var enroll_time = $("#enroll_time").val();
     $.ajax({
       type: "POST",
       url:"user_info_php.php",
-      data: "phone=" + newphone + "&email=" + newemail + "&user_id=" + user_id + "&password=" + password,  
+      data: "phone=" + newphone + "&email=" + newemail + "&user_id=" + user_id + "&password=" + password + 
+            "&username=" + username + "&department=" + department + "&gender=" + gender + "&birthday=" + 
+            birthday + "&enroll_time=" + enroll_time,  
       success: function(data){
         $('#phone_label').text(newphone);
         $('#email_label').text(newemail);

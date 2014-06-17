@@ -212,40 +212,40 @@ if(mysqli_num_rows($data)==1){
 
             <div class='form-group' >
               <label class='control-label'>User Type</label>
-              <select name="seltype" id="seltype" class="form-control admin" disabled>
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-                <option value="manager">Manager</option>
-                <option value="admin">Administration</option>
+              <select name="seltype" class="form-control" id="usertype" disabled>
+                <option value="student" id="student">Student</option>
+                <option value="teacher" id="teacher">Teacher</option>
+                <option value="manager" id="manager">Manager</option>
+                <option value="admin" id="admin">Administration</option>
               </select>
             </div>
 
             <div class='form-group' >
               <label class='control-label'>User Name</label>
-              <input class='form-control admin manager' type='text' value='<?php echo $row['username'];?>' disabled>
+              <input class='form-control admin manager' type='text' id="username" value='<?php echo $row['username'];?>' disabled>
             </div>
 
             <div class='form-group' >
               <label class='ontrol-label'>Department</label>
-              <input class='form-control admin manager' type='text' value='<?php echo $row['department'];?>' disabled>
+              <input class='form-control admin manager' type='text' id="department" value='<?php echo $row['department'];?>' disabled>
             </div>
 
             <div class='form-group' >
               <label class='control-label'>Gender</label>
-              <select name="seltype" id="seltype" class="form-control admin manager" disabled>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+              <select name="seltype" id="gender" class="form-control admin manager" disabled>
+                <option value="Male" id="male">Male</option>
+                <option value="Female" id="female">Female</option>
               </select>
             </div>
 
             <div class='form-group' >
               <label class='control-label'>Birth Day</label>
-              <input type="date" class="form-control admin manager" name="birthday" value="<?php echo $row['birthday'];?>" disabled>
+              <input type="date" class="form-control admin manager" name="birthday" id="birthday" value="<?php echo $row['birthday'];?>" disabled>
             </div>
 
             <div class='form-group' >
               <label class='control-label'>Enroll Time</label>
-              <input class='form-control admin manager' type='number' value='<?php echo $row['enroll_time'];?>' disabled>
+              <input class='form-control admin manager' type='number' id="enroll_time" value='<?php echo $row['enroll_time'];?>' disabled>
             </div>
 
             <div class='form-group'>
@@ -272,14 +272,14 @@ if(mysqli_num_rows($data)==1){
         <br />
         <div class="form-group" align="center"> 
     <?php
-      $domain = 'uploadicon';
-      $iconname = md5($user_id).".jpg";
-      if($storage->fileExists($domain,$iconname))
-      {
-        echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/'. $iconname . '">';               
-      }
-      else
-        echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/default.jpg">';
+      // $domain = 'uploadicon';
+      // $iconname = md5($user_id).".jpg";
+      // if($storage->fileExists($domain,$iconname))
+      // {
+      //   echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/'. $iconname . '">';               
+      // }
+      // else
+      //   echo '<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="140x140" src="http://esst1-uploadicon.stor.sinaapp.com/default.jpg">';
     ?>
     </div> <!-- end显示头像的4块 --> <!-- 本地显示图片代码：将 http://esst1-uploadicon.stor.sinaapp.com/替换为uploadicon/-->
 
