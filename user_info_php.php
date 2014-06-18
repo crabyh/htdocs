@@ -67,7 +67,7 @@
       echo json_encode($result);
     }
   }
-  else if(isset($_GET['userid'])) {
+  else if(isset($_GET['userid'])) { //按下editBTN之后
     $userid = $_GET['userid'];
     $query = "SELECT * FROM accounts WHERE user_id ='$userid'";
     $data = mysqli_query($dbc, $query);
@@ -76,7 +76,7 @@
       $usertype = $result['usertype'];
       $UserTypes[] = $_SESSION['usertype'];
       $UserTypes[] = $usertype;
-      echo json_encode($UserTypes);
+      echo json_encode($UserTypes); //返回当前登录的用户类型和显示个人信息的登录类型
     }
   }
   else echo $_SESSION['usertype']; 

@@ -110,7 +110,10 @@ $(document).ready(function(){
         switch (data[0]) {
           case "admin":
             $(".admin").removeAttr("disabled");
-            if(data[0] !== data[1])  $("#passwordInput").show();
+            if(data[0] !== data[1]) {
+              $("#passwordInput").show();
+              $("#usertype").removeAttr("disabled");
+            }
             break;
           case "manager":
             $(".manager").removeAttr("disabled");
