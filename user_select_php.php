@@ -13,17 +13,17 @@
             if($seltype == "all") //选出所有数据，不需要keyword
             {
                 if ($order)  //有排序选项 
-                  $sql='SELECT * FROM user_info ORDER BY '.$order.' DESC;';
+                  $sql='SELECT user_id, username, department, gender, birthday, enroll_time, phone, email, usertype FROM user_info NATURAL JOIN accounts ORDER BY '.$order.' DESC;';
                 else 
-                  $sql = 'SELECT * FROM user_info;';
+                  $sql = 'SELECT user_id, username, department, gender, birthday, enroll_time, phone, email, usertype FROM user_info NATURAL JOIN accounts ;';
             }
             else { // 根据seltype来筛选，需要keyword
                 if (isset($_POST['keyword'])) {
                     $keyword = $_POST["keyword"];
                     if ($order) 
-                      $sql = 'SELECT * FROM user_info WHERE '.$seltype.' LIKE "%'.$keyword.'%" ORDER BY '.$order.' DESC;';
+                      $sql = 'SELECT user_id, username, department, gender, birthday, enroll_time, phone, email, usertype FROM user_info NATURAL JOIN accounts WHERE '.$seltype.' LIKE "%'.$keyword.'%" ORDER BY '.$order.' DESC;';
                     else 
-                      $sql = 'SELECT * FROM user_info WHERE '.$seltype.' LIKE "%'.$keyword.'%";';
+                      $sql = 'SELECT user_id, username, department, gender, birthday, enroll_time, phone, email, usertype FROM user_info NATURAL JOIN accounts WHERE '.$seltype.' LIKE "%'.$keyword.'%";';
                 }
                 else{
                     $response = array('res' => "noKeyword"); 
@@ -35,7 +35,6 @@
                 while ($row = mysqli_fetch_row($arr)) {
                     $res[] = $row;
                 }
-                // $res[] = $_SESSION['usertype'];
                 echo json_encode($res);
             } // end IF 取数据c
             else {
@@ -51,19 +50,26 @@
     } 
     else if(isset($_POST['deluid'])) {
         $deluid = $_POST['deluid'];
-        require_once 'connectvars.php'; 
-        $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
-        $query = "DELETE FROM accounts WHERE user_id = '$deluid';";
-        $query2 = "DELETE FROM user_info WHERE user_id ='$deluid'";
-        $data = mysqli_query($dbc, $query);
-        $data = mysqli_query($dbc, $query2);
-        if ($data) {
-            $response = array('res' => 'delSuccess');
+        $currentID = $_SESSION['user_id'];
+        if ($deluid == $currentID) {  //删除自己
+            $response = array('res' => 'sameID');
             echo json_encode($response);
         }
-        else {
-            $response = array('res' => 'delFail');
-            echo json_encode($response);
+        else { //不是删除自己
+            require_once 'connectvars.php'; 
+            $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
+            $query = "DELETE FROM accounts WHERE user_id = '$deluid';";
+            $query2 = "DELETE FROM user_info WHERE user_id ='$deluid'";
+            $data = mysqli_query($dbc, $query2);
+            $data = mysqli_query($dbc, $query);
+            if ($data) {
+                $response = array('res' => 'delSuccess');
+                echo json_encode($response);
+            }
+            else {
+                $response = array('res' => 'delFail');
+                echo json_encode($response);
+            }
         }
     } 
     else {

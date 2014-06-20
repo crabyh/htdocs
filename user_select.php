@@ -53,7 +53,7 @@ $data = mysqli_query($dbc,$query);
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal" id="closeBTN">Close</button>
-                  <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" id="deleteBTN" data-toggle='modal' data-target='#successModal'>Delete</button>
+                  <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" id="deleteBTN" data-toggle='modal' data-target="#successModal">Delete</button>
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

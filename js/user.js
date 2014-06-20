@@ -37,6 +37,7 @@ $(document).ready(function(){
               break;
             default:
               $(".old").remove();
+              // for (var row = 0; i < data.length - 1; row++) {
               $.each(data, function(row){
                 var newrow = document.createElement("tr");
                 var rowData = data[row];
@@ -44,9 +45,13 @@ $(document).ready(function(){
                 var result = "";
                 for (var i = 0; i < 8; i++) {
                   result += "<td align='center' id='" + i + "'><small>" + rowData[i] + "</small></td>\n";
-                };
+                }
                 result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='user_info.php?user_id=" + rowData[0] + "'>More</a></td>\n";
-                result += "<td align='center'><button type='button' class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + row + "'>Delete</button></td>\n";
+                var usertype = rowData[8];
+                if (usertype === "admin") {
+                  result += "<td align='center'><button type='button' class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + row + "' disabled>Delete</button></td>\n";
+                }
+                else result += "<td align='center'><button type='button' class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + row + "'>Delete</button></td>\n";
                 $(newrow).append(result);
                 $(newrow).insertAfter( $("#tableHead") );
                 if (keyword) { 
@@ -71,7 +76,10 @@ $(document).ready(function(){
                       if (data['res'] === "delSuccess") {
                         $("#"+delid).parent().parent().remove();
                       }
-                      else $("#failModal").show();
+                      else if (data['res'] === "sameID") {
+                        alert("You can't delete yourself!");
+                      } 
+                      else alert("Delete Failed!");
                     }
                   }); //end of ajax
                 }) // end of mousedown
@@ -144,6 +152,11 @@ $(document).ready(function(){
         $('#phone_label').text(newphone);
         $('#email_label').text(newemail);
         $("#password").text(password);
+        $("#department").text(department);
+        $("#gender").text(gender);
+        $("#birthday").text(birthday);
+        $("#enroll_time").text(enroll_time);
+        $("#username").text(username);
         $("form#former").show();
         $("form#latter").hide();
         $("#success").show();

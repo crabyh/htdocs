@@ -143,12 +143,12 @@ CheckUserType('manager');
 
               <div class="row">
                 <div class="form-group col-md-6">
-                  <label>Teacher Name</label>
+                  <label>Teacher ID</label>
                   <input type="text" class="form-control" name="teacher[]" placeholder="">
                 </div>
 
                 <div class="form-group col-md-6">
-                  <label>Quantity</label>
+                  <label>Capacity</label>
                   <input type="text" class="form-control" name="quantity[]" placeholder="">
                 </div>
 
