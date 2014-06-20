@@ -212,8 +212,8 @@ CheckUserType('manager');
               <div class="form-group">
               <label>Gender</label><br/>
                 <select name="gender" id="seltype" class="form-control">
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
               </div>
 
