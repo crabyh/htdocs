@@ -205,7 +205,9 @@ CheckUserType('manager');
                   <option value="student">Student</option>
                   <option value="teacher">Teacher</option>
                   <option value="manager">Manager</option>
+                  <?php if ($_SESSION['usertype'] == "admin") { ?>
                   <option value="admin">Administration</option>
+                  <?php } ?>
                 </select>
               </div>
 

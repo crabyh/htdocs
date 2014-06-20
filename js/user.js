@@ -48,7 +48,7 @@ $(document).ready(function(){
                 }
                 result += "<td align='center'><a type='button' class='btn btn-sm btn-info' href='user_info.php?user_id=" + rowData[0] + "'>More</a></td>\n";
                 var usertype = rowData[8];
-                if (usertype === "admin") {
+                if (usertype === "manager" || usertype === "admin") {
                   result += "<td align='center'><button type='button' class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + row + "' disabled>Delete</button></td>\n";
                 }
                 else result += "<td align='center'><button type='button' class='btn btn-sm btn-danger del' data-toggle='modal' data-target='#warnModal' id='del" + row + "'>Delete</button></td>\n";
