@@ -202,7 +202,7 @@ if(mysqli_num_rows($data)==1){
 
             <div class='form-group' >
               <label class='control-label'>User ID</label>
-              <input class='form-control' type='text' value='<?php echo $row['user_id'];?>' id="user_id" disabled>
+              <input class='form-control' type='text' value='<?php echo $row['user_id'];?>' id="user_id" maxlength="20" disabled>
             </div>
 
             <div class='form-group' style="display:none" id="passwordInput">
@@ -222,12 +222,12 @@ if(mysqli_num_rows($data)==1){
 
             <div class='form-group' >
               <label class='control-label'>User Name</label>
-              <input class='form-control admin manager' type='text' id="username" value='<?php echo $row['username'];?>' disabled>
+              <input class='form-control admin manager' type='text' id="username" value='<?php echo $row['username'];?>' maxlength="45" disabled>
             </div>
 
             <div class='form-group' >
               <label class='ontrol-label'>Department</label>
-              <input class='form-control admin manager' type='text' id="department" value='<?php echo $row['department'];?>' disabled>
+              <input class='form-control admin manager' type='text' id="department" value='<?php echo $row['department'];?>' maxlength="45" disabled>
             </div>
 
             <div class='form-group' >
@@ -245,17 +245,17 @@ if(mysqli_num_rows($data)==1){
 
             <div class='form-group' >
               <label class='control-label'>Enroll Time</label>
-              <input class='form-control admin manager' type='number' id="enroll_time" value='<?php echo $row['enroll_time'];?>' disabled>
+              <input class='form-control admin manager' type='number' id="enroll_time" value='<?php echo $row['enroll_time'];?>' maxlength="5" disabled>
             </div>
 
             <div class='form-group'>
               <label class='control-label'>Phone</label>
-              <input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $row['phone']?>'>
+              <input type='tel' class='form-control' name='phone' id='phonenum' value='<?php echo $row['phone']?>' maxlength="16">
             </div>
 
             <div class='form-group'>
               <label class='control-label'>Email</label>
-              <input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $row['email']?>'>
+              <input type='email' name='email' class='form-control' id='emailaddr' value='<?php echo $row['email']?>' maxlength="45">
             </div>
 
             <br>

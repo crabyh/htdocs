@@ -125,17 +125,17 @@ if($data) {
 
             <div class="form-group">
               <label class="control-label">Course ID</label>
-              <input class="form-control" value="<?php echo $course_id ?>" id="cid" disabled>
+              <input class="form-control" value="<?php echo $course_id ?>" id="cid" maxlength="20" disabled>
             </div>
             
             <div class="form-group">
               <label class="control-label">Course Name</label>
-              <input class="form-control" id="cname" value="<?php echo $row['cname'];?>">
+              <input class="form-control" id="cname" value="<?php echo $row['cname'];?>" maxlength="60">
             </div>
              
             <div class="form-group" >
               <label class="control-label">Department</label>
-              <input class="form-control" id="cdept" value="<?php echo $row['cdepartment'];?>">
+              <input class="form-control" id="cdept" value="<?php echo $row['cdepartment'];?>" maxlength="40">
             </div>
              
             <div class="form-group">
@@ -174,7 +174,7 @@ if($data) {
             
             <div class="form-group">
               <label class="control-label">Description</label>
-                <textarea  class="form-control" rows="4" id="cintro"><?php echo $row['course_intro'];?></textarea>
+                <textarea  class="form-control" rows="4" id="cintro" maxlength="2000"><?php echo $row['course_intro'];?></textarea>
             </div>   
 
             <br>
@@ -194,12 +194,12 @@ if($data) {
                 echo '
                   <div class="form-group col-md-6">
                     <label>Teacher Name</label>
-                    <input type="text" class="form-control" name="teacher[]" id="teacher'.$i.'" value="'.$teacherResult[$i].'"disabled>
+                    <input type="text" class="form-control" name="teacher[]" id="teacher'.$i.'" value="'.$teacherResult[$i].'" maxlength="20" disabled>
                   </div>
 
                   <div class="form-group col-md-6">
                     <label>Capacity</label>
-                    <input type="text" class="form-control" name="quantity[]" id="quantity'.$i.'" value="'.$quantityResult[$i].'"disabled>
+                    <input type="text" class="form-control" name="quantity[]" id="quantity'.$i.'" value="'.$quantityResult[$i].'" disabled>
                   </div>';
               } //end for
               echo '

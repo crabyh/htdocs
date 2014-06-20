@@ -99,17 +99,17 @@ CheckUserType('manager');
                 
                 <div class="form-group">
                   <label>Course ID</label>
-                  <input type="text" class="form-control" name="cid" placeholder="">
+                  <input type="text" class="form-control" name="cid" placeholder="" maxlength="20">
                 </div>
                 
                 <div class="form-group">
                   <label>Course Name</label>
-                  <input type="text" class="form-control" name="cname" placeholder="">
+                  <input type="text" class="form-control" name="cname" placeholder="" maxlength="60">
                 </div>
 
                 <div class="form-group">
                   <label>Department</label>
-                  <input type="text" class="form-control" name="cdepartment" placeholder="">
+                  <input type="text" class="form-control" name="cdepartment" placeholder="" maxlength="40">
                 </div>
 
                 <div class="form-group">
@@ -148,7 +148,7 @@ CheckUserType('manager');
 
                 <div class="form-group">
                   <label>Description</label>
-                  <textarea type="text" class="form-control" name="course_intro" rows="5"> </textarea>
+                  <textarea type="text" class="form-control" name="course_intro" rows="5" maxlength="2000"> </textarea>
                 </div>
               </div> <!-- 左边的框 -->
 
@@ -157,12 +157,12 @@ CheckUserType('manager');
               <div class="row">
                 <div class="form-group col-md-6">
                   <label>Teacher ID</label>
-                  <input type="text" class="form-control" name="teacher[]" placeholder="">
+                  <input type="text" class="form-control" name="teacher[]" placeholder="" maxlength="20">
                 </div>
 
                 <div class="form-group col-md-6">
                   <label>Capacity</label>
-                  <input type="text" class="form-control" name="quantity[]" placeholder="">
+                  <input type="text" class="form-control" name="quantity[]" placeholder="" maxlength="3">
                 </div>
 
                 <div class="form-group col-md-6">

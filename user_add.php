@@ -181,22 +181,22 @@ CheckUserType('manager');
               
               <div class="form-group">
                 <label>User ID</label>
-                <input type="text" class="form-control" name="u_id" placeholder="">
+                <input type="text" class="form-control" name="u_id" placeholder="" maxlength="20">
               </div>
 
               <div class="form-group">
                 <label >Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password" required>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="input_newpassword" placeholder="Password" maxlength="" required>
               </div>
 
               <div class="form-group">
                 <label for="NewPassword">Confirm your password again</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password" required>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="repeat_newpassword" placeholder="Password" maxlength="" required>
               </div>
 
               <div class="form-group">
                 <label>User Name</label>
-                <input type="text" class="form-control" name="u_name" placeholder="">
+                <input type="text" class="form-control" name="u_name" placeholder="" maxlength="45">
               </div>
 
               <div class="form-group">
@@ -221,12 +221,12 @@ CheckUserType('manager');
 
               <div class="form-group">
                 <label>Department</label>
-                <input type="text" class="form-control" name="department" placeholder="">
+                <input type="text" class="form-control" name="department" placeholder="" maxlength="45">
               </div>
 
               <div class="form-group">
                 <label>Enroll Year</label>
-                <input type="number" class="form-control" name="enroll_time" value="2014">
+                <input type="number" class="form-control" name="enroll_time" value="2014" maxlength="5">
               </div>
 
               <div class='form-group' >
@@ -236,12 +236,12 @@ CheckUserType('manager');
 
               <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" name="email" placeholder="">
+                <input type="email" class="form-control" name="email" placeholder="" maxlength="45">
               </div>
 
               <div class="form-group">
                 <label>Phone</label>
-                <input type="tel" class="form-control" data-format="ddd-dddd-dddd" name="phone" placeholder="">
+                <input type="tel" class="form-control" data-format="ddd-dddd-dddd" name="phone" placeholder="" maxlength="16">
               </div>
 
               <br>
