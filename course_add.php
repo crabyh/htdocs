@@ -60,9 +60,9 @@ CheckUserType('manager');
               else $j = $i; 
               $class_id = $cid."$j";
               $classQuery = "INSERT INTO class_info (class_id, user_id, c_hour, quantity, cid) VALUES ('$class_id', '$teacher', $c_hour, $quantity, '$cid')";
-              mysqli_query($dbc, $classQuery);
-            }
-            echo'<div class="alert alert-success alert-dismissable">
+              $result = mysqli_query($dbc, $classQuery);
+              if ($result) {
+                echo'<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                   <h4>
                     Adding course success!
@@ -72,6 +72,19 @@ CheckUserType('manager');
                   <p>Department: '.$cdepartment.'</p>
                   <p>Credit: '.$credit.'</p>
                 </div>';
+              }
+              else {
+                echo'<div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h4>
+                    Adding course FAILED!
+                  </h4>
+                  <p> There is no such teacher </p>
+                </div>';
+                $deleteQuery = "DELETE FROM course_info WHERE cid = '$cid'";
+                mysqli_query($dbc, $deleteQuery);
+              }
+            } //end for
           }
         }
         ?>
