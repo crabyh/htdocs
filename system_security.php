@@ -51,8 +51,14 @@ CheckUserType('admin');
 
         <!-- page body -->
         <!-- <p class="lead">Enjoy the system. Have fun!</p> -->
-        <p class="lead">To check systemlog , copy database file and delete database ,please connect <a href="http://sae.sina.com.cn/">SAE server</a>.</p>
-        <p class="lead">You could check systemlog in "systemlog center" , manage database in "MySQL".</p>
+        <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <p> </p>
+          <p class="lead">To check systemlog , copy database file and delete database ,please connect <a href="http://sae.sina.com.cn/">SAE server</a>.</p>
+          <p class="lead">You could check systemlog in "systemlog center" , manage database in "MySQL".</p>
+        </div>
+        </nav>
+
 
       </div>
     </div>
