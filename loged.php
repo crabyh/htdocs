@@ -20,26 +20,47 @@
       <!-- Begin page content -->
       <div class="container">
         <div class="page-header">
-
-        <?php if(isset($_GET['passw_ch'])):?>
-            <div class="alert alert-success alert-dismissable">
-               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-              <h4>
-                Password changing success!
-              </h4> <strong>Please remember your new password.</strong>
-            </div>
-        <?php endif;?>
-
-
-      		<h1>I'm home page.</h1>
+            <?php if(isset($_GET['passw_ch'])):?>
+                <div class="alert alert-success alert-dismissable">
+                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                  <h4>
+                    Password changing success!
+                  </h4> <strong>Please remember your new password.</strong>
+                </div>
+            <?php endif;?>
+            <h1>WELCOME</h1>
         </div>
 
-        <!-- page body -->
-        <p class="lead">Enjoy the system. Have fun!</p>
-
+        <!-- page body -->             
+        <div>
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="item">
+                <img data-src="http://eduss.sinaapp.com/img/IMG_8711.jpg" alt="First slide" src="http://eduss.sinaapp.com/img/IMG_8711.jpg">
+              </div>
+              <div class="item active">
+                <img data-src="http://eduss.sinaapp.com/img/IMG_8895.jpg" alt="First slide" src="http://eduss.sinaapp.com/img/IMG_8895.jpg">
+              </div>
+              <div class="item">
+                <img data-src="http://eduss.sinaapp.com/img/IMG_8922.jpg" alt="First slide" src="http://eduss.sinaapp.com/img/IMG_8922.jpg">
+              </div>
+            </div>
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>	  
       </div>
     </div>
-
+    <br />
     <!-- page footer -->
     <?php include"footer.php"; ?>
 
