@@ -48,10 +48,18 @@ function act(){
             if(mysqli_num_rows($data1))
             {
               $row1 = mysqli_fetch_array($data1);
+              $adminname = $row1['username'];
               $adminemail = $row1['email'];
               $admintel = $row1['phone'];
-              echo'<p class="lead">Please contact the administrator to find the password for you.Here is his Contact Information:</p>
-                   <p class="lead">Tel:'.$admintel.'  Email:'.$adminemail.'</p>';
+              echo'<nav class="navbar navbar-default" role="navigation">
+                   <div class="navbar-header">
+                   <p> </p>
+                   <p class="lead">Please contact the administrator to find the password for you .His name is '.$adminname.'.</p>
+                   <p class="lead">Here is his Contact Information:</p>
+                   <p class="lead">Tel:'.$admintel.'  Email:'.$adminemail.'</p>
+                   </div>
+                   </nav>
+                   ';
             }
           }     
         ?>

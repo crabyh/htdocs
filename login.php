@@ -30,11 +30,11 @@ require_once 'connectvars.php';
     <?php 
       if(!isset($_SESSION['user_id'])){ //如果登录没有登录，执行以下代码
         if (isset($_REQUEST['Submit'])){ //如果有submit提交
-          // if(empty($_SESSION['6_letters_code']) || strcasecmp($_SESSION['6_letters_code'], $_POST['6_letters_code']) != 0)
-          //   { 
-          //     $msg="Verification code is wrong!";
-          //   }
-          // else
+           if(empty($_SESSION['6_letters_code']) || strcasecmp($_SESSION['6_letters_code'], $_POST['6_letters_code']) != 0)
+             { 
+               $msg="Verification code is wrong!";
+             }
+           else
             { //验证码通过验证
             $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
             $user_id = mysqli_real_escape_string($dbc,trim($_POST['user_id']));
