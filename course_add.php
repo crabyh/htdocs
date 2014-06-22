@@ -59,7 +59,7 @@ CheckUserType('manager');
               }
               else $j = $i; 
               $class_id = $cid."$j";
-              $classQuery = "INSERT INTO class_info (class_id, user_id, c_hour, quantity, cid) VALUES ('$class_id', '$teacher', $c_hour, $quantity, '$cid')";
+              $classQuery = "INSERT INTO class_info (class_id, t_id, c_hour, quantity, cid) VALUES ('$class_id', '$teacher', $c_hour, $quantity, '$cid')";
               $result = mysqli_query($dbc, $classQuery);
             } //end for
             if ($result) {
