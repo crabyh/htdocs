@@ -47,8 +47,8 @@ if(isset($_SESSION["user_id"]))
         </div>
 
         <!-- page body -->
-        <p class="lead">It's a simple Education Service System implemented by Group 1. And it's our team 1's job to implement the welcome, sign in and basic-infomation-maneger pages. have fun!</p>
-        <p class="lead">before you start using the system, please Sign In first.</p>
+        <p class="lead">It's a simple Education Service System implemented by Group 1. And it's our team 1's job to implement the welcome, sign in and basic-infomation-maneger sites. Have fun!</p>
+        <p class="lead">Before you start using the system, please SIGN IN first.</p>
         <p><a class="btn btn-lg btn-success" href="login.php" role="button">Sign In Now</a></p>
       </div>
     </div>
