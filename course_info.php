@@ -120,98 +120,97 @@ if($data) {
         </form>
 
         <div class="row clearfix">
-        <form class="form" id="latter" style="display: none">
-          <div class="col-md-6 column">
+          <form class="form" id="latter" style="display: none">
+            <div class="col-md-6 column">
 
-            <div class="form-group">
-              <label class="control-label">Course ID</label>
-              <input class="form-control" value="<?php echo $course_id ?>" id="cid" maxlength="20" disabled>
-            </div>
-            
-            <div class="form-group">
-              <label class="control-label">Course Name</label>
-              <input class="form-control" id="cname" value="<?php echo $row['cname'];?>" maxlength="60">
-            </div>
-             
-            <div class="form-group" >
-              <label class="control-label">Department</label>
-              <input class="form-control" id="cdept" value="<?php echo $row['cdepartment'];?>" maxlength="40">
-            </div>
-             
-            <div class="form-group">
-              <label>Credit</label>
-              <select name="credit" id="" class="form-control">
-                <option value="0.5">0.5</option>
-                <option value="1">1</option>
-                <option value="1.5">1.5</option>
-                <option value="2">2</option>
-                <option value="2.5">2.5</option>
-                <option value="3">3</option>
-                <option value="3.5">3.5</option>
-                <option value="4">4</option>
-                <option value="4.5">4.5</option>
-                <option value="5">5</option>
-                <option value="5.5">5.5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-            </div>
+              <div class="form-group">
+                <label class="control-label">Course ID</label>
+                <input class="form-control" value="<?php echo $course_id ?>" id="cid" maxlength="20" disabled>
+              </div>
+              
+              <div class="form-group">
+                <label class="control-label">Course Name</label>
+                <input class="form-control" id="cname" value="<?php echo $row['cname'];?>" maxlength="60">
+              </div>
+               
+              <div class="form-group" >
+                <label class="control-label">Department</label>
+                <input class="form-control" id="cdept" value="<?php echo $row['cdepartment'];?>" maxlength="40">
+              </div>
+               
+              <div class="form-group">
+                <label>Credit</label>
+                <select name="credit" id="" class="form-control">
+                  <option value="0.5">0.5</option>
+                  <option value="1">1</option>
+                  <option value="1.5">1.5</option>
+                  <option value="2">2</option>
+                  <option value="2.5">2.5</option>
+                  <option value="3">3</option>
+                  <option value="3.5">3.5</option>
+                  <option value="4">4</option>
+                  <option value="4.5">4.5</option>
+                  <option value="5">5</option>
+                  <option value="5.5">5.5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <label>Course Hours</label>
-              <select name="c_hour" id="" class="form-control">
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div>  
-            
-            <div class="form-group">
-              <label class="control-label">Description</label>
-                <textarea  class="form-control" rows="4" id="cintro" maxlength="2000"><?php echo $row['course_intro'];?></textarea>
-            </div>   
+              <div class="form-group">
+                <label>Course Hours</label>
+                <select name="c_hour" id="" class="form-control">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>  
+              
+              <div class="form-group">
+                <label class="control-label">Description</label>
+                  <textarea  class="form-control" rows="4" id="cintro" maxlength="2000"><?php echo $row['course_intro'];?></textarea>
+              </div>   
 
-            <br>
-            <div class="form-group">
-              <button class="btn btn-primary" type="submit" name="submit" value="submit" id="submitBTN">Submit</button>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <button class="btn" type="button" name="reset" value="reset" id="resetBTN">Reset</button>
               <br>
+              <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="submit" value="submit" id="submitBTN">Submit</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn" type="button" name="reset" value="reset" id="resetBTN">Reset</button>
+                <br>
+              </div>
+
+            </div> <!-- col-md-6 -->
+
+            <div class="col-md-6 column">
+              <?php if ($teacherNum = count($teacherResult)) { 
+                echo '<div class="row">';
+                for ($i=0; $i < $teacherNum; $i++){ 
+                  echo '
+                    <div class="form-group col-md-6">
+                      <label>Teacher Name</label>
+                      <input type="text" class="form-control" name="teacher[]" id="teacher'.$i.'" value="'.$teacherResult[$i].'" maxlength="20" disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                      <label>Capacity</label>
+                      <input type="text" class="form-control" name="quantity[]" id="quantity'.$i.'" value="'.$quantityResult[$i].'" disabled>
+                    </div>';
+                } //end for
+                echo '
+                  </div> <!-- end row -->
+                  </div> <!-- 右边的框 -->';
+                } //end if
+              ?>
             </div>
 
-          </div> <!-- col-md-6 -->
-
-          <div class="col-md-6 column">
-            <?php if ($teacherNum = count($teacherResult)) { 
-              echo '<div class="row">';
-              for ($i=0; $i < $teacherNum; $i++){ 
-                echo '
-                  <div class="form-group col-md-6">
-                    <label>Teacher Name</label>
-                    <input type="text" class="form-control" name="teacher[]" id="teacher'.$i.'" value="'.$teacherResult[$i].'" maxlength="20" disabled>
-                  </div>
-
-                  <div class="form-group col-md-6">
-                    <label>Capacity</label>
-                    <input type="text" class="form-control" name="quantity[]" id="quantity'.$i.'" value="'.$quantityResult[$i].'" disabled>
-                  </div>';
-              } //end for
-              echo '
-              </div> <!-- end row -->
-            </div> <!-- 右边的框 -->';
-          } //end if
-          ?>
-
-        </form>
+          </form>
         </div>
-
-
 
       </div>
     </div>
