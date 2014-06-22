@@ -56,8 +56,8 @@
                 <li><a href="user_select.php">User Query</a></li>
                 <li><a href="user_add.php">Add User</a></li>
                 <?php if ("admin" == $_SESSION["usertype"]):?>
-                  <li><a href="system_log_check.php">Check SystemLog</a></li>
                   <li><a href="check_db.php">View Database</a></li>
+                  <li><a href="system_security.php">System Security</a></li>
                 <?php endif;?>
               <?php endif;?>  
 

@@ -23,10 +23,12 @@ $data = mysqli_query($dbc,$query);
 $sqlacc= 'SELECT * FROM accounts';
 $sqlcourse = 'SELECT * FROM course_info';
 $sqluser = 'SELECT * FROM user_info';
+$sqlclass = 'SELECT * FROM class_info';
 
 $arracc = mysqli_query($dbc, $sqlacc);
 $arrcourse = mysqli_query($dbc, $sqlcourse);
 $arruser = mysqli_query($dbc, $sqluser);
+$arrclass = mysqli_query($dbc, $sqlclass);
 
 ?>
 
@@ -54,6 +56,7 @@ $arruser = mysqli_query($dbc, $sqluser);
       <ul class="nav nav-tabs">
         <li class="active"><a href="#accounts" data-toggle="tab">accounts</a></li>
         <li class=""><a href="#course_info" data-toggle="tab" id="profileLable">course_info</a></li>
+        <li class=""><a href="#class_info" data-toggle="tab" id="profLable">class_info</a></li>
         <li class=""><a href="#user_info" data-toggle="tab" id="proLable">user_info</a></li>
       </ul>
 
@@ -95,6 +98,31 @@ $arruser = mysqli_query($dbc, $sqluser);
                 </tr>
                 <?php 
     				while($row = mysqli_fetch_row($arrcourse)){
+                        echo "<tr>";
+                        foreach ($row as $key => $value){
+                            echo "<td align='center'><small>".$value."</small></td>";
+                        }
+                        echo "<tr>";
+                    }
+                ?>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane fade" id="class_info">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <table class="table table-striped">
+                <tr>
+                <td align='center'><small> class_id </small></td>
+                <td align='center'><small> user_id </small></td>
+                <td align='center'><small> c_hour </small></td>
+                <td align='center'><small> quantity </small></td>
+                <td align='center'><small> cid </small></td>
+                </tr>
+                <?php 
+            while($row = mysqli_fetch_row($arrclass)){
                         echo "<tr>";
                         foreach ($row as $key => $value){
                             echo "<td align='center'><small>".$value."</small></td>";

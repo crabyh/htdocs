@@ -46,14 +46,12 @@ CheckUserType('admin');
         unset($_SESSION['login']);
         unset($_SESSION['illegal']);
         ?>
-      		<h1>SystemLog Check</h1>
+      		<h1>System Security</h1>
         </div>
 
         <!-- page body -->
         <!-- <p class="lead">Enjoy the system. Have fun!</p> -->
-        <!--open system log file and print it -->
         <p>here is some words for admin.</p>
-        <!--上面这段php就是输出系统日志文件的整个结构，如果要美化的话在外面加个框吧 by女王-->
 
       </div>
     </div>
