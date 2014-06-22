@@ -172,14 +172,15 @@ $(document).ready(function(){
   $("#resetBTN").click(function(event){
     event.preventDefault();
     var user_id = $("#user_id").val();
+
     $.ajax({
       type: "GET",
       url: "user_info_php.php",
       data: "user_id=" + user_id,
       dataType: "json",
       success: function(data){
-        var phone = data[0][6];
-        var email = data[0][7];
+        var phone = data[6];
+        var email = data[7];
         $("#phonenum").val(phone);
         $("#emailaddr").val(email);
       }

@@ -10,7 +10,7 @@ require_once 'connectvars.php';
 $course_id=$_GET['course_id'];
 $dbc = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 $user_id = mysqli_real_escape_string($dbc,trim($_SESSION['user_id']));
-$query = "SELECT * FROM course_info JOIN class_info WHERE course_info.cid='$course_id' AND t_id = user_id";
+$query = "SELECT * FROM course_info JOIN class_info WHERE course_info.cid='$course_id'";
 $teacherQuery = "SELECT user_id, username, quantity FROM class_info NATURAL JOIN user_info WHERE class_info.cid = '$course_id' AND t_id = user_id";
 $data = mysqli_query($dbc, $query);
 $teacherData = mysqli_query($dbc, $teacherQuery);
