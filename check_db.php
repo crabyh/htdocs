@@ -116,7 +116,7 @@ $arrclass = mysqli_query($dbc, $sqlclass);
               <table class="table table-striped">
                 <tr>
                 <td align='center'><small> class_id </small></td>
-                <td align='center'><small> user_id </small></td>
+                <td align='center'><small> t_id </small></td>
                 <td align='center'><small> c_hour </small></td>
                 <td align='center'><small> quantity </small></td>
                 <td align='center'><small> cid </small></td>
