@@ -61,7 +61,8 @@ CheckUserType('manager');
               $class_id = $cid."$j";
               $classQuery = "INSERT INTO class_info (class_id, user_id, c_hour, quantity, cid) VALUES ('$class_id', '$teacher', $c_hour, $quantity, '$cid')";
               $result = mysqli_query($dbc, $classQuery);
-              if ($result) {
+            } //end for
+            if ($result) {
                 echo'<div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                   <h4>
@@ -84,7 +85,6 @@ CheckUserType('manager');
                 $deleteQuery = "DELETE FROM course_info WHERE cid = '$cid'";
                 mysqli_query($dbc, $deleteQuery);
               }
-            } //end for
           }
         }
         ?>
