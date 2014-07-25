@@ -9,8 +9,8 @@ $font = './monofont.ttf';
 //以下字符将用于验证码中的字符 
 //为了避免混淆去掉了数字1和字母i
 $possible_letters = '23456789bcdfghjkmnpqrstvwxyz';
-$random_dots = 20;
-$random_lines = 3;
+$random_dots = 120;
+$random_lines = 30;
 $captcha_text_color="0x142864";
 $captcha_noice_color = "0x142864"; 
  
